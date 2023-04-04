@@ -5,6 +5,8 @@ import SignInScreen from '../screens/SignInScreen'
 import SignUpScreen from '../screens/SignUpScreen'
 import OTPScreen from '../screens/OTPScreen'
 import MoreInfoScreen from '../screens/MoreInfoScreen'
+import TabNavigation from './TabNavigation'
+import NotificationScreen from '../screens/NotificationScreen'
 
 const Stack = createNativeStackNavigator()
 const StackNavigation = () => {
@@ -14,6 +16,8 @@ const StackNavigation = () => {
             <Stack.Screen name='SignUp' component={SignUpScreen} />
             <Stack.Screen name='OTP' component={OTPScreen} />
             <Stack.Screen name='MoreInfo' component={MoreInfoScreen} />
+            <Stack.Screen name='Tab' component={TabNavigation} />
+            <Stack.Screen name='Notification' component={NotificationScreen} />
         </Stack.Navigator>
     )
 }

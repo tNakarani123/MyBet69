@@ -15,10 +15,10 @@ const SignInScreen = () => {
                     <LogoComponent height={Height(258)} width={Width(220)} />
                 </View>
                 <View style={{ height: Height(465), backgroundColor: 'white', marginTop: Height(62), borderTopLeftRadius: Width(20), borderTopRightRadius: Width(20) }}>
-                    <Text style={{ fontSize: Height(44), fontFamily: 'Poppins-SemiBoldItalic', textAlign: 'center', marginTop: Height(25) }}>Let’s PLAY!!</Text>
-                    <Text style={{ fontSize: Height(20), fontFamily: 'Poppins-Regular', textAlign: 'center', marginTop: Height(15) }}>Get You Login</Text>
+                    <Text style={{ fontSize: Height(44), fontFamily: 'Poppins-SemiBoldItalic', textAlign: 'center', marginTop: Height(25), color: 'black' }}>Let’s PLAY!!</Text>
+                    <Text style={{ fontSize: Height(20), fontFamily: 'Poppins-Regular', textAlign: 'center', marginTop: Height(15), color: 'black' }}>Get You Login</Text>
                     <View style={{ height: Height(60), width: Width(390), borderWidth: Height(3), borderColor: '#9F9F9F', borderRadius: Width(10), alignSelf: 'center', marginTop: Height(25), flexDirection: 'row', alignItems: 'center', paddingHorizontal: Width(28) }}>
-                        <MaterialIcons name='phone' size={Height(25)} />
+                        <MaterialIcons name='phone' size={Height(25)} color='black' />
                         <View style={{
                             height: Height(35),
                             width: 1,

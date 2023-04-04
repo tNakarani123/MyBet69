@@ -23,7 +23,7 @@ const OTPScreen = () => {
                 <View style={{ height: Height(675), backgroundColor: 'white', marginTop: Height(42) }}>
                     <View style={{ flexDirection: 'row', alignItems: 'center', marginTop: Height(25), marginLeft: Width(24) }}>
                         <Ionicons name='arrow-back' size={Height(35)} color='black' />
-                        <Text style={{ fontSize: Height(44), fontFamily: 'Poppins-SemiBoldItalic', textAlign: 'center', marginLeft: Width(40) }}>Let’s PLAY!!</Text>
+                        <Text style={{ fontSize: Height(44), fontFamily: 'Poppins-SemiBoldItalic', textAlign: 'center', marginLeft: Width(40), color: 'black' }}>Let’s PLAY!!</Text>
                     </View>
                     <OTP
                         codeCount={4}
