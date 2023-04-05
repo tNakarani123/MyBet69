@@ -116,7 +116,6 @@ const HomeScreen = () => {
                 <View style={{ height: Height(60), backgroundColor: 'white', borderBottomLeftRadius: Width(20), borderBottomRightRadius: Width(20), flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', paddingHorizontal: Width(25) }}>
                     <MyBetComponent width={Width(102)} height={Height(15)} />
                     <TouchableOpacity onPress={() => navigation.navigate('Notification')}>
-
                         <NotificationComponent size={Height(25)} />
                     </TouchableOpacity>
                 </View>
@@ -147,7 +146,7 @@ const HomeScreen = () => {
                                         scrollData.map((item, i) => {
                                             return (
 
-                                                <View key={i} style={{ height: Height(145), width: Width(335), backgroundColor: 'white', marginLeft: Width(50), borderRadius: Width(10), marginTop: Height(10) }}>
+                                                <TouchableOpacity key={i} style={{ height: Height(145), width: Width(335), backgroundColor: 'white', marginLeft: Width(50), borderRadius: Width(10), marginTop: Height(10) }} onPress={() => navigation.navigate('CreateContest')}>
                                                     <Text style={{ fontSize: Height(10), fontFamily: 'Poppins-Regular', color: 'black', marginTop: Height(5), marginLeft: Width(10) }}>{item.matchName}</Text>
                                                     <View style={{ height: Height(1), backgroundColor: '#D9D9D9', marginTop: Height(5), }} />
                                                     <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginHorizontal: Width(15), marginTop: Height(5) }}>
@@ -174,7 +173,7 @@ const HomeScreen = () => {
                                                         <Text style={{ fontSize: Height(11), fontFamily: 'Poppins-Regular', color: 'black', marginLeft: Width(25) }}>Team<Text>(2)</Text></Text>
                                                         <Text style={{ fontSize: Height(11), fontFamily: 'Poppins-Regular', color: 'black', marginLeft: Width(25) }}>Contest<Text>(2)</Text></Text>
                                                     </View>
-                                                </View>
+                                                </TouchableOpacity>
                                             )
                                         })
                                     }
@@ -204,9 +203,9 @@ const HomeScreen = () => {
                                     {
                                         upcomingMatch.map((item, i) => {
                                             return (
-                                                <View key={i} style={{ height: Height(180), width: Width(390), backgroundColor: 'white', borderRadius: Width(10), marginTop: Height(20), alignSelf: 'center' }}>
+                                                <TouchableOpacity key={i} style={{ height: Height(180), width: Width(390), backgroundColor: 'white', borderRadius: Width(10), marginTop: Height(20), alignSelf: 'center' }} onPress={() => navigation.navigate('CreateContest')}>
                                                     <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginHorizontal: Width(20), marginTop: Height(5) }}>
-                                                        <Text style={{ fontSize: Height(10), fontFamily: 'Poppins-Medium' }}>{item.fansCode}</Text>
+                                                        <Text style={{ fontSize: Height(10), fontFamily: 'Poppins-Medium', color: 'black' }}>{item.fansCode}</Text>
                                                         <View style={{ flexDirection: 'row', alignItems: 'center' }}>
                                                             <Feather name='clock' size={Height(15)} color='#5556CA' />
                                                             <Text style={{ fontSize: Height(10), fontFamily: 'Poppins-Medium', color: '#5556CA', marginLeft: Width(15) }}>Lineups Out</Text>
@@ -238,7 +237,7 @@ const HomeScreen = () => {
                                                         </View>
                                                         <Text style={{ fontSize: Height(10), fontFamily: 'Poppins-Medium', color: 'black', marginLeft: Width(17) }}>{item.price}</Text>
                                                     </View>
-                                                </View>
+                                                </TouchableOpacity>
                                             )
                                         })
                                     }
@@ -271,7 +270,7 @@ const HomeScreen = () => {
                                                 shadowRadius: 3.84,
                                             }}
                                         >
-                                            <View key={i} style={{ height: Height(145), width: Width(335), backgroundColor: 'white', marginLeft: Width(50), borderRadius: Width(10) }}>
+                                            <TouchableOpacity key={i} style={{ height: Height(145), width: Width(335), backgroundColor: 'white', marginLeft: Width(50), borderRadius: Width(10) }} onPress={() => navigation.navigate('CreateContest')}>
                                                 <Text style={{ fontSize: Height(10), fontFamily: 'Poppins-Regular', color: 'black', marginTop: Height(5), marginLeft: Width(10) }}>{item.matchName}</Text>
                                                 <View style={{ height: Height(1), backgroundColor: '#D9D9D9', marginTop: Height(5), }} />
                                                 <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginHorizontal: Width(15), marginTop: Height(5) }}>
@@ -298,7 +297,7 @@ const HomeScreen = () => {
                                                     <Text style={{ fontSize: Height(11), fontFamily: 'Poppins-Regular', color: 'black', marginLeft: Width(25) }}>Team<Text>(2)</Text></Text>
                                                     <Text style={{ fontSize: Height(11), fontFamily: 'Poppins-Regular', color: 'black', marginLeft: Width(25) }}>Contest<Text>(2)</Text></Text>
                                                 </View>
-                                            </View>
+                                            </TouchableOpacity>
                                         </DropShadow>
                                     )
                                 })
