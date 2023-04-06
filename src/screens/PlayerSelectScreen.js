@@ -1,14 +1,14 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 
-const ContestScreen = () => {
+const PlayerSelectScreen = () => {
     return (
         <View>
-            <Text>ContestScreen</Text>
+            <Text>PlayerSelectScreen</Text>
         </View>
     )
 }
 
-export default ContestScreen
+export default PlayerSelectScreen
 
 const styles = StyleSheet.create({})

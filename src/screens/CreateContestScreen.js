@@ -93,7 +93,7 @@ const CreateContestScreen = () => {
                 }}>
                     <View style={{ height: Height(165), borderBottomLeftRadius: Width(20), borderBottomRightRadius: Width(20), paddingHorizontal: Width(25), backgroundColor: 'white' }}>
                         <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
-                            <Ionicons name='arrow-back' size={Height(30)} />
+                            <Ionicons name='arrow-back' size={Height(30)} onPress={() => navigation.goBack()} />
                             <MyBetComponent width={Width(102)} height={Height(15)} />
                             <TouchableOpacity onPress={() => navigation.navigate('Notification')}>
                                 <NotificationComponent size={Height(25)} />
@@ -111,7 +111,7 @@ const CreateContestScreen = () => {
                     {
                         data.map((item, i) => {
                             return (
-                                <View key={i} style={{ height: Height(155), width: Width(350), backgroundColor: 'white', alignSelf: 'center', marginTop: Height(10), borderRadius: Width(10), borderWidth: Width(1), borderColor: '#B8B8B8' }}>
+                                <TouchableOpacity key={i} style={{ height: Height(155), width: Width(350), backgroundColor: 'white', alignSelf: 'center', marginTop: Height(10), borderRadius: Width(10), borderWidth: Width(1), borderColor: '#B8B8B8' }} onPress={() => navigation.navigate('CreateTeam')}>
                                     <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginHorizontal: Width(34), marginTop: Height(10) }}>
                                         <Text style={{ fontSize: Height(10), fontFamily: 'Poppins-Regular', color: 'black' }}>Price Pool</Text>
                                         <Text style={{ fontSize: Height(10), fontFamily: 'Poppins-Regular', color: 'black' }}>Entry</Text>
@@ -144,7 +144,7 @@ const CreateContestScreen = () => {
                                             <Text style={{ fontSize: Height(10), fontFamily: 'Poppins-SemiBold', color: '#565656', marginLeft: Width(5) }}>{item.contestThird}</Text>
                                         </View>
                                     </View>
-                                </View>
+                                </TouchableOpacity>
                             )
                         })
                     }

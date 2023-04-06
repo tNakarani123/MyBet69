@@ -2,15 +2,8 @@ import { Image, StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import HomeScreen from '../screens/HomeScreen';
-
 import ProfileScreen from '../screens/ProfileScreen';
-
 import { Height, Width } from '../utils/responsive';
-// import HomeComponent from '../assets/images/Home';
-
-// import ProfileComponent from '../assets/images/Profile';
-
-import ContestScreen from '../screens/ContestScreen';
 import WalletScreen from '../screens/WalletScreen';
 import HomeActiveComponent from '../assets/svg/HomeActive';
 import ProfileActiveComponent from '../assets/svg/ProfileActive';
@@ -20,6 +13,7 @@ import ContestActiveComponent from '../assets/svg/ContestActive';
 import HomeComponent from '../assets/svg/Home';
 import ProfileComponent from '../assets/svg/Profile';
 import ContestComponent from '../assets/svg/Contest';
+import MyMatchesScreen from '../screens/MyMatchesScreen';
 
 const Tab = createBottomTabNavigator();
 const TabNavigation = () => {
@@ -36,7 +30,7 @@ const TabNavigation = () => {
                     },
                     tabBarShowLabel: false
                 })} />
-            <Tab.Screen name="Contest" component={ContestScreen}
+            <Tab.Screen name="MyMatches" component={MyMatchesScreen}
                 options={() => ({
                     tabBarIcon: ({ focused }) => {
                         return (

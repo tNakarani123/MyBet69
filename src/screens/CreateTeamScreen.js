@@ -12,9 +12,75 @@ import ContestThirdComponent from '../assets/svg/ContestThird'
 import RankOneComponent from '../assets/svg/RankOne'
 import RankTwoComponent from '../assets/svg/RankTwo'
 import RankThreeComponent from '../assets/svg/RankThree'
+import { useNavigation } from '@react-navigation/native'
+
+const data = [
+    {
+        id: 1,
+        playerId: 'Player`s Id',
+        points: 181,
+        credit: '2-'
+    },
+    {
+        id: 2,
+        playerId: 'Player`s Id',
+        points: 181,
+        credit: '2-'
+    },
+    {
+        id: 3,
+        playerId: 'Player`s Id',
+        points: 181,
+        credit: '2-'
+    },
+    {
+        id: 4,
+        playerId: 'Player`s Id',
+        points: 181,
+        credit: '2-'
+    },
+    {
+        id: 5,
+        playerId: 'Player`s Id',
+        points: 181,
+        credit: '2-'
+    },
+    {
+        id: 6,
+        playerId: 'Player`s Id',
+        points: 181,
+        credit: '2-'
+    },
+    {
+        id: 7,
+        playerId: 'Player`s Id',
+        points: 181,
+        credit: '2-'
+    },
+    {
+        id: 8,
+        playerId: 'Player`s Id',
+        points: 181,
+        credit: '2-'
+    },
+    {
+        id: 9,
+        playerId: 'Player`s Id',
+        points: 181,
+        credit: '2-'
+    },
+    {
+        id: 10,
+        playerId: 'Player`s Id',
+        points: 181,
+        credit: '2-'
+    }
+]
+
 const CreateTeamScreen = () => {
     const [selected, setSelected] = useState('');
     const [index, setIndex] = useState(1)
+    const navigation = useNavigation()
 
     switch (selected) {
         case 'Leaderboard':
@@ -36,7 +102,7 @@ const CreateTeamScreen = () => {
                         }}>
                             <View style={{ height: Height(165), borderBottomLeftRadius: Width(20), borderBottomRightRadius: Width(20), paddingHorizontal: Width(25), backgroundColor: 'white' }}>
                                 <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
-                                    <Ionicons name='arrow-back' size={Height(30)} />
+                                    <Ionicons name='arrow-back' size={Height(30)} onPress={() => navigation.goBack()} />
                                     <MyBetComponent width={Width(102)} height={Height(15)} />
                                     <TouchableOpacity onPress={() => navigation.navigate('Notification')}>
                                         <NotificationComponent size={Height(25)} />
@@ -61,7 +127,7 @@ const CreateTeamScreen = () => {
                                 <Text style={{ fontSize: Height(10), fontFamily: 'Poppins-Regular', color: '#F96464' }}>27,22,717  Sports Left</Text>
                                 <Text style={{ fontSize: Height(10), fontFamily: 'Poppins-Regular', color: '#6B6B6B' }}>35,37,414 Sports</Text>
                             </View>
-                            <TouchableOpacity style={{ height: Height(45), width: Width(320), backgroundColor: '#5556CA', alignSelf: 'center', borderRadius: Width(10), marginTop: Height(30), justifyContent: 'center', alignItems: 'center' }}>
+                            <TouchableOpacity style={{ height: Height(45), width: Width(320), backgroundColor: '#5556CA', alignSelf: 'center', borderRadius: Width(10), marginTop: Height(30), justifyContent: 'center', alignItems: 'center' }} onPress={() => navigation.navigate('PlayerSelect')}>
                                 <Text style={{ fontSize: Height(16), fontFamily: 'Poppins-SemiBold', color: 'white' }}>₹4</Text>
                             </TouchableOpacity>
                             <View style={{ height: Height(35), width: Width(390), backgroundColor: '#D9D9D9', position: "absolute", bottom: 0, borderBottomLeftRadius: Width(10), borderBottomRightRadius: Width(10), flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', paddingHorizontal: Width(34) }}>
@@ -87,7 +153,21 @@ const CreateTeamScreen = () => {
                                 <Text style={{ fontSize: Height(12), fontFamily: 'Poppins-SemiBold', color: index !== 2 ? '#666666' : 'black', paddingBottom: Width(5) }}>Leaderboard</Text>
                             </TouchableOpacity>
                         </View>
-                        <Text>Leaderboard</Text>
+                        <ScrollView>
+                            {data.map((item, i) => {
+                                return (
+                                    <View>
+                                        <View key={i} style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginTop: Height(10), marginHorizontal: Width(30) }}>
+                                            <Image source={require('../assets/images/Profile.png')} style={{ height: Height(50), width: Width(50) }} />
+                                            <Text style={{ fontSize: Height(12), fontFamily: 'Poppins-Medium', color: 'black' }}>{item.playerId}</Text>
+                                            <Text style={{ fontSize: Height(12), fontFamily: 'Poppins-Medium', color: 'black' }}>{item.points}</Text>
+                                            <Text style={{ fontSize: Height(12), fontFamily: 'Poppins-Medium', color: 'black' }}>{item.credit}</Text>
+                                        </View>
+                                        <View style={{ height: Height(1), backgroundColor: 'rgba(0, 0, 0, 0.3)', marginTop: Height(10) }} />
+                                    </View>
+                                )
+                            })}
+                        </ScrollView>
                     </SafeAreaView>
                 </>
             )
@@ -111,7 +191,7 @@ const CreateTeamScreen = () => {
                         }}>
                             <View style={{ height: Height(165), borderBottomLeftRadius: Width(20), borderBottomRightRadius: Width(20), paddingHorizontal: Width(25), backgroundColor: 'white' }}>
                                 <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
-                                    <Ionicons name='arrow-back' size={Height(30)} />
+                                    <Ionicons name='arrow-back' size={Height(30)} onPress={() => navigation.goBack()} />
                                     <MyBetComponent width={Width(102)} height={Height(15)} />
                                     <TouchableOpacity onPress={() => navigation.navigate('Notification')}>
                                         <NotificationComponent size={Height(25)} />
@@ -136,7 +216,7 @@ const CreateTeamScreen = () => {
                                 <Text style={{ fontSize: Height(10), fontFamily: 'Poppins-Regular', color: '#F96464' }}>27,22,717  Sports Left</Text>
                                 <Text style={{ fontSize: Height(10), fontFamily: 'Poppins-Regular', color: '#6B6B6B' }}>35,37,414 Sports</Text>
                             </View>
-                            <TouchableOpacity style={{ height: Height(45), width: Width(320), backgroundColor: '#5556CA', alignSelf: 'center', borderRadius: Width(10), marginTop: Height(30), justifyContent: 'center', alignItems: 'center' }}>
+                            <TouchableOpacity style={{ height: Height(45), width: Width(320), backgroundColor: '#5556CA', alignSelf: 'center', borderRadius: Width(10), marginTop: Height(30), justifyContent: 'center', alignItems: 'center' }} onPress={() => navigation.navigate('PlayerSelect')}>
                                 <Text style={{ fontSize: Height(16), fontFamily: 'Poppins-SemiBold', color: 'white' }}>₹4</Text>
                             </TouchableOpacity>
                             <View style={{ height: Height(35), width: Width(390), backgroundColor: '#D9D9D9', position: "absolute", bottom: 0, borderBottomLeftRadius: Width(10), borderBottomRightRadius: Width(10), flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', paddingHorizontal: Width(34) }}>

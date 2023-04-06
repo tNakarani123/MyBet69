@@ -109,7 +109,6 @@ const HomeScreen = () => {
     return (
         <ImageBackground style={{ flex: 1 }} source={require('../assets/images/background.png')}>
             <SafeAreaView
-
                 style={{ flex: 0, backgroundColor: 'white' }}
             />
             <SafeAreaView style={{ flex: 1 }}>
@@ -138,7 +137,6 @@ const HomeScreen = () => {
                                     },
                                     shadowOpacity: 0.25,
                                     shadowRadius: 3.84,
-
                                 }}
                             >
                                 <ScrollView horizontal showsHorizontalScrollIndicator={false} >
@@ -196,7 +194,6 @@ const HomeScreen = () => {
                                     },
                                     shadowOpacity: 0.25,
                                     shadowRadius: 3.84,
-
                                 }}
                             >
                                 <ScrollView>
@@ -251,7 +248,7 @@ const HomeScreen = () => {
                         <Text style={{ fontSize: Height(12), fontFamily: 'Poppins-SemiBold', color: 'white' }}>My Matches</Text>
                         <View style={{ flexDirection: 'row', alignItems: 'center' }}>
                             <Text style={{ fontSize: Height(12), fontFamily: 'Poppins-Regular', color: 'white' }}>View All</Text>
-                            <Ionicons name='arrow-forward' size={Height(20)} color='white' style={{ marginLeft: Width(5) }} />
+                            <Ionicons name='arrow-forward' size={Height(20)} color='white' style={{ marginLeft: Width(5) }} onPress={() => navigation.navigate('MyMatches')} />
                         </View>
                     </View>
                     <View style={{ height: Height(150), marginTop: Height(10) }}>
@@ -269,8 +266,8 @@ const HomeScreen = () => {
                                                 shadowOpacity: 0.25,
                                                 shadowRadius: 3.84,
                                             }}
-                                        >
-                                            <TouchableOpacity key={i} style={{ height: Height(145), width: Width(335), backgroundColor: 'white', marginLeft: Width(50), borderRadius: Width(10) }} onPress={() => navigation.navigate('CreateContest')}>
+                                            key={i}  >
+                                            <TouchableOpacity style={{ height: Height(145), width: Width(335), backgroundColor: 'white', marginLeft: Width(50), borderRadius: Width(10) }} onPress={() => navigation.navigate('CreateContest')}>
                                                 <Text style={{ fontSize: Height(10), fontFamily: 'Poppins-Regular', color: 'black', marginTop: Height(5), marginLeft: Width(10) }}>{item.matchName}</Text>
                                                 <View style={{ height: Height(1), backgroundColor: '#D9D9D9', marginTop: Height(5), }} />
                                                 <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginHorizontal: Width(15), marginTop: Height(5) }}>
