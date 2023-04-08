@@ -10,11 +10,14 @@ import NotificationScreen from '../screens/NotificationScreen'
 import CreateContestScreen from '../screens/CreateContestScreen'
 import CreateTeamScreen from '../screens/CreateTeamScreen'
 import PlayerSelectScreen from '../screens/PlayerSelectScreen'
+import ChooseCaptainScreen from '../screens/ChooseCaptainScreen'
+import ContestScreen from '../screens/ContestScreen'
 
 const Stack = createNativeStackNavigator()
 const StackNavigation = () => {
     return (
         <Stack.Navigator screenOptions={{ headerShown: false }}>
+            <Stack.Screen name='PlayerSelect' component={PlayerSelectScreen} />
             <Stack.Screen name='Tab' component={TabNavigation} />
             <Stack.Screen name='SignIn' component={SignInScreen} />
             <Stack.Screen name='SignUp' component={SignUpScreen} />
@@ -23,7 +26,8 @@ const StackNavigation = () => {
             <Stack.Screen name='Notification' component={NotificationScreen} />
             <Stack.Screen name='CreateContest' component={CreateContestScreen} />
             <Stack.Screen name='CreateTeam' component={CreateTeamScreen} />
-            <Stack.Screen name='PlayerSelect' component={PlayerSelectScreen} />
+            <Stack.Screen name='ChooseCaptain' component={ChooseCaptainScreen} />
+            <Stack.Screen name='Contest' component={ContestScreen} />
         </Stack.Navigator>
     )
 }

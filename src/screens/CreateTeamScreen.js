@@ -101,7 +101,7 @@ const CreateTeamScreen = () => {
                             elevation: 4
                         }}>
                             <View style={{ height: Height(165), borderBottomLeftRadius: Width(20), borderBottomRightRadius: Width(20), paddingHorizontal: Width(25), backgroundColor: 'white' }}>
-                                <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
+                                <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginTop: Height(20) }}>
                                     <Ionicons name='arrow-back' size={Height(30)} onPress={() => navigation.goBack()} />
                                     <MyBetComponent width={Width(102)} height={Height(15)} />
                                     <TouchableOpacity onPress={() => navigation.navigate('Notification')}>
@@ -190,7 +190,7 @@ const CreateTeamScreen = () => {
                             elevation: 4
                         }}>
                             <View style={{ height: Height(165), borderBottomLeftRadius: Width(20), borderBottomRightRadius: Width(20), paddingHorizontal: Width(25), backgroundColor: 'white' }}>
-                                <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
+                                <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginTop: Height(20) }}>
                                     <Ionicons name='arrow-back' size={Height(30)} onPress={() => navigation.goBack()} />
                                     <MyBetComponent width={Width(102)} height={Height(15)} />
                                     <TouchableOpacity onPress={() => navigation.navigate('Notification')}>
