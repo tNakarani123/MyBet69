@@ -332,7 +332,7 @@ const ChooseCaptainScreen = () => {
                 </ScrollView>
 
                 <View style={{ flexDirection: 'row', justifyContent: 'center', marginBottom: Width(15) }}>
-                    <TouchableOpacity style={{ height: Height(30), width: Width(140), flexDirection: 'row', backgroundColor: '#8D73BC', alignItems: 'center', borderRadius: Width(20), justifyContent: 'center' }}>
+                    <TouchableOpacity style={{ height: Height(30), width: Width(140), flexDirection: 'row', backgroundColor: '#8D73BC', alignItems: 'center', borderRadius: Width(20), justifyContent: 'center' }} onPress={() => navigation.navigate('Preview', { players: selectedPlayers, captain: selectedCaptainId, viceCaptain: selectedViceCaptainId })}>
                         <Ionicons name='md-eye' size={Height(20)} color='white' />
                         <Text style={{ fontSize: Height(15), color: 'white', marginLeft: Width(10), fontFamily: 'Poppins-Medium' }}>Preview</Text>
                     </TouchableOpacity>
@@ -345,7 +345,7 @@ const ChooseCaptainScreen = () => {
                                 Alert.alert("Please Select Vice Captain")
                             }
                             else {
-                                navigation.navigate('Contest')
+                                navigation.navigate('CreateContest')
                             }
                         }
                     }>
