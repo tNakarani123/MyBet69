@@ -1,4 +1,4 @@
-import { Image, SafeAreaView, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+import { Image, SafeAreaView, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import React, { useState } from 'react'
 import DropShadow from 'react-native-drop-shadow'
 import MyBetComponent from '../assets/svg/MyBet'
@@ -6,10 +6,469 @@ import NotificationComponent from '../assets/svg/Notification'
 import Ionicons from 'react-native-vector-icons/Ionicons'
 import { Height, Width } from '../utils/responsive'
 import { useNavigation } from '@react-navigation/native'
+import ContestFirstComponent from '../assets/svg/ContestFirst'
+import ContestSecondComponent from '../assets/svg/ContestSecond'
+import ContestThirdComponent from '../assets/svg/ContestThird'
+import color from '../utils/color'
+import font from '../utils/fonts'
+import * as Progress from 'react-native-progress';
+import CreateTeamComponent from '../assets/svg/CreateTeam'
+import CreateContestComponent from '../assets/svg/CreateContest'
+
+const discount = [
+    {
+        id: 1,
+        entry: '₹49',
+        dentry: '₹4',
+        prizePool: '₹1 Crore',
+        spotsLeft: 2722717,
+        spots: 296296,
+        contestFirst: <ContestFirstComponent width={Width(24)} height={Height(18)} />,
+        contestSecond: <ContestSecondComponent width={Width(16)} height={Height(19)} />,
+        contestThird: <ContestThirdComponent width={Width(20)} height={Height(21)} />,
+        firstPrice: '2.5 crores',
+        secondPercent: '58%',
+        guaranteed: 'Guaranteed',
+        contestForth: 'M',
+        upTo: 'Upto 20'
+    },
+    {
+        id: 2,
+        entry: '₹49',
+        dentry: '₹4',
+        prizePool: '₹1 Crore',
+        spotsLeft: 2722717,
+        spots: 296296,
+        contestFirst: <ContestFirstComponent width={Width(24)} height={Height(18)} />,
+        contestSecond: <ContestSecondComponent width={Width(16)} height={Height(19)} />,
+        contestThird: <ContestThirdComponent width={Width(20)} height={Height(21)} />,
+        firstPrice: '2.5 crores',
+        secondPercent: '58%',
+        guaranteed: 'Guaranteed',
+        contestForth: 'M',
+        upTo: 'Upto 20'
+    },
+    {
+        id: 3,
+        entry: '₹49',
+        dentry: '₹4',
+        prizePool: '₹1 Crore',
+        spotsLeft: 2722717,
+        spots: 296296,
+        contestFirst: <ContestFirstComponent width={Width(24)} height={Height(18)} />,
+        contestSecond: <ContestSecondComponent width={Width(16)} height={Height(19)} />,
+        contestThird: <ContestThirdComponent width={Width(20)} height={Height(21)} />,
+        firstPrice: '2.5 crores',
+        secondPercent: '58%',
+        guaranteed: 'Guaranteed',
+        contestForth: 'M',
+        upTo: 'Upto 20'
+    }
+]
+
+const beginners = [
+    {
+        id: 1,
+        prizePool: '₹49',
+        dentry: '₹17',
+        spotsLeft: 1,
+        spots: 3,
+        contestFirst: <ContestFirstComponent width={Width(24)} height={Height(18)} />,
+        contestSecond: <ContestSecondComponent width={Width(16)} height={Height(19)} />,
+        // contestThird: <ContestThirdComponent width={Width(20)} height={Height(21)} />,
+        firstPrice: '22 Lakhs',
+        secondPercent: '68%',
+        contestForth: '5',
+        contestForth: 'S',
+        upTo: 'single'
+        // guaranteed: 'Guaranteed'
+    },
+    {
+        id: 2,
+        prizePool: '₹49',
+        dentry: '₹17',
+        spotsLeft: 1,
+        spots: 3,
+        contestFirst: <ContestFirstComponent width={Width(24)} height={Height(18)} />,
+        contestSecond: <ContestSecondComponent width={Width(16)} height={Height(19)} />,
+        // contestThird: <ContestThirdComponent width={Width(20)} height={Height(21)} />,
+        firstPrice: '22 Lakhs',
+        secondPercent: '68%',
+        contestForth: 'S',
+        upTo: 'single'
+        // guaranteed: 'Guaranteed'
+    },
+    {
+        id: 3,
+        prizePool: '₹49',
+        dentry: '₹17',
+        spotsLeft: 1,
+        spots: 3,
+        contestFirst: <ContestFirstComponent width={Width(24)} height={Height(18)} />,
+        contestSecond: <ContestSecondComponent width={Width(16)} height={Height(19)} />,
+        // contestThird: <ContestThirdComponent width={Width(20)} height={Height(21)} />,
+        firstPrice: '22 Lakhs',
+        secondPercent: '68%',
+        contestForth: 'S',
+        upTo: 'single'
+        // guaranteed: 'Guaranteed'
+    }
+]
+
+const hightEntry = [
+    {
+        id: 1,
+        prizePool: '₹29350',
+        dentry: '₹10999',
+        spotsLeft: 1,
+        spots: 3,
+        contestFirst: <ContestFirstComponent width={Width(24)} height={Height(18)} />,
+        contestSecond: <ContestSecondComponent width={Width(16)} height={Height(19)} />,
+        // contestThird: <ContestThirdComponent width={Width(20)} height={Height(21)} />,
+        firstPrice: '₹17850',
+        secondPercent: '67%',
+        contestForth: 'S',
+        upTo: 'single'
+    },
+    {
+        id: 2,
+        prizePool: '₹29350',
+        dentry: '₹10999',
+        spotsLeft: 1,
+        spots: 3,
+        contestFirst: <ContestFirstComponent width={Width(24)} height={Height(18)} />,
+        contestSecond: <ContestSecondComponent width={Width(16)} height={Height(19)} />,
+        // contestThird: <ContestThirdComponent width={Width(20)} height={Height(21)} />,
+        firstPrice: '₹17850',
+        secondPercent: '67%',
+        contestForth: 'S',
+        upTo: 'single'
+    },
+    {
+        id: 3,
+        prizePool: '₹29350',
+        dentry: '₹10999',
+        spotsLeft: 1,
+        spots: 3,
+        contestFirst: <ContestFirstComponent width={Width(24)} height={Height(18)} />,
+        contestSecond: <ContestSecondComponent width={Width(16)} height={Height(19)} />,
+        // contestThird: <ContestThirdComponent width={Width(20)} height={Height(21)} />,
+        firstPrice: '₹17850',
+        secondPercent: '67%',
+        contestForth: 'S',
+        upTo: 'single'
+    }
+]
+
+const headTohead = [
+    {
+        id: 1,
+        prizePool: '₹10000',
+        dentry: '₹5750',
+        spotsLeft: 2,
+        spots: 2,
+        contestFirst: <ContestFirstComponent width={Width(24)} height={Height(18)} />,
+        contestSecond: <ContestSecondComponent width={Width(16)} height={Height(19)} />,
+        // contestThird: <ContestThirdComponent width={Width(20)} height={Height(21)} />,
+        firstPrice: '₹10000',
+        secondPercent: '50%',
+        contestForth: 'S',
+        upTo: 'single'
+    },
+    {
+        id: 2,
+        prizePool: '₹10000',
+        dentry: '₹5750',
+        spotsLeft: 2,
+        spots: 2,
+        contestFirst: <ContestFirstComponent width={Width(24)} height={Height(18)} />,
+        contestSecond: <ContestSecondComponent width={Width(16)} height={Height(19)} />,
+        // contestThird: <ContestThirdComponent width={Width(20)} height={Height(21)} />,
+        firstPrice: '₹10000',
+        secondPercent: '50%',
+        contestForth: 'S',
+        upTo: 'single'
+    },
+    {
+        id: 3,
+        prizePool: '₹10000',
+        dentry: '₹5750',
+        spotsLeft: 2,
+        spots: 2,
+        contestFirst: <ContestFirstComponent width={Width(24)} height={Height(18)} />,
+        contestSecond: <ContestSecondComponent width={Width(16)} height={Height(19)} />,
+        // contestThird: <ContestThirdComponent width={Width(20)} height={Height(21)} />,
+        firstPrice: '₹10000',
+        secondPercent: '50%',
+        contestForth: 'S',
+        upTo: 'single'
+    }
+]
+
+const lowEntry = [
+    {
+        id: 1,
+        prizePool: '₹70',
+        dentry: '₹27',
+        spotsLeft: 3,
+        spots: 4,
+        contestFirst: <ContestFirstComponent width={Width(24)} height={Height(18)} />,
+        contestSecond: <ContestSecondComponent width={Width(16)} height={Height(19)} />,
+        // contestThird: <ContestThirdComponent width={Width(20)} height={Height(21)} />,
+        firstPrice: '₹66',
+        secondPercent: '27%',
+        contestForth: 'S',
+        upTo: 'single'
+    },
+    {
+        id: 2,
+        prizePool: '₹70',
+        dentry: '₹27',
+        spotsLeft: 3,
+        spots: 4,
+        contestFirst: <ContestFirstComponent width={Width(24)} height={Height(18)} />,
+        contestSecond: <ContestSecondComponent width={Width(16)} height={Height(19)} />,
+        // contestThird: <ContestThirdComponent width={Width(20)} height={Height(21)} />,
+        firstPrice: '₹66',
+        secondPercent: '27%',
+        contestForth: 'S',
+        upTo: 'single'
+    },
+    {
+        id: 3,
+        prizePool: '₹70',
+        dentry: '₹27',
+        spotsLeft: 3,
+        spots: 4,
+        contestFirst: <ContestFirstComponent width={Width(24)} height={Height(18)} />,
+        contestSecond: <ContestSecondComponent width={Width(16)} height={Height(19)} />,
+        // contestThird: <ContestThirdComponent width={Width(20)} height={Height(21)} />,
+        firstPrice: '₹66',
+        secondPercent: '27%',
+        contestForth: 'S',
+        upTo: 'single'
+    }
+]
+
+const bigWinnings = [
+    {
+        id: 1,
+        prizePool: '₹47,777',
+        dentry: '₹7777',
+        spotsLeft: 3,
+        spots: 7,
+        contestFirst: <ContestFirstComponent width={Width(24)} height={Height(18)} />,
+        contestSecond: <ContestSecondComponent width={Width(16)} height={Height(19)} />,
+        // contestThird: <ContestThirdComponent width={Width(20)} height={Height(21)} />,
+        firstPrice: '₹10000',
+        secondPercent: '71%',
+        contestForth: 'S',
+        upTo: 'single'
+    },
+    {
+        id: 2,
+        prizePool: '₹47,777',
+        dentry: '₹7777',
+        spotsLeft: 3,
+        spots: 7,
+        contestFirst: <ContestFirstComponent width={Width(24)} height={Height(18)} />,
+        contestSecond: <ContestSecondComponent width={Width(16)} height={Height(19)} />,
+        // contestThird: <ContestThirdComponent width={Width(20)} height={Height(21)} />,
+        firstPrice: '₹10000',
+        secondPercent: '71%',
+        contestForth: 'S',
+        upTo: 'single'
+    },
+    {
+        id: 3,
+        prizePool: '₹47,777',
+        dentry: '₹7777',
+        spotsLeft: 3,
+        spots: 7,
+        contestFirst: <ContestFirstComponent width={Width(24)} height={Height(18)} />,
+        contestSecond: <ContestSecondComponent width={Width(16)} height={Height(19)} />,
+        // contestThird: <ContestThirdComponent width={Width(20)} height={Height(21)} />,
+        firstPrice: '₹10000',
+        secondPercent: '71%',
+        contestForth: 'S',
+        upTo: 'single'
+    },
+]
+
+const winnersTakes = [
+    {
+        id: 1,
+        prizePool: '₹10000',
+        dentry: '₹2999',
+        spotsLeft: 1,
+        spots: 4,
+        contestFirst: <ContestFirstComponent width={Width(24)} height={Height(18)} />,
+        contestSecond: <ContestSecondComponent width={Width(16)} height={Height(19)} />,
+        // contestThird: <ContestThirdComponent width={Width(20)} height={Height(21)} />,
+        firstPrice: '₹10000',
+        secondPercent: '25%',
+        contestForth: 'S',
+        upTo: 'single'
+    },
+    {
+        id: 2,
+        prizePool: '₹10000',
+        dentry: '₹2999',
+        spotsLeft: 1,
+        spots: 4,
+        contestFirst: <ContestFirstComponent width={Width(24)} height={Height(18)} />,
+        contestSecond: <ContestSecondComponent width={Width(16)} height={Height(19)} />,
+        // contestThird: <ContestThirdComponent width={Width(20)} height={Height(21)} />,
+        firstPrice: '₹10000',
+        secondPercent: '25%',
+        contestForth: 'S',
+        upTo: 'single'
+    },
+    {
+        id: 3,
+        prizePool: '₹10000',
+        dentry: '₹2999',
+        spotsLeft: 1,
+        spots: 4,
+        contestFirst: <ContestFirstComponent width={Width(24)} height={Height(18)} />,
+        contestSecond: <ContestSecondComponent width={Width(16)} height={Height(19)} />,
+        // contestThird: <ContestThirdComponent width={Width(20)} height={Height(21)} />,
+        firstPrice: '₹10000',
+        secondPercent: '25%',
+        contestForth: 'S',
+        upTo: 'single'
+    },
+]
+
+const moreContest = [
+    {
+        id: 1,
+        prizePool: '₹2000',
+        dentry: '₹400',
+        spotsLeft: 2,
+        spots: 6,
+        contestFirst: <ContestFirstComponent width={Width(24)} height={Height(18)} />,
+        contestSecond: <ContestSecondComponent width={Width(16)} height={Height(19)} />,
+        // contestThird: <ContestThirdComponent width={Width(20)} height={Height(21)} />,
+        firstPrice: '₹650',
+        secondPercent: '29%',
+        contestForth: 'S',
+        upTo: 'single'
+    },
+    {
+        id: 2,
+        prizePool: '₹2000',
+        dentry: '₹400',
+        spotsLeft: 2,
+        spots: 6,
+        contestFirst: <ContestFirstComponent width={Width(24)} height={Height(18)} />,
+        contestSecond: <ContestSecondComponent width={Width(16)} height={Height(19)} />,
+        // contestThird: <ContestThirdComponent width={Width(20)} height={Height(21)} />,
+        firstPrice: '₹650',
+        secondPercent: '29%',
+        contestForth: 'S',
+        upTo: 'single'
+    },
+    {
+        id: 3,
+        prizePool: '₹2000',
+        dentry: '₹400',
+        spotsLeft: 2,
+        spots: 6,
+        contestFirst: <ContestFirstComponent width={Width(24)} height={Height(18)} />,
+        contestSecond: <ContestSecondComponent width={Width(16)} height={Height(19)} />,
+        // contestThird: <ContestThirdComponent width={Width(20)} height={Height(21)} />,
+        firstPrice: '₹650',
+        secondPercent: '29%',
+        contestForth: 'S',
+        upTo: 'single'
+    },
+]
+
+const practice = [
+    {
+        id: 1,
+        spotsLeft: 2,
+        spots: 2,
+        contestFirst: <ContestFirstComponent width={Width(24)} height={Height(18)} />,
+        contestThird: <ContestThirdComponent width={Width(20)} height={Height(21)} />,
+        contestForth: 'S',
+        upTo: 'single',
+        guaranteed: 'Guaranteed',
+    },
+    {
+        id: 2,
+        spotsLeft: 2,
+        spots: 2,
+        contestFirst: <ContestFirstComponent width={Width(24)} height={Height(18)} />,
+        contestThird: <ContestThirdComponent width={Width(20)} height={Height(21)} />,
+        contestForth: 'S',
+        upTo: 'single',
+        guaranteed: 'Guaranteed',
+    },
+    {
+        id: 3,
+        spotsLeft: 2,
+        spots: 2,
+        contestFirst: <ContestFirstComponent width={Width(24)} height={Height(18)} />,
+        contestThird: <ContestThirdComponent width={Width(20)} height={Height(21)} />,
+        contestForth: 'S',
+        upTo: 'single',
+        guaranteed: 'Guaranteed',
+    },
+]
+
 const CreateContestScreen = () => {
     const navigation = useNavigation()
     const [select, setSelect] = useState('')
     const [index, setIndex] = useState(1)
+
+    const renderItem = (item, i) =>
+    (
+        <View key={i}>
+            <TouchableOpacity style={{ height: Height(155), width: Width(350), backgroundColor: color.background, alignSelf: 'center', marginTop: Height(10), borderRadius: Width(10) }} >
+                <View style={{ flexDirection: "row", alignItems: 'center', justifyContent: 'space-between', marginHorizontal: Width(30), marginTop: Height(20) }}>
+                    <Text style={{ fontSize: Height(8), fontFamily: font.POPPINS_REGULAR }}>Prize Pool</Text>
+                    <Text style={{ fontSize: Height(8), fontFamily: font.POPPINS_REGULAR }}>Entry</Text>
+                </View>
+                <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginHorizontal: Width(30), marginTop: Height(10) }}>
+                    <Text style={{ fontSize: Height(14), fontFamily: font.POPPINS_SEMI_BOLD }}>{item.prizePool}</Text>
+                    <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                        <Text style={{ fontSize: Height(8), fontFamily: font.POPPINS_REGULAR, textDecorationLine: 'line-through', color: color.greenText }}>{item.entry}</Text>
+                        <TouchableOpacity style={{ height: Height(15), width: Width(30), backgroundColor: color.greenText, justifyContent: 'center', alignItems: 'center', borderRadius: Width(3), marginLeft: Width(8) }}>
+                            <Text style={{ fontSize: Height(8), fontFamily: font.POPPINS_REGULAR, color: color.background }}>{item.dentry}</Text>
+                        </TouchableOpacity>
+                    </View>
+                </View>
+                <Progress.Bar progress={0.3} width={Width(290)} height={Height(4)} style={{ alignSelf: 'center', marginTop: Height(10) }} unfilledColor='#D9D9D9' borderColor='transparent' color='#F99500' />
+                <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginHorizontal: Width(30), marginTop: Height(8) }}>
+                    <Text style={{ fontSize: Height(10), fontFamily: font.POPPINS_REGULAR, color: color.spotsLeftText }}>{item.spotsLeft} Spots Left</Text>
+                    <Text style={{ fontSize: Height(10), fontFamily: font.POPPINS_REGULAR, color: color.text }}>{item.spots} Spots</Text>
+                </View>
+                <View style={{ height: Height(30), backgroundColor: '#D9D9D9', borderBottomLeftRadius: Width(10), borderBottomRightRadius: Width(10), marginTop: Height(25), flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', paddingHorizontal: Width(25) }}>
+                    <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                        {item.contestFirst}
+                        <Text style={{ fontSize: Height(10), fontFamily: font.POPPINS_SEMI_BOLD, color: color.contestText, marginLeft: Width(5) }}>{item.firstPrice}</Text>
+                    </View>
+                    <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                        {item.contestSecond}
+                        <Text style={{ fontSize: Height(10), fontFamily: font.POPPINS_SEMI_BOLD, color: color.contestText, marginLeft: Width(5) }}>{item.secondPercent}</Text>
+                    </View>
+                    <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                        <View style={{ height: Height(18), width: Height(18), borderRadius: Height(18) / 2, borderWidth: 1, justifyContent: 'center', alignItems: 'center' }}>
+                            <Text style={{ fontSize: Height(10), fontFamily: font.POPPINS_SEMI_BOLD, color: color.contestText, }}>{item.contestForth}</Text>
+                        </View>
+                        <Text style={{ fontSize: Height(10), fontFamily: font.POPPINS_SEMI_BOLD, color: color.contestText, marginLeft: Width(5) }}>{item.upTo}</Text>
+                    </View>
+                    <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                        {item.contestThird}
+                        <Text style={{ fontSize: Height(10), fontFamily: font.POPPINS_SEMI_BOLD, color: color.contestText, marginLeft: Width(5) }}>{item.guaranteed}</Text>
+                    </View>
+                </View>
+            </TouchableOpacity>
+        </View>
+    )
+
 
     switch (select) {
         case 'MyContest':
@@ -152,7 +611,97 @@ const CreateContestScreen = () => {
                                 <Text style={{ fontSize: Height(14), fontFamily: 'Poppins-Medium', color: index === 3 ? 'white' : 'rgba(255, 255, 255, 0.6)' }}>My Teams</Text>
                             </TouchableOpacity>
                         </View>
-                        <Text>Join Contest</Text>
+                        <ScrollView>
+                            <Text style={{ fontSize: Height(16), fontFamily: font.POPPINS_BOLD, marginLeft: Width(20), marginTop: Height(20), marginBottom: Height(10) }}>Discount</Text>
+                            {
+                                discount.map(renderItem)
+                            }
+                            <Text style={{ fontSize: Height(16), fontFamily: font.POPPINS_BOLD, marginLeft: Width(20), marginTop: Height(20), marginBottom: Height(10) }}>Only For Beginners</Text>
+                            {
+                                beginners.map(renderItem)
+                            }
+                            <Text style={{ fontSize: Height(16), fontFamily: font.POPPINS_BOLD, marginLeft: Width(20), marginTop: Height(20), marginBottom: Height(10) }}>High Entry = High Rewards</Text>
+                            {
+                                hightEntry.map(renderItem)
+                            }
+                            <Text style={{ fontSize: Height(16), fontFamily: font.POPPINS_BOLD, marginLeft: Width(20), marginTop: Height(20), marginBottom: Height(10) }}>Head-to-Head</Text>
+                            {
+                                headTohead.map(renderItem)
+                            }
+                            <Text style={{ fontSize: Height(16), fontFamily: font.POPPINS_BOLD, marginLeft: Width(20), marginTop: Height(20), marginBottom: Height(10) }}>Low-Entry Contests</Text>
+                            {
+                                lowEntry.map(renderItem)
+                            }
+                            <Text style={{ fontSize: Height(16), fontFamily: font.POPPINS_BOLD, marginLeft: Width(20), marginTop: Height(20), marginBottom: Height(10) }}>Big Winnings</Text>
+                            {
+                                bigWinnings.map(renderItem)
+                            }
+                            <Text style={{ fontSize: Height(16), fontFamily: font.POPPINS_BOLD, marginLeft: Width(20), marginTop: Height(20), marginBottom: Height(10) }}>Winner Takes All</Text>
+                            {
+                                winnersTakes.map(renderItem)
+                            }
+                            <Text style={{ fontSize: Height(16), fontFamily: font.POPPINS_BOLD, marginLeft: Width(20), marginTop: Height(20), marginBottom: Height(10) }}>More Contests</Text>
+                            {
+                                moreContest.map(renderItem)
+                            }
+                            <Text style={{ fontSize: Height(16), fontFamily: font.POPPINS_BOLD, marginLeft: Width(20), marginTop: Height(20), marginBottom: Height(10) }}>Practice Contest</Text>
+                            {
+                                practice.map((item, i) => {
+                                    return (
+                                        <View key={i}>
+                                            <TouchableOpacity style={{ height: Height(155), width: Width(350), backgroundColor: color.background, alignSelf: 'center', marginTop: Height(10), borderRadius: Width(10) }} >
+
+                                                <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginHorizontal: Width(30), marginTop: Height(30) }}>
+                                                    <Text style={{ fontSize: Height(14), fontFamily: font.POPPINS_SEMI_BOLD }}>Practice Contest</Text>
+                                                    <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                                                        <Text style={{ fontSize: Height(8), fontFamily: font.POPPINS_REGULAR, textDecorationLine: 'line-through', color: color.greenText }}>{item.entry}</Text>
+                                                        <TouchableOpacity style={{ height: Height(15), width: Width(30), backgroundColor: color.greenText, justifyContent: 'center', alignItems: 'center', borderRadius: Width(3), marginLeft: Width(8) }}>
+                                                            <Text style={{ fontSize: Height(8), fontFamily: font.POPPINS_REGULAR, color: color.background }}>JOIN</Text>
+                                                        </TouchableOpacity>
+                                                    </View>
+                                                </View>
+                                                <Progress.Bar progress={0.3} width={Width(290)} height={Height(4)} style={{ alignSelf: 'center', marginTop: Height(10) }} unfilledColor='#D9D9D9' borderColor='transparent' color='#F99500' />
+                                                <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginHorizontal: Width(30), marginTop: Height(8) }}>
+                                                    <Text style={{ fontSize: Height(10), fontFamily: font.POPPINS_REGULAR, color: color.spotsLeftText }}>{item.spotsLeft} Spots Left</Text>
+                                                    <Text style={{ fontSize: Height(10), fontFamily: font.POPPINS_REGULAR, color: color.text }}>{item.spots} Spots</Text>
+                                                </View>
+                                                <View style={{ height: Height(30), backgroundColor: '#D9D9D9', borderBottomLeftRadius: Width(10), borderBottomRightRadius: Width(10), marginTop: Height(37), flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', paddingHorizontal: Width(25) }}>
+                                                    <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                                                        {item.contestFirst}
+                                                        <Text style={{ fontSize: Height(10), fontFamily: font.POPPINS_SEMI_BOLD, color: color.contestText, marginLeft: Width(5) }}>Glory awaits!</Text>
+                                                    </View>
+
+                                                    <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                                                        <View style={{ height: Height(18), width: Height(18), borderRadius: Height(18) / 2, borderWidth: 1, justifyContent: 'center', alignItems: 'center' }}>
+                                                            <Text style={{ fontSize: Height(10), fontFamily: font.POPPINS_SEMI_BOLD, color: color.contestText, }}>{item.contestForth}</Text>
+                                                        </View>
+                                                        <Text style={{ fontSize: Height(10), fontFamily: font.POPPINS_SEMI_BOLD, color: color.contestText, marginLeft: Width(5) }}>{item.upTo}</Text>
+                                                    </View>
+                                                    <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                                                        {item.contestThird}
+                                                        <Text style={{ fontSize: Height(10), fontFamily: font.POPPINS_SEMI_BOLD, color: color.contestText, marginLeft: Width(5) }}>{item.guaranteed}</Text>
+                                                    </View>
+                                                </View>
+                                            </TouchableOpacity>
+                                        </View>
+                                    )
+                                })
+                            }
+
+                            <TouchableOpacity style={{ height: Height(40), width: Width(200), borderWidth: Height(1), borderRadius: Width(5), justifyContent: 'center', alignItems: "center", alignSelf: 'center', marginVertical: Height(20), borderColor: 'grey' }} onPress={() => navigation.navigate('AllContest')}>
+                                <Text style={{ fontSize: Height(14), fontFamily: font.POPPINS_SEMI_BOLD, color: color.text }}>VIEW ALL 107 CONTESTS</Text>
+                            </TouchableOpacity>
+                        </ScrollView>
+                        <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginHorizontal: Width(50), marginBottom: Width(40) }}>
+                            <TouchableOpacity style={{ height: Height(30), width: Width(157), backgroundColor: '#5556CA', borderRadius: Width(20), flexDirection: 'row', alignItems: 'center', justifyContent: 'center' }}>
+                                <CreateTeamComponent size={Height(18)} />
+                                <Text style={{ fontSize: Height(10), fontFamily: font.POPPINS_REGULAR, color: color.background, marginLeft: Width(5) }}>Create Team</Text>
+                            </TouchableOpacity>
+                            <TouchableOpacity style={{ height: Height(30), width: Width(157), backgroundColor: '#5556CA', borderRadius: Width(20), flexDirection: 'row', alignItems: 'center', justifyContent: 'center' }}>
+                                <CreateContestComponent size={Height(18)} />
+                                <Text style={{ fontSize: Height(10), fontFamily: font.POPPINS_REGULAR, color: color.background, marginLeft: Width(5) }}>Create Contest</Text>
+                            </TouchableOpacity>
+                        </View>
                     </SafeAreaView>
                 </>
             )
