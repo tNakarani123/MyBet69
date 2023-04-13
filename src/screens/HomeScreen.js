@@ -1,4 +1,4 @@
-import { Image, ImageBackground, SafeAreaView, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+import { Image, ImageBackground, Platform, SafeAreaView, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import React from 'react'
 import { Height, Width } from '../utils/responsive'
 import MyBetComponent from '../assets/svg/MyBet'
@@ -118,8 +118,8 @@ const HomeScreen = () => {
                         <NotificationComponent size={Height(25)} />
                     </TouchableOpacity>
                 </View>
-                <View style={{ backgroundColor: 'white', marginTop: Height(107), height: Height(800), borderTopLeftRadius: Width(20), borderTopRightRadius: Width(20) }}>
-                    <ScrollView style={{ marginTop: Height(135), marginBottom: Height(200) }} showsVerticalScrollIndicator={false}>
+                <View style={{ backgroundColor: 'white', marginTop: Height(107), height: Height(900), borderTopLeftRadius: Width(20), borderTopRightRadius: Width(20) }}>
+                    <ScrollView style={{ marginTop: Height(120), marginBottom: Height(200), }} contentContainerStyle={{ flexGrow: 1, paddingBottom: Height(120) }} showsVerticalScrollIndicator={false}>
                         <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
                             <Text style={{ fontSize: Height(14), fontFamily: 'Poppins-Medium', color: 'black', marginLeft: Width(20) }}>TATA Indian premier league T20</Text>
                             <View style={{ height: Height(30), width: Width(40), backgroundColor: '#D9D9D9', alignItems: 'center', justifyContent: 'center', borderTopLeftRadius: Width(70), borderBottomLeftRadius: Width(70) }}>

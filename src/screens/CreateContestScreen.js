@@ -1,4 +1,4 @@
-import { Image, SafeAreaView, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+import { Alert, Image, Modal, Platform, Pressable, SafeAreaView, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import React, { useState } from 'react'
 import DropShadow from 'react-native-drop-shadow'
 import MyBetComponent from '../assets/svg/MyBet'
@@ -14,7 +14,8 @@ import font from '../utils/fonts'
 import * as Progress from 'react-native-progress';
 import CreateTeamComponent from '../assets/svg/CreateTeam'
 import CreateContestComponent from '../assets/svg/CreateContest'
-
+import Octicons from 'react-native-vector-icons/Octicons'
+import ContestCodeComponent from '../assets/svg/ContestCode'
 const discount = [
     {
         id: 1,
@@ -75,13 +76,11 @@ const beginners = [
         spots: 3,
         contestFirst: <ContestFirstComponent width={Width(24)} height={Height(18)} />,
         contestSecond: <ContestSecondComponent width={Width(16)} height={Height(19)} />,
-        // contestThird: <ContestThirdComponent width={Width(20)} height={Height(21)} />,
         firstPrice: '22 Lakhs',
         secondPercent: '68%',
         contestForth: '5',
         contestForth: 'S',
         upTo: 'single'
-        // guaranteed: 'Guaranteed'
     },
     {
         id: 2,
@@ -91,12 +90,10 @@ const beginners = [
         spots: 3,
         contestFirst: <ContestFirstComponent width={Width(24)} height={Height(18)} />,
         contestSecond: <ContestSecondComponent width={Width(16)} height={Height(19)} />,
-        // contestThird: <ContestThirdComponent width={Width(20)} height={Height(21)} />,
         firstPrice: '22 Lakhs',
         secondPercent: '68%',
         contestForth: 'S',
         upTo: 'single'
-        // guaranteed: 'Guaranteed'
     },
     {
         id: 3,
@@ -106,12 +103,10 @@ const beginners = [
         spots: 3,
         contestFirst: <ContestFirstComponent width={Width(24)} height={Height(18)} />,
         contestSecond: <ContestSecondComponent width={Width(16)} height={Height(19)} />,
-        // contestThird: <ContestThirdComponent width={Width(20)} height={Height(21)} />,
         firstPrice: '22 Lakhs',
         secondPercent: '68%',
         contestForth: 'S',
         upTo: 'single'
-        // guaranteed: 'Guaranteed'
     }
 ]
 
@@ -124,7 +119,6 @@ const hightEntry = [
         spots: 3,
         contestFirst: <ContestFirstComponent width={Width(24)} height={Height(18)} />,
         contestSecond: <ContestSecondComponent width={Width(16)} height={Height(19)} />,
-        // contestThird: <ContestThirdComponent width={Width(20)} height={Height(21)} />,
         firstPrice: '₹17850',
         secondPercent: '67%',
         contestForth: 'S',
@@ -138,7 +132,6 @@ const hightEntry = [
         spots: 3,
         contestFirst: <ContestFirstComponent width={Width(24)} height={Height(18)} />,
         contestSecond: <ContestSecondComponent width={Width(16)} height={Height(19)} />,
-        // contestThird: <ContestThirdComponent width={Width(20)} height={Height(21)} />,
         firstPrice: '₹17850',
         secondPercent: '67%',
         contestForth: 'S',
@@ -152,7 +145,6 @@ const hightEntry = [
         spots: 3,
         contestFirst: <ContestFirstComponent width={Width(24)} height={Height(18)} />,
         contestSecond: <ContestSecondComponent width={Width(16)} height={Height(19)} />,
-        // contestThird: <ContestThirdComponent width={Width(20)} height={Height(21)} />,
         firstPrice: '₹17850',
         secondPercent: '67%',
         contestForth: 'S',
@@ -169,7 +161,6 @@ const headTohead = [
         spots: 2,
         contestFirst: <ContestFirstComponent width={Width(24)} height={Height(18)} />,
         contestSecond: <ContestSecondComponent width={Width(16)} height={Height(19)} />,
-        // contestThird: <ContestThirdComponent width={Width(20)} height={Height(21)} />,
         firstPrice: '₹10000',
         secondPercent: '50%',
         contestForth: 'S',
@@ -183,7 +174,6 @@ const headTohead = [
         spots: 2,
         contestFirst: <ContestFirstComponent width={Width(24)} height={Height(18)} />,
         contestSecond: <ContestSecondComponent width={Width(16)} height={Height(19)} />,
-        // contestThird: <ContestThirdComponent width={Width(20)} height={Height(21)} />,
         firstPrice: '₹10000',
         secondPercent: '50%',
         contestForth: 'S',
@@ -197,7 +187,6 @@ const headTohead = [
         spots: 2,
         contestFirst: <ContestFirstComponent width={Width(24)} height={Height(18)} />,
         contestSecond: <ContestSecondComponent width={Width(16)} height={Height(19)} />,
-        // contestThird: <ContestThirdComponent width={Width(20)} height={Height(21)} />,
         firstPrice: '₹10000',
         secondPercent: '50%',
         contestForth: 'S',
@@ -214,7 +203,6 @@ const lowEntry = [
         spots: 4,
         contestFirst: <ContestFirstComponent width={Width(24)} height={Height(18)} />,
         contestSecond: <ContestSecondComponent width={Width(16)} height={Height(19)} />,
-        // contestThird: <ContestThirdComponent width={Width(20)} height={Height(21)} />,
         firstPrice: '₹66',
         secondPercent: '27%',
         contestForth: 'S',
@@ -228,7 +216,6 @@ const lowEntry = [
         spots: 4,
         contestFirst: <ContestFirstComponent width={Width(24)} height={Height(18)} />,
         contestSecond: <ContestSecondComponent width={Width(16)} height={Height(19)} />,
-        // contestThird: <ContestThirdComponent width={Width(20)} height={Height(21)} />,
         firstPrice: '₹66',
         secondPercent: '27%',
         contestForth: 'S',
@@ -242,7 +229,6 @@ const lowEntry = [
         spots: 4,
         contestFirst: <ContestFirstComponent width={Width(24)} height={Height(18)} />,
         contestSecond: <ContestSecondComponent width={Width(16)} height={Height(19)} />,
-        // contestThird: <ContestThirdComponent width={Width(20)} height={Height(21)} />,
         firstPrice: '₹66',
         secondPercent: '27%',
         contestForth: 'S',
@@ -259,7 +245,6 @@ const bigWinnings = [
         spots: 7,
         contestFirst: <ContestFirstComponent width={Width(24)} height={Height(18)} />,
         contestSecond: <ContestSecondComponent width={Width(16)} height={Height(19)} />,
-        // contestThird: <ContestThirdComponent width={Width(20)} height={Height(21)} />,
         firstPrice: '₹10000',
         secondPercent: '71%',
         contestForth: 'S',
@@ -273,7 +258,6 @@ const bigWinnings = [
         spots: 7,
         contestFirst: <ContestFirstComponent width={Width(24)} height={Height(18)} />,
         contestSecond: <ContestSecondComponent width={Width(16)} height={Height(19)} />,
-        // contestThird: <ContestThirdComponent width={Width(20)} height={Height(21)} />,
         firstPrice: '₹10000',
         secondPercent: '71%',
         contestForth: 'S',
@@ -287,7 +271,6 @@ const bigWinnings = [
         spots: 7,
         contestFirst: <ContestFirstComponent width={Width(24)} height={Height(18)} />,
         contestSecond: <ContestSecondComponent width={Width(16)} height={Height(19)} />,
-        // contestThird: <ContestThirdComponent width={Width(20)} height={Height(21)} />,
         firstPrice: '₹10000',
         secondPercent: '71%',
         contestForth: 'S',
@@ -304,7 +287,6 @@ const winnersTakes = [
         spots: 4,
         contestFirst: <ContestFirstComponent width={Width(24)} height={Height(18)} />,
         contestSecond: <ContestSecondComponent width={Width(16)} height={Height(19)} />,
-        // contestThird: <ContestThirdComponent width={Width(20)} height={Height(21)} />,
         firstPrice: '₹10000',
         secondPercent: '25%',
         contestForth: 'S',
@@ -318,7 +300,6 @@ const winnersTakes = [
         spots: 4,
         contestFirst: <ContestFirstComponent width={Width(24)} height={Height(18)} />,
         contestSecond: <ContestSecondComponent width={Width(16)} height={Height(19)} />,
-        // contestThird: <ContestThirdComponent width={Width(20)} height={Height(21)} />,
         firstPrice: '₹10000',
         secondPercent: '25%',
         contestForth: 'S',
@@ -332,7 +313,6 @@ const winnersTakes = [
         spots: 4,
         contestFirst: <ContestFirstComponent width={Width(24)} height={Height(18)} />,
         contestSecond: <ContestSecondComponent width={Width(16)} height={Height(19)} />,
-        // contestThird: <ContestThirdComponent width={Width(20)} height={Height(21)} />,
         firstPrice: '₹10000',
         secondPercent: '25%',
         contestForth: 'S',
@@ -349,7 +329,6 @@ const moreContest = [
         spots: 6,
         contestFirst: <ContestFirstComponent width={Width(24)} height={Height(18)} />,
         contestSecond: <ContestSecondComponent width={Width(16)} height={Height(19)} />,
-        // contestThird: <ContestThirdComponent width={Width(20)} height={Height(21)} />,
         firstPrice: '₹650',
         secondPercent: '29%',
         contestForth: 'S',
@@ -363,7 +342,6 @@ const moreContest = [
         spots: 6,
         contestFirst: <ContestFirstComponent width={Width(24)} height={Height(18)} />,
         contestSecond: <ContestSecondComponent width={Width(16)} height={Height(19)} />,
-        // contestThird: <ContestThirdComponent width={Width(20)} height={Height(21)} />,
         firstPrice: '₹650',
         secondPercent: '29%',
         contestForth: 'S',
@@ -377,7 +355,6 @@ const moreContest = [
         spots: 6,
         contestFirst: <ContestFirstComponent width={Width(24)} height={Height(18)} />,
         contestSecond: <ContestSecondComponent width={Width(16)} height={Height(19)} />,
-        // contestThird: <ContestThirdComponent width={Width(20)} height={Height(21)} />,
         firstPrice: '₹650',
         secondPercent: '29%',
         contestForth: 'S',
@@ -422,17 +399,17 @@ const CreateContestScreen = () => {
     const navigation = useNavigation()
     const [select, setSelect] = useState('')
     const [index, setIndex] = useState(1)
-
+    const [modalVisible, setModalVisible] = useState(false);
     const renderItem = (item, i) =>
     (
-        <View key={i}>
-            <TouchableOpacity style={{ height: Height(155), width: Width(350), backgroundColor: color.background, alignSelf: 'center', marginTop: Height(10), borderRadius: Width(10) }} >
+        <View key={i} style={{ paddingTop: Height(10), }}>
+            <TouchableOpacity style={{ height: Platform.OS === 'android' ? Height(175) : Height(155), width: Width(350), backgroundColor: color.background, alignSelf: 'center', borderRadius: Width(10) }} >
                 <View style={{ flexDirection: "row", alignItems: 'center', justifyContent: 'space-between', marginHorizontal: Width(30), marginTop: Height(20) }}>
-                    <Text style={{ fontSize: Height(8), fontFamily: font.POPPINS_REGULAR }}>Prize Pool</Text>
-                    <Text style={{ fontSize: Height(8), fontFamily: font.POPPINS_REGULAR }}>Entry</Text>
+                    <Text style={{ fontSize: Height(8), fontFamily: font.POPPINS_REGULAR, color: color.text }}>Prize Pool</Text>
+                    <Text style={{ fontSize: Height(8), fontFamily: font.POPPINS_REGULAR, color: color.text }}>Entry</Text>
                 </View>
                 <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginHorizontal: Width(30), marginTop: Height(10) }}>
-                    <Text style={{ fontSize: Height(14), fontFamily: font.POPPINS_SEMI_BOLD }}>{item.prizePool}</Text>
+                    <Text style={{ fontSize: Height(14), fontFamily: font.POPPINS_SEMI_BOLD, color: color.text }}>{item.prizePool}</Text>
                     <View style={{ flexDirection: 'row', alignItems: 'center' }}>
                         <Text style={{ fontSize: Height(8), fontFamily: font.POPPINS_REGULAR, textDecorationLine: 'line-through', color: color.greenText }}>{item.entry}</Text>
                         <TouchableOpacity style={{ height: Height(15), width: Width(30), backgroundColor: color.greenText, justifyContent: 'center', alignItems: 'center', borderRadius: Width(3), marginLeft: Width(8) }}>
@@ -445,7 +422,7 @@ const CreateContestScreen = () => {
                     <Text style={{ fontSize: Height(10), fontFamily: font.POPPINS_REGULAR, color: color.spotsLeftText }}>{item.spotsLeft} Spots Left</Text>
                     <Text style={{ fontSize: Height(10), fontFamily: font.POPPINS_REGULAR, color: color.text }}>{item.spots} Spots</Text>
                 </View>
-                <View style={{ height: Height(30), backgroundColor: '#D9D9D9', borderBottomLeftRadius: Width(10), borderBottomRightRadius: Width(10), marginTop: Height(25), flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', paddingHorizontal: Width(25) }}>
+                <View style={{ height: Height(30), backgroundColor: '#D9D9D9', borderBottomLeftRadius: Width(10), borderBottomRightRadius: Width(10), marginTop: Platform.OS === 'android' ? Height(33) : Height(25), flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', paddingHorizontal: Width(25) }}>
                     <View style={{ flexDirection: 'row', alignItems: 'center' }}>
                         {item.contestFirst}
                         <Text style={{ fontSize: Height(10), fontFamily: font.POPPINS_SEMI_BOLD, color: color.contestText, marginLeft: Width(5) }}>{item.firstPrice}</Text>
@@ -612,47 +589,47 @@ const CreateContestScreen = () => {
                             </TouchableOpacity>
                         </View>
                         <ScrollView>
-                            <Text style={{ fontSize: Height(16), fontFamily: font.POPPINS_BOLD, marginLeft: Width(20), marginTop: Height(20), marginBottom: Height(10) }}>Discount</Text>
+                            <Text style={{ fontSize: Height(16), fontFamily: font.POPPINS_BOLD, marginLeft: Width(20), marginTop: Height(20), marginBottom: Height(10), color: color.text }}>Discount</Text>
                             {
                                 discount.map(renderItem)
                             }
-                            <Text style={{ fontSize: Height(16), fontFamily: font.POPPINS_BOLD, marginLeft: Width(20), marginTop: Height(20), marginBottom: Height(10) }}>Only For Beginners</Text>
+                            <Text style={{ fontSize: Height(16), fontFamily: font.POPPINS_BOLD, marginLeft: Width(20), marginTop: Height(20), marginBottom: Height(10), color: color.text }}>Only For Beginners</Text>
                             {
                                 beginners.map(renderItem)
                             }
-                            <Text style={{ fontSize: Height(16), fontFamily: font.POPPINS_BOLD, marginLeft: Width(20), marginTop: Height(20), marginBottom: Height(10) }}>High Entry = High Rewards</Text>
+                            <Text style={{ fontSize: Height(16), fontFamily: font.POPPINS_BOLD, marginLeft: Width(20), marginTop: Height(20), marginBottom: Height(10), color: color.text }}>High Entry = High Rewards</Text>
                             {
                                 hightEntry.map(renderItem)
                             }
-                            <Text style={{ fontSize: Height(16), fontFamily: font.POPPINS_BOLD, marginLeft: Width(20), marginTop: Height(20), marginBottom: Height(10) }}>Head-to-Head</Text>
+                            <Text style={{ fontSize: Height(16), fontFamily: font.POPPINS_BOLD, marginLeft: Width(20), marginTop: Height(20), marginBottom: Height(10), color: color.text }}>Head-to-Head</Text>
                             {
                                 headTohead.map(renderItem)
                             }
-                            <Text style={{ fontSize: Height(16), fontFamily: font.POPPINS_BOLD, marginLeft: Width(20), marginTop: Height(20), marginBottom: Height(10) }}>Low-Entry Contests</Text>
+                            <Text style={{ fontSize: Height(16), fontFamily: font.POPPINS_BOLD, marginLeft: Width(20), marginTop: Height(20), marginBottom: Height(10), color: color.text }}>Low-Entry Contests</Text>
                             {
                                 lowEntry.map(renderItem)
                             }
-                            <Text style={{ fontSize: Height(16), fontFamily: font.POPPINS_BOLD, marginLeft: Width(20), marginTop: Height(20), marginBottom: Height(10) }}>Big Winnings</Text>
+                            <Text style={{ fontSize: Height(16), fontFamily: font.POPPINS_BOLD, marginLeft: Width(20), marginTop: Height(20), marginBottom: Height(10), color: color.text }}>Big Winnings</Text>
                             {
                                 bigWinnings.map(renderItem)
                             }
-                            <Text style={{ fontSize: Height(16), fontFamily: font.POPPINS_BOLD, marginLeft: Width(20), marginTop: Height(20), marginBottom: Height(10) }}>Winner Takes All</Text>
+                            <Text style={{ fontSize: Height(16), fontFamily: font.POPPINS_BOLD, marginLeft: Width(20), marginTop: Height(20), marginBottom: Height(10), color: color.text }}>Winner Takes All</Text>
                             {
                                 winnersTakes.map(renderItem)
                             }
-                            <Text style={{ fontSize: Height(16), fontFamily: font.POPPINS_BOLD, marginLeft: Width(20), marginTop: Height(20), marginBottom: Height(10) }}>More Contests</Text>
+                            <Text style={{ fontSize: Height(16), fontFamily: font.POPPINS_BOLD, marginLeft: Width(20), marginTop: Height(20), marginBottom: Height(10), color: color.text }}>More Contests</Text>
                             {
                                 moreContest.map(renderItem)
                             }
-                            <Text style={{ fontSize: Height(16), fontFamily: font.POPPINS_BOLD, marginLeft: Width(20), marginTop: Height(20), marginBottom: Height(10) }}>Practice Contest</Text>
+                            <Text style={{ fontSize: Height(16), fontFamily: font.POPPINS_BOLD, marginLeft: Width(20), marginTop: Height(20), marginBottom: Height(10), color: color.text }}>Practice Contest</Text>
                             {
                                 practice.map((item, i) => {
                                     return (
-                                        <View key={i}>
-                                            <TouchableOpacity style={{ height: Height(155), width: Width(350), backgroundColor: color.background, alignSelf: 'center', marginTop: Height(10), borderRadius: Width(10) }} >
+                                        <View key={i} >
+                                            <TouchableOpacity style={{ height: Platform.OS === 'android' ? Height(175) : Height(155), width: Width(350), backgroundColor: color.background, alignSelf: 'center', marginTop: Height(10), borderRadius: Width(10) }} >
 
                                                 <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginHorizontal: Width(30), marginTop: Height(30) }}>
-                                                    <Text style={{ fontSize: Height(14), fontFamily: font.POPPINS_SEMI_BOLD }}>Practice Contest</Text>
+                                                    <Text style={{ fontSize: Height(14), fontFamily: font.POPPINS_SEMI_BOLD, color: color.text }}>Practice Contest</Text>
                                                     <View style={{ flexDirection: 'row', alignItems: 'center' }}>
                                                         <Text style={{ fontSize: Height(8), fontFamily: font.POPPINS_REGULAR, textDecorationLine: 'line-through', color: color.greenText }}>{item.entry}</Text>
                                                         <TouchableOpacity style={{ height: Height(15), width: Width(30), backgroundColor: color.greenText, justifyContent: 'center', alignItems: 'center', borderRadius: Width(3), marginLeft: Width(8) }}>
@@ -665,7 +642,7 @@ const CreateContestScreen = () => {
                                                     <Text style={{ fontSize: Height(10), fontFamily: font.POPPINS_REGULAR, color: color.spotsLeftText }}>{item.spotsLeft} Spots Left</Text>
                                                     <Text style={{ fontSize: Height(10), fontFamily: font.POPPINS_REGULAR, color: color.text }}>{item.spots} Spots</Text>
                                                 </View>
-                                                <View style={{ height: Height(30), backgroundColor: '#D9D9D9', borderBottomLeftRadius: Width(10), borderBottomRightRadius: Width(10), marginTop: Height(37), flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', paddingHorizontal: Width(25) }}>
+                                                <View style={{ height: Height(30), backgroundColor: '#D9D9D9', borderBottomLeftRadius: Width(10), borderBottomRightRadius: Width(10), marginTop: Platform.OS === 'android' ? Height(47) : Height(35), flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', paddingHorizontal: Width(25) }}>
                                                     <View style={{ flexDirection: 'row', alignItems: 'center' }}>
                                                         {item.contestFirst}
                                                         <Text style={{ fontSize: Height(10), fontFamily: font.POPPINS_SEMI_BOLD, color: color.contestText, marginLeft: Width(5) }}>Glory awaits!</Text>
@@ -692,17 +669,42 @@ const CreateContestScreen = () => {
                                 <Text style={{ fontSize: Height(14), fontFamily: font.POPPINS_SEMI_BOLD, color: color.text }}>VIEW ALL 107 CONTESTS</Text>
                             </TouchableOpacity>
                         </ScrollView>
-                        <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginHorizontal: Width(50), marginBottom: Width(40) }}>
+                        <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginHorizontal: Width(50), marginBottom: Height(20) }}>
                             <TouchableOpacity style={{ height: Height(30), width: Width(157), backgroundColor: '#5556CA', borderRadius: Width(20), flexDirection: 'row', alignItems: 'center', justifyContent: 'center' }}>
                                 <CreateTeamComponent size={Height(18)} />
                                 <Text style={{ fontSize: Height(10), fontFamily: font.POPPINS_REGULAR, color: color.background, marginLeft: Width(5) }}>Create Team</Text>
                             </TouchableOpacity>
-                            <TouchableOpacity style={{ height: Height(30), width: Width(157), backgroundColor: '#5556CA', borderRadius: Width(20), flexDirection: 'row', alignItems: 'center', justifyContent: 'center' }}>
+                            <TouchableOpacity style={{ height: Height(30), width: Width(157), backgroundColor: '#5556CA', borderRadius: Width(20), flexDirection: 'row', alignItems: 'center', justifyContent: 'center' }} onPress={() => setModalVisible(true)}>
                                 <CreateContestComponent size={Height(18)} />
                                 <Text style={{ fontSize: Height(10), fontFamily: font.POPPINS_REGULAR, color: color.background, marginLeft: Width(5) }}>Create Contest</Text>
                             </TouchableOpacity>
                         </View>
+                        <View style={styles.centeredView}>
+                            <Modal
+                                animationType="fade"
+                                transparent={true}
+                                visible={modalVisible}
+                                onRequestClose={() => {
+                                    Alert.alert('Modal has been closed.');
+                                    setModalVisible(!modalVisible);
+                                }}>
+                                <View style={styles.centeredView}>
+                                    <View style={styles.modalView}>
+                                        <TouchableOpacity style={{ height: Height(45), width: Width(240), backgroundColor: '#5556CA', flexDirection: 'row', alignItems: 'center', alignSelf: 'center', justifyContent: 'center', borderRadius: Width(10) }} onPress={() => { navigation.navigate('CreateNewContest'), setModalVisible(!modalVisible) }}>
+                                            <Octicons name='plus-circle' size={Height(25)} color='white' />
+                                            <Text style={{ fontSize: Height(16), fontFamily: font.POPPINS_SEMI_BOLD, color: color.background, marginLeft: Width(30) }}>Create A Contest</Text>
+                                        </TouchableOpacity>
+                                        <TouchableOpacity style={{ height: Height(45), width: Width(240), backgroundColor: '#5556CA', flexDirection: 'row', alignItems: 'center', alignSelf: 'center', justifyContent: 'center', borderRadius: Width(10), marginTop: Height(25) }} onPress={() => { navigation.navigate('EnterContestCode'), setModalVisible(!modalVisible) }}>
+                                            <ContestCodeComponent size={Height(25)} />
+                                            <Text style={{ fontSize: Height(16), fontFamily: font.POPPINS_SEMI_BOLD, color: color.background, marginLeft: Width(20) }}>Enter Contest Code</Text>
+                                        </TouchableOpacity>
+                                    </View>
+                                </View>
+                            </Modal>
+
+                        </View>
                     </SafeAreaView>
+
                 </>
             )
         }
@@ -713,4 +715,39 @@ const CreateContestScreen = () => {
 
 export default CreateContestScreen
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+    centeredView: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        paddingBottomBottom: 22,
+        backgroundColor: 'rgba(0, 0, 0, 0.5)'
+    },
+    modalView: {
+        height: Height(180),
+        width: Width(350),
+        backgroundColor: 'white',
+        borderRadius: Width(20),
+        justifyContent: 'center'
+    },
+    button: {
+        borderRadius: 20,
+        padding: 10,
+        elevation: 2,
+    },
+    buttonOpen: {
+        backgroundColor: '#F194FF',
+    },
+    buttonClose: {
+        backgroundColor: '#2196F3',
+    },
+    textStyle: {
+        color: 'white',
+        fontWeight: 'bold',
+        textAlign: 'center',
+    },
+    modalText: {
+        marginBottom: 15,
+        textAlign: 'center',
+    },
+})

@@ -14,6 +14,8 @@ import ChooseCaptainScreen from '../screens/ChooseCaptainScreen'
 import ContestScreen from '../screens/ContestScreen'
 import PreviewScreen from '../screens/PreviewScreen'
 import AllContestScreen from '../screens/AllContestScreen'
+import CreateNewContestScreen from '../screens/CreateNewContestScreen'
+import EnterContestCodeScreen from '../screens/EnterContestCodeScreen'
 
 const Stack = createNativeStackNavigator()
 const StackNavigation = () => {
@@ -32,6 +34,8 @@ const StackNavigation = () => {
             <Stack.Screen name='Contest' component={ContestScreen} />
             <Stack.Screen name='Preview' component={PreviewScreen} />
             <Stack.Screen name='AllContest' component={AllContestScreen} />
+            <Stack.Screen name='CreateNewContest' component={CreateNewContestScreen} />
+            <Stack.Screen name='EnterContestCode' component={EnterContestCodeScreen} />
         </Stack.Navigator>
     )
 }

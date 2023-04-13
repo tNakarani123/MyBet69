@@ -1,4 +1,4 @@
-import { Image, SafeAreaView, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+import { Image, Platform, SafeAreaView, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import React from 'react'
 import DropShadow from 'react-native-drop-shadow'
 import { Height, Width } from '../utils/responsive'
@@ -83,14 +83,14 @@ const allContest = [
 
 const renderItem = (item, i) =>
 (
-    <View key={i}>
-        <TouchableOpacity style={{ height: Height(155), width: Width(350), backgroundColor: color.background, alignSelf: 'center', marginTop: Height(10), borderRadius: Width(10) }} >
+    <View key={i} style={{ paddingTop: Height(10) }}>
+        <TouchableOpacity style={{ height: Platform.OS === 'android' ? Height(175) : Height(155), width: Width(350), backgroundColor: color.background, alignSelf: 'center', borderRadius: Width(10) }} >
             <View style={{ flexDirection: "row", alignItems: 'center', justifyContent: 'space-between', marginHorizontal: Width(30), marginTop: Height(20) }}>
-                <Text style={{ fontSize: Height(8), fontFamily: font.POPPINS_REGULAR }}>Prize Pool</Text>
-                <Text style={{ fontSize: Height(8), fontFamily: font.POPPINS_REGULAR }}>Entry</Text>
+                <Text style={{ fontSize: Height(8), fontFamily: font.POPPINS_REGULAR, color: color.text }}>Prize Pool</Text>
+                <Text style={{ fontSize: Height(8), fontFamily: font.POPPINS_REGULAR, color: color.text }}>Entry</Text>
             </View>
             <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginHorizontal: Width(30), marginTop: Height(10) }}>
-                <Text style={{ fontSize: Height(14), fontFamily: font.POPPINS_SEMI_BOLD }}>{item.prizePool}</Text>
+                <Text style={{ fontSize: Height(14), fontFamily: font.POPPINS_SEMI_BOLD, color: color.text }}>{item.prizePool}</Text>
                 <View style={{ flexDirection: 'row', alignItems: 'center' }}>
                     <Text style={{ fontSize: Height(8), fontFamily: font.POPPINS_REGULAR, textDecorationLine: 'line-through', color: color.greenText }}>{item.entry}</Text>
                     <TouchableOpacity style={{ height: Height(15), width: Width(30), backgroundColor: color.greenText, justifyContent: 'center', alignItems: 'center', borderRadius: Width(3), marginLeft: Width(8) }}>
@@ -103,7 +103,7 @@ const renderItem = (item, i) =>
                 <Text style={{ fontSize: Height(10), fontFamily: font.POPPINS_REGULAR, color: color.spotsLeftText }}>{item.spotsLeft} Spots Left</Text>
                 <Text style={{ fontSize: Height(10), fontFamily: font.POPPINS_REGULAR, color: color.text }}>{item.spots} Spots</Text>
             </View>
-            <View style={{ height: Height(30), backgroundColor: '#D9D9D9', borderBottomLeftRadius: Width(10), borderBottomRightRadius: Width(10), marginTop: Height(25), flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', paddingHorizontal: Width(25) }}>
+            <View style={{ height: Height(30), backgroundColor: '#D9D9D9', borderBottomLeftRadius: Width(10), borderBottomRightRadius: Width(10), marginTop: Platform.OS === 'android' ? Height(33) : Height(25), flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', paddingHorizontal: Width(25) }}>
                 <View style={{ flexDirection: 'row', alignItems: 'center' }}>
                     {item.contestFirst}
                     <Text style={{ fontSize: Height(10), fontFamily: font.POPPINS_SEMI_BOLD, color: color.contestText, marginLeft: Width(5) }}>{item.firstPrice}</Text>
@@ -163,13 +163,12 @@ const AllContestScreen = () => {
                     </View>
                 </DropShadow>
                 <ScrollView style={{ marginTop: Height(150), }}>
-                    <Text style={{ fontSize: Height(16), fontFamily: font.POPPINS_BOLD, marginLeft: Width(20), marginBottom: Height(10) }}>All Contests</Text>
+                    <Text style={{ fontSize: Height(16), fontFamily: font.POPPINS_BOLD, marginLeft: Width(20), marginBottom: Height(10), color: color.text }}>All Contests</Text>
                     {
                         allContest.map(renderItem)
                     }
 
                 </ScrollView>
-                {/* <Text>MyContest</Text> */}
             </SafeAreaView>
         </>
     )
