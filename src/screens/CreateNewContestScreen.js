@@ -1,5 +1,5 @@
 import { Image, SafeAreaView, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native'
-import React from 'react'
+import React, { useState } from 'react'
 import DropShadow from 'react-native-drop-shadow'
 import MyBetComponent from '../assets/svg/MyBet'
 import NotificationComponent from '../assets/svg/Notification'
@@ -9,8 +9,19 @@ import { useNavigation } from '@react-navigation/native'
 import font from '../utils/fonts'
 import color from '../utils/color'
 import ContestCupComponent from '../assets/svg/ContestCup'
+import CheckEmptyComponent from '../assets/svg/CheckEmpty'
+import CheckComponent from '../assets/svg/Check'
 const CreateNewContestScreen = () => {
     const navigation = useNavigation()
+    const [check, setCheck] = useState(false)
+    const [contestName, setContestName] = useState()
+    const [contestSize, setContestSize] = useState()
+    const [entryPrize, setEntryPrize] = useState()
+
+    console.log({ contestName });
+    console.log({ contestSize });
+    console.log({ entryPrize });
+
     return (
         <>
             <SafeAreaView
@@ -44,20 +55,40 @@ const CreateNewContestScreen = () => {
                     </View>
                 </DropShadow>
                 <View style={styles.textView}>
-                    <ContestCupComponent size={Height(25)} />
+                    <ContestCupComponent size={Height(25)} color={'#5556CA'} />
                     <View style={styles.lineView} />
-                    <TextInput keyboardType='number-pad' style={styles.textInput} maxLength={10} placeholder='Contest Name' placeholderTextColor='#767676' />
+                    <TextInput style={styles.textInput} maxLength={10} placeholder='Contest Name' placeholderTextColor='#767676' onChangeText={(val) => setContestName(val)} value={contestName} />
                 </View>
                 <View style={styles.textView}>
-                    <ContestCupComponent size={Height(25)} />
+                    <ContestCupComponent size={Height(25)} color={'#5556CA'} />
                     <View style={styles.lineView} />
-                    <TextInput keyboardType='number-pad' style={styles.textInput} maxLength={10} placeholder='Contest Size' placeholderTextColor='#767676' />
+                    <TextInput keyboardType='number-pad' style={styles.textInput} maxLength={10} placeholder='Contest Size' placeholderTextColor='#767676' onChangeText={(val) => setContestSize(val)} value={contestSize} />
                 </View>
                 <View style={styles.textView}>
-                    <ContestCupComponent size={Height(25)} />
+                    <ContestCupComponent size={Height(25)} color={'#5556CA'} />
                     <View style={styles.lineView} />
-                    <TextInput keyboardType='number-pad' style={styles.textInput} maxLength={10} placeholder='Entry Price' placeholderTextColor='#767676' />
+                    <TextInput keyboardType='number-pad' style={styles.textInput} maxLength={10} placeholder='Entry Price' placeholderTextColor='#767676' onChangeText={(val) => setEntryPrize(val)} value={entryPrize} />
                 </View>
+
+                <View style={{ flexDirection: 'row', alignItems: 'center', marginLeft: Width(20), marginTop: Height(20) }}>
+                    <TouchableOpacity onPress={() => setCheck(!check)}>
+                        {check === false ? <CheckEmptyComponent size={Height(18)} /> : <CheckComponent size={Height(18)} />}
+                    </TouchableOpacity>
+                    <Text style={{ fontSize: Height(12), fontFamily: font.POPPINS_MEDIUM, color: '#767676', marginLeft: Width(15) }}>Allow Multiple Terms Per User</Text>
+                </View>
+
+                <View style={{ height: Height(70), backgroundColor: '#5556CA', marginTop: Height(25), flexDirection: 'row', alignItems: 'center', paddingLeft: Width(50) }}>
+                    <ContestCupComponent size={Height(30)} color={'white'} />
+                    <View style={{ marginLeft: Width(10) }}>
+                        <Text style={{ fontSize: Height(12), fontFamily: font.POPPINS_MEDIUM, color: color.background }}>Max Prize Pool</Text>
+                        <Text style={{ fontSize: Height(12), fontFamily: font.POPPINS_MEDIUM, color: color.background }}>₹0</Text>
+                    </View>
+                </View>
+
+                <TouchableOpacity style={{ height: Height(40), width: Width(240), backgroundColor: color.primaryText, alignSelf: 'center', marginTop: Height(150), justifyContent: 'center', alignItems: 'center', borderRadius: Width(10) }} onPress={() => navigation.navigate('ChooseNewContestPrize', { name: contestName, size: contestSize, prize: entryPrize })}>
+                    <Text style={{ fontSize: Height(14), fontFamily: font.POPPINS_MEDIUM, color: color.background }}>Choose Prize Breakup</Text>
+                </TouchableOpacity>
+
             </SafeAreaView>
         </>
     )

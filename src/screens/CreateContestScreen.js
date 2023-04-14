@@ -670,7 +670,7 @@ const CreateContestScreen = () => {
                             </TouchableOpacity>
                         </ScrollView>
                         <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginHorizontal: Width(50), marginBottom: Height(20) }}>
-                            <TouchableOpacity style={{ height: Height(30), width: Width(157), backgroundColor: '#5556CA', borderRadius: Width(20), flexDirection: 'row', alignItems: 'center', justifyContent: 'center' }}>
+                            <TouchableOpacity style={{ height: Height(30), width: Width(157), backgroundColor: '#5556CA', borderRadius: Width(20), flexDirection: 'row', alignItems: 'center', justifyContent: 'center' }} onPress={() => navigation.navigate('CreateTeam')}>
                                 <CreateTeamComponent size={Height(18)} />
                                 <Text style={{ fontSize: Height(10), fontFamily: font.POPPINS_REGULAR, color: color.background, marginLeft: Width(5) }}>Create Team</Text>
                             </TouchableOpacity>

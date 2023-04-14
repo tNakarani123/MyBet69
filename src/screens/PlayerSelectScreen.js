@@ -1,4 +1,4 @@
-import { Alert, FlatList, Image, SafeAreaView, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+import { Alert, FlatList, Image, Modal, Pressable, SafeAreaView, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import React, { useState } from 'react'
 import DropShadow from 'react-native-drop-shadow'
 import MyBetComponent from '../assets/svg/MyBet'
@@ -10,6 +10,9 @@ import { team1Players, team2Players } from '../utils/data'
 import { PlayerCard, SelectedPlayerCard } from '../utils/card'
 import Octicons from 'react-native-vector-icons/Octicons'
 import EvilIcons from 'react-native-vector-icons/EvilIcons'
+import ClearAllComponent from '../assets/svg/ClearAll'
+import font from '../utils/fonts'
+import color from '../utils/color'
 const categories = ['WK', 'BAT', 'AR', 'BOWL'];
 
 const PlayerSelectScreen = () => {
@@ -42,9 +45,12 @@ const PlayerSelectScreen = () => {
 
     const removeAllPlayers = () => {
         setSelectedPlayers([]);
+        setModalVisible(!modalVisible)
     };
 
-
+    const [modalVisible, setModalVisible] = useState(false);
+    const [secModalVisible, setSecModalVisible] = useState(false)
+    const [index, setIndex] = useState(3)
     return (
         <>
             <SafeAreaView
@@ -120,7 +126,7 @@ const PlayerSelectScreen = () => {
                                 </View>
                             ))}
                         </View>
-                        <EvilIcons name='minus' size={Height(30)} style={{}} onPress={removeAllPlayers} />
+                        <EvilIcons name='minus' size={Height(30)} style={{}} onPress={() => setModalVisible(true)} />
                     </View>
                 </View>
                 <View style={styles.categories}>
@@ -144,7 +150,7 @@ const PlayerSelectScreen = () => {
                 </View>
                 <View style={{ height: Height(30), backgroundColor: 'black', alignItems: 'center', flexDirection: 'row', justifyContent: 'space-between', paddingHorizontal: Width(30) }}>
                     <Text style={{ color: 'white', fontSize: Height(10), fontFamily: 'Poppins-Medium' }}>Select 1-8 Wicket-Keepers</Text>
-                    <Ionicons name='md-filter' size={Height(20)} color='white' />
+                    <Ionicons name='md-filter' size={Height(20)} color='white' onPress={() => setSecModalVisible(true)} />
                 </View>
                 <View style={{ height: Height(30), flexDirection: 'row' }}>
                     <TouchableOpacity style={{ flexDirection: 'row', alignItems: 'center', marginLeft: Width(100) }}>
@@ -200,8 +206,94 @@ const PlayerSelectScreen = () => {
                         <Text style={{ fontSize: Height(15), color: 'white', fontFamily: 'Poppins-Medium' }}>Next</Text>
                     </TouchableOpacity>
                 </View>
+                <View>
 
+                    <View style={styles.centeredView}>
+                        <Modal
+                            animationType="slide"
+                            transparent={true}
+                            visible={modalVisible}
+                            onRequestClose={() => {
+                                Alert.alert('Modal has been closed.');
+                                setModalVisible(!modalVisible);
+                            }}>
+                            <View style={styles.centeredView}>
+                                <View style={styles.modalView}>
+                                    <Text style={{ fontSize: Height(16), fontFamily: font.POPPINS_SEMI_BOLD, marginVertical: Height(20), color: color.text }}>Clear Team?</Text>
+
+                                    <ClearAllComponent size={Height(100)} />
+                                    <Text style={{ fontSize: Height(10), fontFamily: font.POPPINS_REGULAR, color: color.text, opacity: 0.6, marginTop: Height(20) }}>Are You Sure Your Want To Clear Your Player Selections?</Text>
+                                    <TouchableOpacity style={{ height: Height(50), width: Width(350), backgroundColor: '#5556CA', justifyContent: 'center', alignItems: 'center', borderRadius: Width(10), marginTop: Height(20) }} onPress={removeAllPlayers}>
+                                        <Text style={{ fontSize: Height(16), color: color.background, fontFamily: font.POPPINS_MEDIUM }}>Yes, Clear</Text>
+                                    </TouchableOpacity>
+                                    <TouchableOpacity style={{ height: Height(50), width: Width(350), justifyContent: 'center', alignItems: 'center', borderRadius: Width(10), marginTop: Height(10), borderWidth: Height(1), borderColor: '#5556CA' }} onPress={() => setModalVisible(!modalVisible)}>
+                                        <Text style={{ fontSize: Height(16), color: '#5556CA', fontFamily: font.POPPINS_MEDIUM }}>Cancel</Text>
+                                    </TouchableOpacity>
+                                </View>
+                            </View>
+                        </Modal>
+
+                    </View>
+                </View>
+                <View>
+
+                    <View style={styles.centeredView}>
+                        <Modal
+                            animationType="slide"
+                            transparent={true}
+                            visible={secModalVisible}
+                            onRequestClose={() => {
+                                Alert.alert('Modal has been closed.');
+                                setSecModalVisible(!secModalVisible);
+                            }}>
+                            <View style={{
+                                flex: 1,
+                                justifyContent: 'flex-end',
+                            }}>
+                                <View style={{
+                                    height: Height(280),
+                                    backgroundColor: 'white',
+                                    width: '100%',
+                                    // alignItems: 'center',
+                                    borderTopLeftRadius: Width(20),
+                                    borderTopRightRadius: Width(20)
+                                }}>
+                                    <View style={{
+                                        height: Height(50), backgroundColor: '#6B69D4', width: '100%', borderTopLeftRadius: Width(20),
+                                        borderTopRightRadius: Width(20), flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', paddingHorizontal: Width(25)
+                                    }}>
+                                        <Ionicons name='close' size={Height(25)} color={color.background} onPress={() => setSecModalVisible(!secModalVisible)} />
+                                        <Text style={{ fontSize: Height(16), color: color.background, fontFamily: font.POPPINS_MEDIUM }}>Filter BY Teams</Text>
+                                        <Ionicons name='close' size={Height(25)} color='transparent' />
+                                    </View>
+                                    <TouchableOpacity style={{ flexDirection: "row", alignItems: 'center', justifyContent: "space-between", marginTop: Height(15), marginHorizontal: Width(25) }} onPress={() => { setIndex(1), setSecModalVisible(!secModalVisible) }}>
+                                        <View>
+                                            <Text style={{ fontSize: Height(16), fontFamily: font.POPPINS_SEMI_BOLD, color: color.text }}>GT</Text>
+                                            <Text style={{ fontSize: Height(10), fontFamily: font.POPPINS_MEDIUM, color: color.text, opacity: 0.6 }}>Gujarat Titans</Text>
+                                        </View>
+                                        <Ionicons name={index === 1 ? 'radio-button-on' : 'radio-button-off'} size={Height(25)} color='#6B69D4' />
+                                    </TouchableOpacity>
+                                    <View style={{ height: Height(1), backgroundColor: 'grey', marginTop: Height(15) }} />
+                                    <TouchableOpacity style={{ flexDirection: "row", alignItems: 'center', justifyContent: "space-between", marginTop: Height(15), marginHorizontal: Width(25) }} onPress={() => { setIndex(2), setSecModalVisible(!secModalVisible) }}>
+                                        <View>
+                                            <Text style={{ fontSize: Height(16), fontFamily: font.POPPINS_SEMI_BOLD, color: color.text }}>MI</Text>
+                                            <Text style={{ fontSize: Height(10), fontFamily: font.POPPINS_MEDIUM, color: color.text, opacity: 0.6 }}>Mumbai Indians</Text>
+                                        </View>
+                                        <Ionicons name={index === 2 ? 'radio-button-on' : 'radio-button-off'} size={Height(25)} color='#6B69D4' />
+                                    </TouchableOpacity>
+                                    <View style={{ height: Height(1), backgroundColor: 'grey', marginTop: Height(15) }} />
+                                    <TouchableOpacity style={{ flexDirection: "row", alignItems: 'center', justifyContent: "space-between", marginTop: Height(15), marginHorizontal: Width(25) }} onPress={() => { setIndex(3), setSecModalVisible(!secModalVisible) }}>
+                                        <Text style={{ fontSize: Height(16), fontFamily: font.POPPINS_SEMI_BOLD, color: color.text }}>Both</Text>
+                                        <Ionicons name={index === 3 ? 'radio-button-on' : 'radio-button-off'} size={Height(25)} color='#6B69D4' />
+                                    </TouchableOpacity>
+                                </View>
+                            </View>
+                        </Modal>
+
+                    </View>
+                </View>
             </SafeAreaView>
+
         </>
     )
 }
@@ -248,5 +340,41 @@ const styles = StyleSheet.create({
     },
     players: {
         height: Height(25), width: Height(25), backgroundColor: 'white', borderRadius: Height(25) / 2
-    }
+    },
+    centeredView: {
+        flex: 1,
+        justifyContent: 'flex-end',
+        alignItems: 'center',
+        // marginTop: 22,
+        backgroundColor: 'rgba(0, 0, 0, 0.5)'
+    },
+    modalView: {
+        // margin: 20,
+        height: Height(350),
+        backgroundColor: 'white',
+        width: '100%',
+        alignItems: 'center',
+        borderTopLeftRadius: Width(20),
+        borderTopRightRadius: Width(20)
+    },
+    button: {
+        borderRadius: 20,
+        padding: 10,
+        elevation: 2,
+    },
+    buttonOpen: {
+        backgroundColor: '#F194FF',
+    },
+    buttonClose: {
+        backgroundColor: '#2196F3',
+    },
+    textStyle: {
+        color: 'white',
+        fontWeight: 'bold',
+        textAlign: 'center',
+    },
+    modalText: {
+        marginBottom: 15,
+        textAlign: 'center',
+    },
 });
