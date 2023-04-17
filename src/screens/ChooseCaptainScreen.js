@@ -345,7 +345,7 @@ const ChooseCaptainScreen = () => {
                                 Alert.alert("Please Select Vice Captain")
                             }
                             else {
-                                navigation.navigate('CreateContest')
+                                navigation.navigate('CreateContest', { data: selectedPlayers, captain: selectedCaptainId, viceCaptain: selectedViceCaptainId })
                             }
                         }
                     }>

@@ -28,20 +28,7 @@ const PlayerCard = ({ player, isSelected, onSelect, onDeselect }) => {
 
 const SelectedPlayerCard = ({ player, onDeselect, style, }) => {
     const { id, name, category, points } = player;
-
-    // if (player === 11) {
-    //     console.log('11');
-    // }
-
-
     return (
-        // <TouchableOpacity style={styles.selectedContainer} >
-        //     <View style={styles.playerInfo}>
-        //         <Text style={styles.playerName}>{name}</Text>
-        //         <Text style={styles.playerCategory}>{category}</Text>
-        //     </View>
-        //     <Text style={styles.playerPoints}>{name}</Text>
-        // </TouchableOpacity>
         <View style={{ height: Height(25), width: Height(25), backgroundColor: '#5556CA', borderRadius: Height(25) / 2, marginLeft: Width(2) }}>
 
         </View>

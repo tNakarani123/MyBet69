@@ -1,11 +1,11 @@
-import { Alert, Image, Modal, Platform, Pressable, SafeAreaView, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+import { Alert, Image, ImageBackground, Modal, Platform, Pressable, SafeAreaView, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import React, { useState } from 'react'
 import DropShadow from 'react-native-drop-shadow'
 import MyBetComponent from '../assets/svg/MyBet'
 import NotificationComponent from '../assets/svg/Notification'
 import Ionicons from 'react-native-vector-icons/Ionicons'
 import { Height, Width } from '../utils/responsive'
-import { useNavigation } from '@react-navigation/native'
+import { useNavigation, useRoute } from '@react-navigation/native'
 import ContestFirstComponent from '../assets/svg/ContestFirst'
 import ContestSecondComponent from '../assets/svg/ContestSecond'
 import ContestThirdComponent from '../assets/svg/ContestThird'
@@ -16,6 +16,8 @@ import CreateTeamComponent from '../assets/svg/CreateTeam'
 import CreateContestComponent from '../assets/svg/CreateContest'
 import Octicons from 'react-native-vector-icons/Octicons'
 import ContestCodeComponent from '../assets/svg/ContestCode'
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons'
+import { team1Players, team2Players } from '../utils/data'
 const discount = [
     {
         id: 1,
@@ -400,10 +402,73 @@ const CreateContestScreen = () => {
     const [select, setSelect] = useState('')
     const [index, setIndex] = useState(1)
     const [modalVisible, setModalVisible] = useState(false);
+    const [teamDown, setTeamDown] = useState(true);
+    const route = useRoute()
+    const [selectedCategory, setSelectedCategory] = useState();
+    console.log({ route });
+
+    console.log({ Captain: route.params?.captain })
+    console.log({ Data: route.params?.data })
+    console.log({ ViceCaptain: route.params?.viceCaptain })
+
+    const filteredTeam1Players = team1Players.filter(
+        (player) => player.category === selectedCategory
+    );
+    const filteredTeam2Players = team2Players.filter(
+        (player) => player.category === selectedCategory
+    );
+
+    const filteredPlayers = [...filteredTeam1Players, ...filteredTeam2Players];
+    console.log({ filteredPlayers });
+
+    let captainName = '';
+    let viceCaptainName = '';
+    let captainImage = ''
+    let viceCaptainImage = ''
+    const Data = route.params?.data
+    const dataLength = Data?.length || 0;
+    console.log({ dataLength });
+    const captainId = route.params?.captain
+    const viceCaptainId = route.params?.viceCaptain
+    for (let i = 0; i < dataLength; i++) {
+        if (Data[i].id === captainId) {
+            captainName = Data[i].name;
+            captainImage = Data[i].image
+        } else if (Data[i].id === viceCaptainId) {
+            viceCaptainName = Data[i].name;
+            viceCaptainImage = Data[i].image
+        }
+
+        // break out of the loop early if both captain and vice captain names have been found
+        if (captainName !== '' && viceCaptainName !== '' && captainImage !== '' && viceCaptainImage !== '') {
+            break;
+        }
+    }
+
+    console.log('Captain Name:', captainName);
+    console.log('Vice Captain Name:', viceCaptainName);
+    console.log({ captainImage });
+    console.log({ viceCaptainImage });
+    // const getSelectedPlayersByCategory = []
+
+    // const updatedPlayers = []
+
+    // const getSelectedPlayersByCategory = (category) =>
+    //     Data.filter((player) => player.category === category);
+
+    // const selectedPlayersInCategory = filteredPlayers.filter((p) => p.category === category);
+    // console.log({ selectedPlayersInCategory });
+
+
+    // console.log(getSelectedPlayersByCategory('WK').length);
+    // console.log(getSelectedPlayersByCategory('BAT').length);
+    // console.log(getSelectedPlayersByCategory('AR').length);
+    // console.log(getSelectedPlayersByCategory('BOWL').length);
+
     const renderItem = (item, i) =>
     (
         <View key={i} style={{ paddingTop: Height(10), }}>
-            <TouchableOpacity style={{ height: Platform.OS === 'android' ? Height(175) : Height(155), width: Width(350), backgroundColor: color.background, alignSelf: 'center', borderRadius: Width(10) }} >
+            <TouchableOpacity style={{ height: Platform.OS === 'android' ? Height(175) : Height(155), width: Width(350), backgroundColor: color.background, alignSelf: 'center', borderRadius: Width(10) }} onPress={() => navigation.navigate('CreateTeam')} >
                 <View style={{ flexDirection: "row", alignItems: 'center', justifyContent: 'space-between', marginHorizontal: Width(30), marginTop: Height(20) }}>
                     <Text style={{ fontSize: Height(8), fontFamily: font.POPPINS_REGULAR, color: color.text }}>Prize Pool</Text>
                     <Text style={{ fontSize: Height(8), fontFamily: font.POPPINS_REGULAR, color: color.text }}>Entry</Text>
@@ -492,7 +557,73 @@ const CreateContestScreen = () => {
                                 <Text style={{ fontSize: Height(14), fontFamily: 'Poppins-Medium', color: index === 2 ? 'white' : 'rgba(255, 255, 255, 0.6)' }}>My Teams</Text>
                             </TouchableOpacity>
                         </View>
-                        <Text>MyContest</Text>
+                        <TouchableOpacity style={{ height: teamDown ? Height(198) : Height(300), width: Width(350), backgroundColor: color.background, alignSelf: 'center', borderRadius: Width(10), marginTop: Height(15), borderWidth: Height(1) }}>
+                            <Text style={{ fontSize: Height(16), fontFamily: font.POPPINS_SEMI_BOLD, color: color.text, marginLeft: Width(25), marginTop: Height(10) }}>Practice Contest</Text>
+                            <Progress.Bar progress={0.5} width={Width(300)} height={Height(4)} style={{ alignSelf: 'center', marginTop: Height(10) }} unfilledColor='#D9D9D9' borderColor='transparent' color='#F99500' />
+                            <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: "space-between", marginHorizontal: Width(25), marginTop: Height(5) }}>
+                                <Text style={{ fontSize: Height(12), fontFamily: font.POPPINS_REGULAR, color: '#F96464' }}>Contest Full</Text>
+                                <Text style={{ fontSize: Height(12), fontFamily: font.POPPINS_REGULAR, color: 'grey' }}>3 Spots</Text>
+                            </View>
+                            <View style={{ height: Height(30), backgroundColor: '#E5E5E5', marginTop: Platform.OS === 'android' ? Height(10) : Height(10), flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', paddingHorizontal: Width(25), opacity: 0.5, width: Width(345) }}>
+                                <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                                    <ContestFirstComponent width={Width(24)} height={Height(18)} />
+                                    <Text style={{ fontSize: Height(10), fontFamily: font.POPPINS_SEMI_BOLD, color: color.contestText, marginLeft: Width(5) }}>Glory awaits!</Text>
+                                </View>
+
+                                <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                                    <View style={{ height: Height(18), width: Height(18), borderRadius: Height(18) / 2, borderWidth: 1, justifyContent: 'center', alignItems: 'center' }}>
+                                        <Text style={{ fontSize: Height(10), fontFamily: font.POPPINS_SEMI_BOLD, color: color.contestText, }}>S</Text>
+                                    </View>
+                                    <Text style={{ fontSize: Height(10), fontFamily: font.POPPINS_SEMI_BOLD, color: color.contestText, marginLeft: Width(5) }}>Single</Text>
+                                </View>
+                                <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                                    <ContestThirdComponent width={Width(20)} height={Height(21)} />
+                                    <Text style={{ fontSize: Height(10), fontFamily: font.POPPINS_SEMI_BOLD, color: color.contestText, marginLeft: Width(5) }}>Guaranteed</Text>
+                                </View>
+                            </View>
+                            <View style={{ height: teamDown ? Height(85) : Height(185), backgroundColor: '#FEFAEF', width: Width(345), borderBottomLeftRadius: Width(10), borderBottomRightRadius: Width(10) }}>
+                                <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginHorizontal: Width(20), marginTop: Height(10) }}>
+                                    <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                                        <Text style={{ marginRight: Width(20), fontSize: Height(12), fontFamily: font.POPPINS_REGULAR, color: color.text }}>HBJHBCBB554</Text>
+                                        <Text style={{ fontSize: Height(12), fontFamily: font.POPPINS_REGULAR, color: color.text }}>T1</Text>
+                                    </View>
+                                    <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                                        <Text style={{ fontSize: Height(12), fontFamily: font.POPPINS_REGULAR, color: color.text, opacity: 0.6 }}>181</Text>
+                                        <Text style={{ marginLeft: Width(60), fontSize: Height(12), fontFamily: font.POPPINS_REGULAR, color: color.text, opacity: 0.6 }}>#2 -</Text>
+                                    </View>
+                                </View>
+                                <View style={{ height: Height(1), backgroundColor: '#C8C8C8', marginTop: Height(10) }} />
+                                <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginHorizontal: Width(20), marginTop: Height(5) }}>
+                                    <View>
+                                        <Text style={{ fontSize: Height(12), fontFamily: font.POPPINS_REGULAR, color: color.text }}>Joined With 1 Team</Text>
+                                        <View style={{ height: Height(18), width: Width(36), backgroundColor: '#D9D9D9', justifyContent: 'center', alignItems: "center", borderRadius: Width(5), marginTop: Height(5) }}>
+                                            <Text style={{ fontSize: Height(12), fontFamily: font.POPPINS_REGULAR, color: color.text }}>T1</Text>
+                                        </View>
+                                    </View>
+                                    <MaterialIcons name={teamDown ? 'keyboard-arrow-down' : 'keyboard-arrow-up'} size={Height(25)} onPress={() => setTeamDown(!teamDown)} />
+                                </View>
+                                {!teamDown ? <View style={{ height: Height(70), width: Width(300), backgroundColor: color.background, alignSelf: 'center', marginTop: Height(20), borderRadius: Width(10), borderWidth: Height(1), borderColor: '#CBCBCB' }}>
+                                    <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginHorizontal: Width(15), marginTop: Height(5) }}>
+                                        <Text style={{ fontSize: Height(12), fontFamily: font.POPPINS_REGULAR, color: color.text }}>Team 1</Text>
+                                        <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                                            <MaterialIcons name='edit' size={Height(20)} onPress={() => navigation.navigate('PlayerSelect')} />
+                                            <Ionicons name='repeat-sharp' size={Height(20)} style={{ marginLeft: Width(20) }} />
+                                        </View>
+                                    </View>
+                                    <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                                        <View style={{ marginLeft: Width(30), marginTop: Height(2) }}>
+                                            <Text style={{ fontSize: Height(12), fontFamily: font.POPPINS_REGULAR, color: color.text }}>Captain</Text>
+                                            <Text style={{ fontSize: Height(14), fontFamily: font.POPPINS_REGULAR, color: color.text }}>{captainName}</Text>
+                                        </View>
+                                        <View style={{ marginLeft: Width(20) }}>
+                                            <Text style={{ fontSize: Height(12), fontFamily: font.POPPINS_REGULAR, color: color.text }}>Vice Captain</Text>
+                                            <Text style={{ fontSize: Height(14), fontFamily: font.POPPINS_REGULAR, color: color.text }}>{viceCaptainName}</Text>
+                                        </View>
+                                    </View>
+                                </View> : null}
+                            </View>
+
+                        </TouchableOpacity>
                     </SafeAreaView>
                 </>
             )
@@ -540,7 +671,55 @@ const CreateContestScreen = () => {
                                 <Text style={{ fontSize: Height(14), fontFamily: 'Poppins-Medium', color: index === 3 ? 'white' : 'rgba(255, 255, 255, 0.6)' }}>My Teams</Text>
                             </TouchableOpacity>
                         </View>
-                        <Text>My Teams</Text>
+
+                        <TouchableOpacity style={{ marginTop: Height(15) }} >
+                            <ImageBackground source={require('../assets/images/myteam.png')} style={{ height: Height(160), width: Width(350), alignSelf: 'center' }}>
+                                <View style={{ height: Height(35), backgroundColor: 'rgba(0, 0, 0, 0.3)', borderTopLeftRadius: Width(10), borderTopRightRadius: Width(10), flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', paddingHorizontal: Width(20) }}>
+                                    <Text style={{ fontSize: Height(12), fontFamily: font.POPPINS_MEDIUM, color: color.background }}>CSCJ656546 (T1)</Text>
+                                    <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                                        <MaterialIcons name='content-copy' size={Height(20)} color={color.background} />
+                                        <MaterialIcons name='edit' size={Height(20)} color={color.background} style={{ marginLeft: Width(10) }} onPress={() => navigation.navigate('PlayerSelect')} />
+                                        <MaterialIcons name='share' size={Height(20)} color={color.background} style={{ marginLeft: Width(10) }} />
+                                    </View>
+                                </View>
+                                <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginHorizontal: Width(20), marginTop: Height(10) }}>
+                                    <View>
+                                        <Text style={{ fontSize: Height(12), fontFamily: font.POPPINS_MEDIUM, color: color.background }}>Points</Text>
+                                        <Text style={{ fontSize: Height(16), fontFamily: font.POPPINS_SEMI_BOLD, color: color.background }}>299</Text>
+                                    </View>
+                                    <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                                        <View>
+                                            <Image source={captainImage} style={{ height: Height(70), width: Width(70) }} />
+                                            <View style={{ height: Height(20), width: Width(65), backgroundColor: color.background, justifyContent: 'center', alignItems: 'center', borderRadius: Width(5) }}>
+                                                <Text style={{ fontSize: Height(8), fontFamily: font.POPPINS_MEDIUM, color: color.text }}>{captainName}</Text>
+                                            </View>
+                                            <View style={{ height: Height(22), width: Height(22), borderRadius: Height(22) / 2, backgroundColor: color.background, justifyContent: 'center', alignItems: 'center', position: 'absolute', marginRight: Width(50), }}>
+                                                <Text style={{ fontSize: Height(10), fontFamily: 'Poppins-Medium', color: color.text }}>C</Text>
+                                            </View>
+                                        </View>
+                                        <View style={{ marginLeft: Width(15) }}>
+                                            <Image source={viceCaptainImage} style={{ height: Height(70), width: Width(70) }} />
+                                            <View style={{ height: Height(20), width: Width(65), backgroundColor: color.background, justifyContent: 'center', alignItems: 'center', borderRadius: Width(5) }}>
+                                                <Text style={{ fontSize: Height(8), fontFamily: font.POPPINS_MEDIUM, color: color.text }}>{viceCaptainName}</Text>
+                                            </View>
+                                            <View style={{ height: Height(22), width: Height(22), borderRadius: Height(22) / 2, backgroundColor: color.background, justifyContent: 'center', alignItems: 'center', position: 'absolute', marginRight: Width(50), }}>
+                                                <Text style={{ fontSize: Height(10), fontFamily: 'Poppins-Medium', color: color.text }}>VC</Text>
+                                            </View>
+                                        </View>
+                                    </View>
+                                </View>
+                                <View style={{ height: Height(35), backgroundColor: color.background, borderBottomRightRadius: Width(10), borderBottomLeftRadius: Width(10), flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', paddingHorizontal: Width(20), marginTop: Height(5) }}>
+                                    {/* <Text style={{ fontSize: Height(12), fontFamily: 'Poppins-Medium', color: color.text, opacity: 0.6 }}>WK<Text> {getSelectedPlayersByCategory('WK').length}</Text></Text>
+                                    <Text style={{ fontSize: Height(12), fontFamily: 'Poppins-Medium', color: color.text, opacity: 0.6 }}>BAT<Text> {getSelectedPlayersByCategory('BAT').length}</Text></Text>
+                                    <Text style={{ fontSize: Height(12), fontFamily: 'Poppins-Medium', color: color.text, opacity: 0.6 }}>AR<Text> {getSelectedPlayersByCategory('AR').length}</Text> </Text>
+                                    <Text style={{ fontSize: Height(12), fontFamily: 'Poppins-Medium', color: color.text, opacity: 0.6 }}>BOWL<Text> {getSelectedPlayersByCategory('BOWL').length}</Text></Text> */}
+                                    <Text style={{ fontSize: Height(12), fontFamily: 'Poppins-Medium', color: color.text, opacity: 0.6 }}>WK<Text>0 </Text></Text>
+                                    <Text style={{ fontSize: Height(12), fontFamily: 'Poppins-Medium', color: color.text, opacity: 0.6 }}>BAT<Text> 0</Text></Text>
+                                    <Text style={{ fontSize: Height(12), fontFamily: 'Poppins-Medium', color: color.text, opacity: 0.6 }}>AR<Text>0 </Text> </Text>
+                                    <Text style={{ fontSize: Height(12), fontFamily: 'Poppins-Medium', color: color.text, opacity: 0.6 }}>BOWL<Text> 0</Text></Text>
+                                </View>
+                            </ImageBackground>
+                        </TouchableOpacity>
                     </SafeAreaView>
                 </>
             )
@@ -729,25 +908,5 @@ const styles = StyleSheet.create({
         backgroundColor: 'white',
         borderRadius: Width(20),
         justifyContent: 'center'
-    },
-    button: {
-        borderRadius: 20,
-        padding: 10,
-        elevation: 2,
-    },
-    buttonOpen: {
-        backgroundColor: '#F194FF',
-    },
-    buttonClose: {
-        backgroundColor: '#2196F3',
-    },
-    textStyle: {
-        color: 'white',
-        fontWeight: 'bold',
-        textAlign: 'center',
-    },
-    modalText: {
-        marginBottom: 15,
-        textAlign: 'center',
     },
 })

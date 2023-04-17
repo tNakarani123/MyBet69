@@ -231,7 +231,7 @@ const MyMatchesScreen = () => {
                         <ScrollView>
                             {CompleteMatch.map((item, i) => {
                                 return (
-                                    <TouchableOpacity key={i} style={{ height: Height(180), width: Width(390), backgroundColor: 'white', borderRadius: Width(10), marginTop: Height(20), alignSelf: 'center' }} onPress={() => navigation.navigate('CreateContest')}>
+                                    <TouchableOpacity key={i} style={{ height: Height(180), width: Width(390), backgroundColor: 'white', borderRadius: Width(10), marginTop: Height(20), alignSelf: 'center' }} onPress={() => navigation.navigate('CompletedMatches', { data: item })}>
                                         <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginHorizontal: Width(20), marginTop: Height(5) }}>
                                             <Text style={{ fontSize: Height(10), fontFamily: 'Poppins-Medium', color: 'black' }}>{item.matchName}</Text>
 
