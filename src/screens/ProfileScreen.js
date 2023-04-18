@@ -19,7 +19,6 @@ import Octicons from 'react-native-vector-icons/Octicons'
 import Feather from 'react-native-vector-icons/Feather'
 import ReferComponent from '../assets/svg/Refer'
 import WhatsAppComponent from '../assets/svg/WhatsApp'
-
 const scrollData = [
     {
         id: 1,
@@ -62,12 +61,23 @@ const ProfileScreen = () => {
             />
             <SafeAreaView style={{ flex: 1 }}>
                 <View style={{}}>
-                    <View style={{ height: Height(60), backgroundColor: 'white', borderBottomLeftRadius: Width(20), borderBottomRightRadius: Width(20), flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', paddingHorizontal: Width(25), zIndex: 0, position: 'absolute', width: '100%' }}>
-                        <MyBetComponent width={Width(102)} height={Height(15)} />
-                        <TouchableOpacity onPress={() => navigation.navigate('Notification')}>
-                            <NotificationComponent size={Height(25)} />
-                        </TouchableOpacity>
-                    </View>
+                    <DropShadow style={{
+                        shadowColor: "#000000",
+                        shadowOffset: {
+                            width: 0,
+                            height: 3,
+                        },
+                        shadowOpacity: 0.17,
+                        shadowRadius: 3.05,
+                        elevation: 4
+                    }}>
+                        <View style={{ height: Height(60), backgroundColor: 'white', borderBottomLeftRadius: Width(20), borderBottomRightRadius: Width(20), flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', paddingHorizontal: Width(25), zIndex: 0, position: 'absolute', width: '100%' }}>
+                            <MyBetComponent width={Width(102)} height={Height(15)} />
+                            <TouchableOpacity onPress={() => navigation.navigate('Notification')}>
+                                <NotificationComponent size={Height(25)} />
+                            </TouchableOpacity>
+                        </View>
+                    </DropShadow>
                     <View style={{ height: Height(150), position: 'absolute', zIndex: -1, position: 'relative', }}>
                         <LinearGradient colors={['#5E5ECE', '#A399EF']} style={{ flex: 1 }} start={{ x: 0, y: 0 }}
                             end={{ x: 1, y: 1 }}>

@@ -8,8 +8,11 @@ import { useNavigation } from '@react-navigation/native'
 import Ionicons from 'react-native-vector-icons/Ionicons'
 import NotificationComponent from '../assets/svg/Notification'
 import font from '../utils/fonts'
+const NotificationSettingScreen = () => {
+    const navigation = useNavigation()
+    const [isEnabled, setIsEnabled] = useState(false);
+    const toggleSwitch = () => setIsEnabled(previousState => !previousState);
 
-const WalletScreen = () => {
     return (
         <>
             <SafeAreaView
@@ -34,18 +37,28 @@ const WalletScreen = () => {
                                 <NotificationComponent size={Height(25)} />
                             </TouchableOpacity>
                         </View>
-                        <Text style={{ textAlign: 'center', fontSize: Height(16), fontFamily: 'Poppins-Bold', marginTop: Height(10) }}>Wallet</Text>
+                        <Text style={{ textAlign: 'center', fontSize: Height(16), fontFamily: 'Poppins-Bold', marginTop: Height(10) }}>Notification</Text>
                     </View>
                 </DropShadow>
-                <View style={{ width: Width(315), height: Height(100), backgroundColor: color.background, alignSelf: 'center', borderRadius: Width(20), marginTop: Height(25) }}>
-                    <Text style={{ fontSize: Height(16), fontFamily: font.POPPINS_SEMI_BOLD, textAlign: 'center', marginTop: Height(20) }}>Total Amount</Text>
-                    <Text style={{ fontSize: Height(16), fontFamily: font.POPPINS_SEMI_BOLD, textAlign: 'center', marginTop: Height(10) }}>₹ 700</Text>
-                </View>
+
+
+                <TouchableOpacity style={{ flexDirection: 'row', alignItems: 'center', height: Height(50), width: Width(390), borderWidth: Height(3), marginTop: Height(20), alignSelf: 'center', borderRadius: Width(10), borderColor: '#9F9F9F', justifyContent: 'space-between', paddingHorizontal: Width(20) }}>
+                    <Text style={{ fontSize: Height(16), fontFamily: font.POPPINS_REGULAR, color: color.text }}>Allow SMS Notification</Text>
+                    <Switch
+                        trackColor={{ false: '#767577', true: '#81b0ff' }}
+                        thumbColor={isEnabled ? '#f5dd4b' : '#f4f3f4'}
+                        ios_backgroundColor="#3e3e3e"
+                        onValueChange={toggleSwitch}
+                        value={isEnabled}
+                        style={{ transform: [{ scaleX: .8 }, { scaleY: .8 }] }}
+                    />
+                </TouchableOpacity>
+
             </SafeAreaView>
         </>
     )
 }
 
-export default WalletScreen
+export default NotificationSettingScreen
 
 const styles = StyleSheet.create({})

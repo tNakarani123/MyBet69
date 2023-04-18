@@ -21,6 +21,17 @@ import JoinContestScreen from '../screens/JoinContestScreen'
 import CompletedMatchesScreen from '../screens/CompletedMatchesScreen'
 import EditProfileScreen from '../screens/EditProfileScreen'
 import SettingScreen from '../screens/SettingScreen'
+import NewInfoScreen from '../screens/NewInfoEmailScreen'
+import NewInfoEmailScreen from '../screens/NewInfoEmailScreen'
+import NewInfoMobileScreen from '../screens/NewInfoMobileScreen'
+import VerifyOTPScreen from '../screens/VerifyOTPScreen'
+import CommunityGuidelineScreen from '../screens/CommunityGuidelineScreen'
+import NotificationSettingScreen from '../screens/NotificationSettingScreen'
+import LegalityScreen from '../screens/LegalityScreen'
+import AboutUsScreen from '../screens/AboutUsScreen'
+import PrivacySettingScreen from '../screens/PrivacySettingScreen'
+import TermsConditionScreen from '../screens/TermsConditionScreen'
+import ResponsiblePlayScreen from '../screens/ResponsiblePlayScreen'
 
 const Stack = createNativeStackNavigator()
 const StackNavigation = () => {
@@ -46,6 +57,16 @@ const StackNavigation = () => {
             <Stack.Screen name='CompletedMatches' component={CompletedMatchesScreen} />
             <Stack.Screen name='EditProfile' component={EditProfileScreen} />
             <Stack.Screen name='Setting' component={SettingScreen} />
+            <Stack.Screen name='NewInfoEmail' component={NewInfoEmailScreen} />
+            <Stack.Screen name='NewInfoMobile' component={NewInfoMobileScreen} />
+            <Stack.Screen name='VerifyOTP' component={VerifyOTPScreen} />
+            <Stack.Screen name='CommunityGuideline' component={CommunityGuidelineScreen} />
+            <Stack.Screen name='NotificationSetting' component={NotificationSettingScreen} />
+            <Stack.Screen name='Legality' component={LegalityScreen} />
+            <Stack.Screen name='AboutUs' component={AboutUsScreen} />
+            <Stack.Screen name='PrivacySetting' component={PrivacySettingScreen} />
+            <Stack.Screen name='TermsCondition' component={TermsConditionScreen} />
+            <Stack.Screen name='ResponsiblePay' component={ResponsiblePlayScreen} />
         </Stack.Navigator>
     )
 }
