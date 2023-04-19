@@ -12,6 +12,7 @@ import UserComponent from '../assets/svg/User'
 import { useNavigation } from '@react-navigation/native'
 import color from '../utils/color'
 import font from '../utils/fonts'
+import { globalStyles } from '../utils/globalStyle'
 const MoreInfoScreen = () => {
     const [pickerResponse, setPickerResponse] = useState(null);
     const navigation = useNavigation()
@@ -34,9 +35,9 @@ const MoreInfoScreen = () => {
     const profilepic = pickerResponse?.assets && pickerResponse.assets[0].uri;
     return (
 
-        <ImageBackground style={styles.imageBack} source={require('../assets/images/background.png')}>
-            <SafeAreaView style={styles.container}>
-                <View style={styles.logo}>
+        <ImageBackground style={globalStyles.container} source={require('../assets/images/background.png')}>
+            <SafeAreaView style={globalStyles.container}>
+                <View style={globalStyles.logo}>
                     <LogoComponent height={Height(100)} width={Width(100)} />
                 </View>
                 <View style={styles.mainView}>
@@ -48,7 +49,7 @@ const MoreInfoScreen = () => {
 
                     <KeyboardAvoidingView
                         behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
-                        style={{ flex: 1 }}
+                        style={globalStyles.container}
                         enabled
                         keyboardVerticalOffset={100}
                     >
@@ -73,18 +74,18 @@ const MoreInfoScreen = () => {
                                         />
                                 }
                             </TouchableOpacity>
-                            <View style={styles.textView}>
+                            <View style={globalStyles.textView}>
                                 <UserComponent size={Height(35)} />
-                                <View style={styles.lineView} />
-                                <TextInput style={styles.textInput} value={userName} onChangeText={(val) => setUserName(val)} />
+                                <View style={globalStyles.lineView} />
+                                <TextInput style={globalStyles.textInput} value={userName} onChangeText={(val) => setUserName(val)} />
                             </View>
-                            <View style={styles.textView}>
+                            <View style={globalStyles.textView}>
                                 <EmailComponent size={Height(35)} />
-                                <View style={styles.lineView} />
-                                <TextInput style={styles.textInput} value={email} onChangeText={(val) => setEmail(val)} />
+                                <View style={globalStyles.lineView} />
+                                <TextInput style={globalStyles.textInput} value={email} onChangeText={(val) => setEmail(val)} />
                             </View>
-                            <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Tab')}>
-                                <Text style={styles.buttonText}>Save Detail</Text>
+                            <TouchableOpacity style={globalStyles.button} onPress={() => navigation.navigate('Tab')}>
+                                <Text style={globalStyles.buttonText}>Save Detail</Text>
                             </TouchableOpacity>
                         </ScrollView>
                     </KeyboardAvoidingView>
@@ -97,16 +98,6 @@ const MoreInfoScreen = () => {
 export default MoreInfoScreen
 
 const styles = StyleSheet.create({
-    imageBack: {
-        flex: 1
-    },
-    container: {
-        flex: 1
-    },
-    logo: {
-        alignItems: 'center',
-        marginTop: Height(42)
-    },
     mainView: {
         height: Height(800),
         backgroundColor: color.background,
@@ -140,44 +131,4 @@ const styles = StyleSheet.create({
         alignSelf: 'center',
         marginTop: Height(20),
     },
-    textView: {
-        height: Height(60),
-        width: Width(390),
-        borderWidth: Height(3),
-        borderColor: color.primaryBorder,
-        borderRadius: Width(10),
-        alignSelf: 'center',
-        marginTop: Height(25),
-        flexDirection: 'row',
-        alignItems: 'center',
-        paddingHorizontal: Width(28)
-    },
-    lineView: {
-        height: Height(35),
-        width: 1,
-        backgroundColor: color.text,
-        marginLeft: Width(12)
-    },
-    textInput: {
-        marginLeft: Width(25),
-        fontSize: Height(20),
-        fontFamily: font.POPPINS_REGULAR,
-        color: color.text,
-        width: Width(250)
-    },
-    button: {
-        height: Height(60),
-        width: Width(390),
-        backgroundColor: color.primaryButton,
-        borderRadius: Width(10),
-        alignSelf: 'center',
-        justifyContent: 'center',
-        alignItems: 'center',
-        marginTop: Height(30)
-    },
-    buttonText: {
-        fontSize: Height(20),
-        fontFamily: font.POPPINS_SEMI_BOLD,
-        color: color.background
-    }
 })

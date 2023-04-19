@@ -5,6 +5,7 @@ import NotificationComponent from '../assets/svg/Notification'
 import { Height, Width } from '../utils/responsive'
 import { useNavigation } from '@react-navigation/native'
 import NotyLogoComponent from '../assets/svg/NotyLogo'
+import { globalStyles } from '../utils/globalStyle'
 
 const notyData = [
     {
@@ -73,7 +74,7 @@ const notyData = [
 const NotificationScreen = () => {
     const navigation = useNavigation()
     return (
-        <SafeAreaView style={{ flex: 1 }}>
+        <SafeAreaView style={globalStyles.container}>
             <View style={{ height: Height(60), borderBottomLeftRadius: Width(20), borderBottomRightRadius: Width(20), flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', paddingHorizontal: Width(25) }}>
                 <MyBetComponent width={Width(102)} height={Height(15)} />
                 <TouchableOpacity onPress={() => navigation.navigate('Notification')}>

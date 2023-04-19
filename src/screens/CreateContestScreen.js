@@ -18,6 +18,7 @@ import Octicons from 'react-native-vector-icons/Octicons'
 import ContestCodeComponent from '../assets/svg/ContestCode'
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons'
 import { team1Players, team2Players } from '../utils/data'
+import { globalStyles } from '../utils/globalStyle'
 const discount = [
     {
         id: 1,
@@ -517,19 +518,10 @@ const CreateContestScreen = () => {
             return (
                 <>
                     <SafeAreaView
-                        style={{ flex: 0, backgroundColor: 'white' }}
+                        style={globalStyles.safeView}
                     />
-                    <SafeAreaView style={{ flex: 1 }}>
-                        <DropShadow style={{
-                            shadowColor: "#000000",
-                            shadowOffset: {
-                                width: 0,
-                                height: 3,
-                            },
-                            shadowOpacity: 0.17,
-                            shadowRadius: 3.05,
-                            elevation: 4
-                        }}>
+                    <SafeAreaView style={globalStyles.container}>
+                        <DropShadow style={globalStyles.shadow}>
                             <View style={{ height: Height(130), borderBottomLeftRadius: Width(20), borderBottomRightRadius: Width(20), paddingHorizontal: Width(25), backgroundColor: 'white', zIndex: 0, position: 'absolute', width: Width(430) }}>
                                 <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginTop: Height(20) }}>
                                     <Ionicons name='arrow-back' size={Height(30)} onPress={() => navigation.goBack()} />
@@ -631,19 +623,10 @@ const CreateContestScreen = () => {
             return (
                 <>
                     <SafeAreaView
-                        style={{ flex: 0, backgroundColor: 'white' }}
+                        style={globalStyles.safeView}
                     />
-                    <SafeAreaView style={{ flex: 1 }}>
-                        <DropShadow style={{
-                            shadowColor: "#000000",
-                            shadowOffset: {
-                                width: 0,
-                                height: 3,
-                            },
-                            shadowOpacity: 0.17,
-                            shadowRadius: 3.05,
-                            elevation: 4
-                        }}>
+                    <SafeAreaView style={globalStyles.container}>
+                        <DropShadow style={globalStyles.shadow}>
                             <View style={{ height: Height(130), borderBottomLeftRadius: Width(20), borderBottomRightRadius: Width(20), paddingHorizontal: Width(25), backgroundColor: 'white', zIndex: 0, position: 'absolute', width: Width(430) }}>
                                 <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginTop: Height(20) }}>
                                     <Ionicons name='arrow-back' size={Height(30)} onPress={() => navigation.goBack()} />
@@ -727,19 +710,10 @@ const CreateContestScreen = () => {
             return (
                 <>
                     <SafeAreaView
-                        style={{ flex: 0, backgroundColor: 'white' }}
+                        style={globalStyles.safeView}
                     />
-                    <SafeAreaView style={{ flex: 1 }}>
-                        <DropShadow style={{
-                            shadowColor: "#000000",
-                            shadowOffset: {
-                                width: 0,
-                                height: 3,
-                            },
-                            shadowOpacity: 0.17,
-                            shadowRadius: 3.05,
-                            elevation: 4
-                        }}>
+                    <SafeAreaView style={globalStyles.container}>
+                        <DropShadow style={globalStyles.shadow}>
                             <View style={{ height: Height(130), borderBottomLeftRadius: Width(20), borderBottomRightRadius: Width(20), paddingHorizontal: Width(25), backgroundColor: 'white', zIndex: 0, position: 'absolute', width: Width(430) }}>
                                 <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginTop: Height(20) }}>
                                     <Ionicons name='arrow-back' size={Height(30)} onPress={() => navigation.goBack()} />

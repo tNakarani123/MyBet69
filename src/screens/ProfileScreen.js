@@ -19,6 +19,7 @@ import Octicons from 'react-native-vector-icons/Octicons'
 import Feather from 'react-native-vector-icons/Feather'
 import ReferComponent from '../assets/svg/Refer'
 import WhatsAppComponent from '../assets/svg/WhatsApp'
+import { globalStyles } from '../utils/globalStyle'
 const scrollData = [
     {
         id: 1,
@@ -57,20 +58,11 @@ const ProfileScreen = () => {
     return (
         <>
             <SafeAreaView
-                style={{ flex: 0, backgroundColor: 'white' }}
+                style={globalStyles.safeView}
             />
-            <SafeAreaView style={{ flex: 1 }}>
+            <SafeAreaView style={globalStyles.container}>
                 <View style={{}}>
-                    <DropShadow style={{
-                        shadowColor: "#000000",
-                        shadowOffset: {
-                            width: 0,
-                            height: 3,
-                        },
-                        shadowOpacity: 0.17,
-                        shadowRadius: 3.05,
-                        elevation: 4
-                    }}>
+                    <DropShadow style={globalStyles.shadow}>
                         <View style={{ height: Height(60), backgroundColor: 'white', borderBottomLeftRadius: Width(20), borderBottomRightRadius: Width(20), flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', paddingHorizontal: Width(25), zIndex: 0, position: 'absolute', width: '100%' }}>
                             <MyBetComponent width={Width(102)} height={Height(15)} />
                             <TouchableOpacity onPress={() => navigation.navigate('Notification')}>
@@ -79,7 +71,7 @@ const ProfileScreen = () => {
                         </View>
                     </DropShadow>
                     <View style={{ height: Height(150), position: 'absolute', zIndex: -1, position: 'relative', }}>
-                        <LinearGradient colors={['#5E5ECE', '#A399EF']} style={{ flex: 1 }} start={{ x: 0, y: 0 }}
+                        <LinearGradient colors={['#5E5ECE', '#A399EF']} style={globalStyles.container} start={{ x: 0, y: 0 }}
                             end={{ x: 1, y: 1 }}>
                             <View style={{ alignSelf: 'flex-end', marginTop: Height(120), flexDirection: 'row', marginRight: Width(20) }}>
                                 <MaterialCommunityIcons name='cog' size={Height(25)} color={color.background} onPress={() => navigation.navigate('Setting')} />
@@ -97,20 +89,20 @@ const ProfileScreen = () => {
                 </View>
                 <Text style={{ fontSize: Height(16), fontFamily: font.POPPINS_SEMI_BOLD, marginTop: Height(38), textAlign: 'right', marginRight: Width(20) }}>Skill Score: 2356</Text>
                 <ScrollView>
-                    <View style={styles.textView}>
+                    <View style={globalStyles.textView}>
                         <UserComponent size={Height(35)} />
-                        <View style={styles.lineView} />
-                        <Text style={styles.textInput}>Darshan jiyani</Text>
+                        <View style={globalStyles.lineView} />
+                        <Text style={globalStyles.textInput}>Darshan jiyani</Text>
                     </View>
-                    <View style={styles.textView}>
+                    <View style={globalStyles.textView}>
                         <EmailComponent size={Height(35)} />
-                        <View style={styles.lineView} />
-                        <Text style={styles.textInput}>jiyanid9@gmail.com</Text>
+                        <View style={globalStyles.lineView} />
+                        <Text style={globalStyles.textInput}>jiyanid9@gmail.com</Text>
                     </View>
-                    <View style={styles.textView}>
+                    <View style={globalStyles.textView}>
                         <PhoneComponent size={Height(35)} />
-                        <View style={styles.lineView} />
-                        <Text style={styles.textInput}>+91 6355126777</Text>
+                        <View style={globalStyles.lineView} />
+                        <Text style={globalStyles.textInput}>+91 6355126777</Text>
                     </View>
                     <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginHorizontal: Width(20), marginTop: Height(20) }}>
                         <Text style={{ fontSize: Height(14), fontFamily: font.POPPINS_SEMI_BOLD, color: color.text }}>Recently Played :</Text>
@@ -124,15 +116,7 @@ const ProfileScreen = () => {
                             scrollData.map((item, i) => {
                                 return (
                                     <DropShadow
-                                        style={{
-                                            shadowColor: "#000",
-                                            shadowOffset: {
-                                                width: 0,
-                                                height: 2,
-                                            },
-                                            shadowOpacity: 0.25,
-                                            shadowRadius: 3.84,
-                                        }}
+                                        style={globalStyles.shadow}
                                         key={i}  >
                                         <TouchableOpacity style={{ height: Height(145), width: Width(335), backgroundColor: 'white', marginLeft: Width(50), borderRadius: Width(10) }}>
                                             <Text style={{ fontSize: Height(10), fontFamily: 'Poppins-Regular', color: 'black', marginTop: Height(5), marginLeft: Width(10) }}>{item.matchName}</Text>
@@ -212,29 +196,4 @@ const ProfileScreen = () => {
 export default ProfileScreen
 
 const styles = StyleSheet.create({
-    textView: {
-        height: Height(60),
-        width: Width(390),
-        borderWidth: Height(3),
-        borderColor: color.primaryBorder,
-        borderRadius: Width(10),
-        alignSelf: 'center',
-        marginTop: Height(15),
-        flexDirection: 'row',
-        alignItems: 'center',
-        paddingHorizontal: Width(28)
-    },
-    lineView: {
-        height: Height(35),
-        width: 1,
-        backgroundColor: color.text,
-        marginLeft: Width(12)
-    },
-    textInput: {
-        marginLeft: Width(25),
-        fontSize: Height(20),
-        fontFamily: font.POPPINS_REGULAR,
-        color: color.text,
-        width: Width(250)
-    },
 })

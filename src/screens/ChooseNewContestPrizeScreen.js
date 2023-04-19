@@ -10,6 +10,7 @@ import font from '../utils/fonts'
 import color from '../utils/color'
 import AntDesign from 'react-native-vector-icons/AntDesign'
 import SimpleLineIcons from 'react-native-vector-icons/SimpleLineIcons'
+import { globalStyles } from '../utils/globalStyle'
 const ChooseNewContestPrizeScreen = () => {
     const navigation = useNavigation()
     const [winnersToShow, setWinnersToShow] = useState(0);
@@ -91,19 +92,10 @@ const ChooseNewContestPrizeScreen = () => {
     return (
         <>
             <SafeAreaView
-                style={{ flex: 0, backgroundColor: 'white' }}
+                style={globalStyles.safeView}
             />
             <SafeAreaView>
-                <DropShadow style={{
-                    shadowColor: "#000000",
-                    shadowOffset: {
-                        width: 0,
-                        height: 3,
-                    },
-                    shadowOpacity: 0.17,
-                    shadowRadius: 3.05,
-                    elevation: 4
-                }}>
+                <DropShadow style={globalStyles.shadow}>
                     <View style={{ height: Height(165), borderBottomLeftRadius: Width(20), borderBottomRightRadius: Width(20), paddingHorizontal: Width(25), backgroundColor: 'white' }}>
                         <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginTop: Height(20) }}>
                             <Ionicons name='arrow-back' size={Height(30)} onPress={() => navigation.goBack()} />
@@ -112,7 +104,7 @@ const ChooseNewContestPrizeScreen = () => {
                                 <NotificationComponent size={Height(25)} />
                             </TouchableOpacity>
                         </View>
-                        <Text style={{ textAlign: 'center', fontSize: Height(16), fontFamily: 'Poppins-Bold', marginTop: Height(10) }}>Create New Contest</Text>
+                        <Text style={globalStyles.headerText}>Create New Contest</Text>
                         <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginHorizontal: Width(15), marginTop: Height(15) }}>
                             <Image source={require('../assets/images/gt.png')} style={{ width: Width(65), height: Height(48) }} />
                             <Text style={{ fontSize: Height(10), fontFamily: 'Poppins-Medium', color: '#FF0000', marginLeft: Width(8) }}>23m</Text>

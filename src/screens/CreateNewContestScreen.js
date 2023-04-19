@@ -11,6 +11,7 @@ import color from '../utils/color'
 import ContestCupComponent from '../assets/svg/ContestCup'
 import CheckEmptyComponent from '../assets/svg/CheckEmpty'
 import CheckComponent from '../assets/svg/Check'
+import { globalStyles } from '../utils/globalStyle'
 const CreateNewContestScreen = () => {
     const navigation = useNavigation()
     const [check, setCheck] = useState(false)
@@ -25,19 +26,10 @@ const CreateNewContestScreen = () => {
     return (
         <>
             <SafeAreaView
-                style={{ flex: 0, backgroundColor: 'white' }}
+                style={globalStyles.safeView}
             />
-            <SafeAreaView style={{ flex: 1 }}>
-                <DropShadow style={{
-                    shadowColor: "#000000",
-                    shadowOffset: {
-                        width: 0,
-                        height: 3,
-                    },
-                    shadowOpacity: 0.17,
-                    shadowRadius: 3.05,
-                    elevation: 4
-                }}>
+            <SafeAreaView style={globalStyles.container}>
+                <DropShadow style={globalStyles.shadow}>
                     <View style={{ height: Height(165), borderBottomLeftRadius: Width(20), borderBottomRightRadius: Width(20), paddingHorizontal: Width(25), backgroundColor: 'white' }}>
                         <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginTop: Height(20) }}>
                             <Ionicons name='arrow-back' size={Height(30)} onPress={() => navigation.goBack()} />
@@ -46,7 +38,7 @@ const CreateNewContestScreen = () => {
                                 <NotificationComponent size={Height(25)} />
                             </TouchableOpacity>
                         </View>
-                        <Text style={{ textAlign: 'center', fontSize: Height(16), fontFamily: 'Poppins-Bold', marginTop: Height(10) }}>Create New Contest</Text>
+                        <Text style={globalStyles.headerText}>Create New Contest</Text>
                         <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginHorizontal: Width(15), marginTop: Height(15) }}>
                             <Image source={require('../assets/images/gt.png')} style={{ width: Width(65), height: Height(48) }} />
                             <Text style={{ fontSize: Height(10), fontFamily: 'Poppins-Medium', color: '#FF0000', marginLeft: Width(8) }}>23m</Text>
@@ -54,19 +46,19 @@ const CreateNewContestScreen = () => {
                         </View>
                     </View>
                 </DropShadow>
-                <View style={styles.textView}>
+                <View style={globalStyles.textView}>
                     <ContestCupComponent size={Height(25)} color={'#5556CA'} />
-                    <View style={styles.lineView} />
+                    <View style={globalStyles.lineView} />
                     <TextInput style={styles.textInput} maxLength={10} placeholder='Contest Name' placeholderTextColor='#767676' onChangeText={(val) => setContestName(val)} value={contestName} />
                 </View>
-                <View style={styles.textView}>
+                <View style={globalStyles.textView}>
                     <ContestCupComponent size={Height(25)} color={'#5556CA'} />
-                    <View style={styles.lineView} />
+                    <View style={globalStyles.lineView} />
                     <TextInput keyboardType='number-pad' style={styles.textInput} maxLength={10} placeholder='Contest Size' placeholderTextColor='#767676' onChangeText={(val) => setContestSize(val)} value={contestSize} />
                 </View>
-                <View style={styles.textView}>
+                <View style={globalStyles.textView}>
                     <ContestCupComponent size={Height(25)} color={'#5556CA'} />
-                    <View style={styles.lineView} />
+                    <View style={globalStyles.lineView} />
                     <TextInput keyboardType='number-pad' style={styles.textInput} maxLength={10} placeholder='Entry Price' placeholderTextColor='#767676' onChangeText={(val) => setEntryPrize(val)} value={entryPrize} />
                 </View>
 
@@ -97,29 +89,4 @@ const CreateNewContestScreen = () => {
 export default CreateNewContestScreen
 
 const styles = StyleSheet.create({
-    textView: {
-        height: Height(60),
-        width: Width(390),
-        borderWidth: Height(3),
-        borderColor: color.primaryBorder,
-        borderRadius: Width(10),
-        alignSelf: 'center',
-        marginTop: Height(25),
-        flexDirection: 'row',
-        alignItems: 'center',
-        paddingHorizontal: Width(28)
-    },
-    lineView: {
-        height: Height(35),
-        width: 1,
-        backgroundColor: color.text,
-        marginLeft: Width(12)
-    },
-    textInput: {
-        marginLeft: Width(25),
-        fontSize: Height(20),
-        fontFamily: font.POPPINS_REGULAR,
-        color: color.text,
-        width: Width(250)
-    },
 })

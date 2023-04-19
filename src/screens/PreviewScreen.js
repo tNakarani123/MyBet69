@@ -6,6 +6,7 @@ import MyBetComponent from '../assets/svg/MyBet'
 import NotificationComponent from '../assets/svg/Notification'
 import { Height, Width } from '../utils/responsive'
 import Ionicons from 'react-native-vector-icons/Ionicons'
+import { globalStyles } from '../utils/globalStyle'
 const PreviewScreen = () => {
 
 
@@ -51,23 +52,14 @@ const PreviewScreen = () => {
     console.log(findTeam('Mumbai Indians').length);
     console.log(findTeam('Gujrat Titans').length);
     return (
-        <ImageBackground source={require('../assets/images/preview.png')} style={{ flex: 1 }}>
+        <ImageBackground source={require('../assets/images/preview.png')} style={globalStyles.container}>
             <SafeAreaView
-                style={{ flex: 0, backgroundColor: 'white' }}
+                style={globalStyles.safeView}
             />
-            <SafeAreaView style={{ flex: 1 }}>
+            <SafeAreaView style={globalStyles.container}>
 
                 <View style={{}}>
-                    <DropShadow style={{
-                        shadowColor: "#000000",
-                        shadowOffset: {
-                            width: 0,
-                            height: 3,
-                        },
-                        shadowOpacity: 0.17,
-                        shadowRadius: 3.05,
-                        elevation: 4
-                    }}>
+                    <DropShadow style={globalStyles.shadow}>
                         <View style={{ height: Height(165), borderBottomLeftRadius: Width(20), borderBottomRightRadius: Width(20), paddingHorizontal: Width(25), backgroundColor: 'white', zIndex: 0, position: 'absolute', width: Width(430) }}>
                             <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginTop: Height(20) }}>
                                 <Ionicons name='arrow-back' size={Height(30)} onPress={() => navigation.goBack()} color='black' />
@@ -76,7 +68,7 @@ const PreviewScreen = () => {
                                     <Ionicons name='arrow-back' size={Height(30)} color='white' />
                                 </TouchableOpacity>
                             </View>
-                            <Text style={{ textAlign: 'center', fontSize: Height(16), fontFamily: 'Poppins-Bold', marginTop: Height(10) }}>Create Team</Text>
+                            <Text style={globalStyles.headerText}>Create Team</Text>
                             <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginHorizontal: Width(15), marginTop: Height(15) }}>
                                 <Image source={require('../assets/images/gt.png')} style={{ width: Width(65), height: Height(48) }} />
                                 <Text style={{ fontSize: Height(10), fontFamily: 'Poppins-Medium', color: '#FF0000', marginLeft: Width(8) }}>23m</Text>

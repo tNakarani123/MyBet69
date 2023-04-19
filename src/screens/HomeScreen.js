@@ -8,6 +8,7 @@ import DropShadow from "react-native-drop-shadow";
 import Octicons from 'react-native-vector-icons/Octicons'
 import Feather from 'react-native-vector-icons/Feather'
 import { useNavigation } from '@react-navigation/native'
+import { globalStyles } from '../utils/globalStyle'
 const scrollData = [
     {
         id: 1,
@@ -107,11 +108,11 @@ const upcomingMatch = [
 const HomeScreen = () => {
     const navigation = useNavigation()
     return (
-        <ImageBackground style={{ flex: 1 }} source={require('../assets/images/background.png')}>
+        <ImageBackground style={globalStyles.container} source={require('../assets/images/background.png')}>
             <SafeAreaView
-                style={{ flex: 0, backgroundColor: 'white' }}
+                style={globalStyles.safeView}
             />
-            <SafeAreaView style={{ flex: 1 }}>
+            <SafeAreaView style={globalStyles.container}>
                 <View style={{ height: Height(60), backgroundColor: 'white', borderBottomLeftRadius: Width(20), borderBottomRightRadius: Width(20), flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', paddingHorizontal: Width(25) }}>
                     <MyBetComponent width={Width(102)} height={Height(15)} />
                     <TouchableOpacity onPress={() => navigation.navigate('Notification')}>
@@ -129,15 +130,7 @@ const HomeScreen = () => {
 
                         <View style={{ marginTop: Height(15) }} >
                             <DropShadow
-                                style={{
-                                    shadowColor: "#000",
-                                    shadowOffset: {
-                                        width: 0,
-                                        height: 2,
-                                    },
-                                    shadowOpacity: 0.25,
-                                    shadowRadius: 3.84,
-                                }}
+                                style={globalStyles.shadow}
                             >
                                 <ScrollView horizontal showsHorizontalScrollIndicator={false} >
                                     {
@@ -186,15 +179,7 @@ const HomeScreen = () => {
                         </View>
                         <View>
                             <DropShadow
-                                style={{
-                                    shadowColor: "#000",
-                                    shadowOffset: {
-                                        width: 0,
-                                        height: 2,
-                                    },
-                                    shadowOpacity: 0.25,
-                                    shadowRadius: 3.84,
-                                }}
+                                style={globalStyles.shadow}
                             >
                                 <ScrollView>
                                     {
@@ -257,15 +242,7 @@ const HomeScreen = () => {
                                 scrollData.map((item, i) => {
                                     return (
                                         <DropShadow
-                                            style={{
-                                                shadowColor: "#000",
-                                                shadowOffset: {
-                                                    width: 0,
-                                                    height: 2,
-                                                },
-                                                shadowOpacity: 0.25,
-                                                shadowRadius: 3.84,
-                                            }}
+                                            style={globalStyles.shadow}
                                             key={i}  >
                                             <TouchableOpacity style={{ height: Height(145), width: Width(335), backgroundColor: 'white', marginLeft: Width(50), borderRadius: Width(10) }} onPress={() => navigation.navigate('CreateContest')}>
                                                 <Text style={{ fontSize: Height(10), fontFamily: 'Poppins-Regular', color: 'black', marginTop: Height(5), marginLeft: Width(10) }}>{item.matchName}</Text>

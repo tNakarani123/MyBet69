@@ -14,6 +14,7 @@ import UserComponent from '../assets/svg/User'
 import EmailComponent from '../assets/svg/Email'
 import PhoneComponent from '../assets/svg/Phone'
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons'
+import { globalStyles } from '../utils/globalStyle'
 const EditProfileScreen = () => {
     const navigation = useNavigation()
     const [pickerResponse, setPickerResponse] = useState(null);
@@ -39,28 +40,19 @@ const EditProfileScreen = () => {
     return (
         <>
             <SafeAreaView
-                style={{ flex: 0, backgroundColor: 'white' }}
+                style={globalStyles.safeView}
             />
-            <SafeAreaView style={{ flex: 1 }}>
-                <DropShadow style={{
-                    shadowColor: "#000000",
-                    shadowOffset: {
-                        width: 0,
-                        height: 3,
-                    },
-                    shadowOpacity: 0.17,
-                    shadowRadius: 3.05,
-                    elevation: 4
-                }}>
-                    <View style={{ height: Height(90), borderBottomLeftRadius: Width(20), borderBottomRightRadius: Width(20), paddingHorizontal: Width(25), backgroundColor: 'white' }}>
-                        <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
+            <SafeAreaView style={globalStyles.container}>
+                <DropShadow style={globalStyles.shadow}>
+                    <View style={globalStyles.headerView}>
+                        <View style={globalStyles.headerSubView}>
                             <Ionicons name='arrow-back' size={Height(30)} onPress={() => navigation.goBack()} />
                             <MyBetComponent width={Width(102)} height={Height(15)} />
                             <TouchableOpacity onPress={() => navigation.navigate('Notification')}>
                                 <NotificationComponent size={Height(25)} />
                             </TouchableOpacity>
                         </View>
-                        <Text style={{ textAlign: 'center', fontSize: Height(16), fontFamily: 'Poppins-Bold', marginTop: Height(10) }}>Edit Profile</Text>
+                        <Text style={globalStyles.headerText}>Edit Profile</Text>
                     </View>
                 </DropShadow>
                 <TouchableOpacity style={{
@@ -91,21 +83,21 @@ const EditProfileScreen = () => {
                 <TouchableOpacity style={{ height: Height(50), width: Width(185), alignSelf: 'center', justifyContent: 'center', borderRadius: Width(10), marginTop: Height(10), borderWidth: Height(3), borderColor: '#A097EE' }} onPress={removePhoto}>
                     <Text style={{ textAlign: 'center', fontSize: Height(16), fontFamily: font.POPPINS_MEDIUM, color: color.text }}>Remove Photo</Text>
                 </TouchableOpacity>
-                <View style={styles.textView}>
+                <View style={globalStyles.textView}>
                     <UserComponent size={Height(35)} />
-                    <View style={styles.lineView} />
-                    <TextInput style={styles.textInput} value={userName} onChangeText={(val) => setUserName(val)} />
+                    <View style={globalStyles.lineView} />
+                    <TextInput style={globalStyles.textInput} value={userName} onChangeText={(val) => setUserName(val)} />
                 </View>
-                <View style={styles.textView}>
+                <View style={globalStyles.textView}>
                     <EmailComponent size={Height(35)} />
-                    <View style={styles.lineView} />
-                    <Text style={styles.textInput}>jiyanid9@gmail.com</Text>
+                    <View style={globalStyles.lineView} />
+                    <Text style={globalStyles.textInput}>jiyanid9@gmail.com</Text>
                     <MaterialIcons name='edit' size={Height(20)} onPress={() => navigation.navigate('NewInfoEmail')} />
                 </View>
-                <View style={styles.textView}>
+                <View style={globalStyles.textView}>
                     <PhoneComponent size={Height(35)} />
-                    <View style={styles.lineView} />
-                    <Text style={styles.textInput}>+91 6355126777</Text>
+                    <View style={globalStyles.lineView} />
+                    <Text style={globalStyles.textInput}>+91 6355126777</Text>
                     <MaterialIcons name='edit' size={Height(20)} onPress={() => navigation.navigate('NewInfoMobile')} />
                 </View>
             </SafeAreaView>
@@ -116,29 +108,4 @@ const EditProfileScreen = () => {
 export default EditProfileScreen
 
 const styles = StyleSheet.create({
-    textView: {
-        height: Height(60),
-        width: Width(390),
-        borderWidth: Height(3),
-        borderColor: color.primaryBorder,
-        borderRadius: Width(10),
-        alignSelf: 'center',
-        marginTop: Height(15),
-        flexDirection: 'row',
-        alignItems: 'center',
-        paddingHorizontal: Width(28)
-    },
-    lineView: {
-        height: Height(35),
-        width: 1,
-        backgroundColor: color.text,
-        marginLeft: Width(12)
-    },
-    textInput: {
-        marginLeft: Width(25),
-        fontSize: Height(20),
-        fontFamily: font.POPPINS_REGULAR,
-        color: color.text,
-        width: Width(250)
-    },
 })

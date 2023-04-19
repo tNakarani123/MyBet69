@@ -32,6 +32,12 @@
 		EDC5393DC4B143A28B01AADE /* Poppins-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6E606857C50E4EF9A5E6B434 /* Poppins-SemiBold.ttf */; };
 		FBEA8E180AAF476095821804 /* Poppins-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 94FDF799C14A429C8600FA95 /* Poppins-ExtraLight.ttf */; };
 		FDCCF40EADDA4D3A96579675 /* Poppins-ExtraLightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 681DEB5A31474B3DA7F911CF /* Poppins-ExtraLightItalic.ttf */; };
+		A6E21BABA7A1494A8FA40591 /* PostNoBillsColombo-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EBE0C50311D24D07AFAE192C /* PostNoBillsColombo-Bold.ttf */; };
+		88B16268544F49CD824495C4 /* PostNoBillsColombo-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E4FBF61F5BD34758B8836DF0 /* PostNoBillsColombo-ExtraBold.ttf */; };
+		A36D09E7344B4C72946F3B66 /* PostNoBillsColombo-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B7DD5FAE47FD4C5B9C807A75 /* PostNoBillsColombo-Light.ttf */; };
+		669B2A7ACD5C495F9DEEECCD /* PostNoBillsColombo-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F37176925FA44F98A9705D53 /* PostNoBillsColombo-Medium.ttf */; };
+		6ACF64535E084C9EA5FC116D /* PostNoBillsColombo-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4EF1B522F5AC49A98BFEFD56 /* PostNoBillsColombo-Regular.ttf */; };
+		D592619D1B004AF2A15E87B4 /* PostNoBillsColombo-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 884960F9E519463F91C7AA80 /* PostNoBillsColombo-SemiBold.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -80,6 +86,12 @@
 		EAAC9907156D445181245614 /* Poppins-BlackItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Poppins-BlackItalic.ttf"; path = "../assets/fonts/Poppins-BlackItalic.ttf"; sourceTree = "<group>"; };
 		ECB2774FC5904DE68313179A /* Poppins-Light.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Poppins-Light.ttf"; path = "../assets/fonts/Poppins-Light.ttf"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
+		EBE0C50311D24D07AFAE192C /* PostNoBillsColombo-Bold.ttf */ = {isa = PBXFileReference; name = "PostNoBillsColombo-Bold.ttf"; path = "../assets/fonts/PostNoBillsColombo-Bold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		E4FBF61F5BD34758B8836DF0 /* PostNoBillsColombo-ExtraBold.ttf */ = {isa = PBXFileReference; name = "PostNoBillsColombo-ExtraBold.ttf"; path = "../assets/fonts/PostNoBillsColombo-ExtraBold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		B7DD5FAE47FD4C5B9C807A75 /* PostNoBillsColombo-Light.ttf */ = {isa = PBXFileReference; name = "PostNoBillsColombo-Light.ttf"; path = "../assets/fonts/PostNoBillsColombo-Light.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		F37176925FA44F98A9705D53 /* PostNoBillsColombo-Medium.ttf */ = {isa = PBXFileReference; name = "PostNoBillsColombo-Medium.ttf"; path = "../assets/fonts/PostNoBillsColombo-Medium.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		4EF1B522F5AC49A98BFEFD56 /* PostNoBillsColombo-Regular.ttf */ = {isa = PBXFileReference; name = "PostNoBillsColombo-Regular.ttf"; path = "../assets/fonts/PostNoBillsColombo-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		884960F9E519463F91C7AA80 /* PostNoBillsColombo-SemiBold.ttf */ = {isa = PBXFileReference; name = "PostNoBillsColombo-SemiBold.ttf"; path = "../assets/fonts/PostNoBillsColombo-SemiBold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,6 +152,12 @@
 				B1D515B558394F6EAF9DA30E /* Poppins-SemiBoldItalic.ttf */,
 				E1DC3D680A9A4E9985E5BA3B /* Poppins-Thin.ttf */,
 				D6693ADC184942AC90A7039D /* Poppins-ThinItalic.ttf */,
+				EBE0C50311D24D07AFAE192C /* PostNoBillsColombo-Bold.ttf */,
+				E4FBF61F5BD34758B8836DF0 /* PostNoBillsColombo-ExtraBold.ttf */,
+				B7DD5FAE47FD4C5B9C807A75 /* PostNoBillsColombo-Light.ttf */,
+				F37176925FA44F98A9705D53 /* PostNoBillsColombo-Medium.ttf */,
+				4EF1B522F5AC49A98BFEFD56 /* PostNoBillsColombo-Regular.ttf */,
+				884960F9E519463F91C7AA80 /* PostNoBillsColombo-SemiBold.ttf */,
 			);
 			name = Resources;
 			path = "";
@@ -325,6 +343,12 @@
 				CADED54E7704419B906F9046 /* Poppins-SemiBoldItalic.ttf in Resources */,
 				E40F0E6F5A4744A5B47861D0 /* Poppins-Thin.ttf in Resources */,
 				2E808896FE4E47BB84DA9672 /* Poppins-ThinItalic.ttf in Resources */,
+				A6E21BABA7A1494A8FA40591 /* PostNoBillsColombo-Bold.ttf in Resources */,
+				88B16268544F49CD824495C4 /* PostNoBillsColombo-ExtraBold.ttf in Resources */,
+				A36D09E7344B4C72946F3B66 /* PostNoBillsColombo-Light.ttf in Resources */,
+				669B2A7ACD5C495F9DEEECCD /* PostNoBillsColombo-Medium.ttf in Resources */,
+				6ACF64535E084C9EA5FC116D /* PostNoBillsColombo-Regular.ttf in Resources */,
+				D592619D1B004AF2A15E87B4 /* PostNoBillsColombo-SemiBold.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

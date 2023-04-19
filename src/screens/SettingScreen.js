@@ -9,6 +9,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons'
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons'
 import color from '../utils/color'
 import font from '../utils/fonts'
+import { globalStyles } from '../utils/globalStyle'
 const SettingScreen = () => {
     const navigation = useNavigation()
 
@@ -53,28 +54,19 @@ const SettingScreen = () => {
     return (
         <>
             <SafeAreaView
-                style={{ flex: 0, backgroundColor: 'white' }}
+                style={globalStyles.safeView}
             />
-            <SafeAreaView style={{ flex: 1 }}>
-                <DropShadow style={{
-                    shadowColor: "#000000",
-                    shadowOffset: {
-                        width: 0,
-                        height: 3,
-                    },
-                    shadowOpacity: 0.17,
-                    shadowRadius: 3.05,
-                    elevation: 4
-                }}>
-                    <View style={{ height: Height(90), borderBottomLeftRadius: Width(20), borderBottomRightRadius: Width(20), paddingHorizontal: Width(25), backgroundColor: 'white' }}>
-                        <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
+            <SafeAreaView style={globalStyles.container}>
+                <DropShadow style={globalStyles.shadow}>
+                    <View style={globalStyles.headerView}>
+                        <View style={globalStyles.headerSubView}>
                             <Ionicons name='arrow-back' size={Height(30)} onPress={() => navigation.goBack()} />
                             <MyBetComponent width={Width(102)} height={Height(15)} />
                             <TouchableOpacity onPress={() => navigation.navigate('Notification')}>
                                 <NotificationComponent size={Height(25)} />
                             </TouchableOpacity>
                         </View>
-                        <Text style={{ textAlign: 'center', fontSize: Height(16), fontFamily: 'Poppins-Bold', marginTop: Height(10) }}>Settings</Text>
+                        <Text style={globalStyles.headerText}>Settings</Text>
                     </View>
                 </DropShadow>
                 <View>

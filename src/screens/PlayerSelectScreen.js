@@ -13,6 +13,7 @@ import EvilIcons from 'react-native-vector-icons/EvilIcons'
 import ClearAllComponent from '../assets/svg/ClearAll'
 import font from '../utils/fonts'
 import color from '../utils/color'
+import { globalStyles } from '../utils/globalStyle'
 const categories = ['WK', 'BAT', 'AR', 'BOWL'];
 
 const PlayerSelectScreen = () => {
@@ -54,19 +55,10 @@ const PlayerSelectScreen = () => {
     return (
         <>
             <SafeAreaView
-                style={{ flex: 0, backgroundColor: 'white' }}
+                style={globalStyles.safeView}
             />
-            <SafeAreaView style={{ flex: 1 }}>
-                <DropShadow style={{
-                    shadowColor: "#000000",
-                    shadowOffset: {
-                        width: 0,
-                        height: 3,
-                    },
-                    shadowOpacity: 0.17,
-                    shadowRadius: 3.05,
-                    elevation: 4
-                }}>
+            <SafeAreaView style={globalStyles.container}>
+                <DropShadow style={globalStyles.shadow}>
                     <View style={{ height: Height(165), borderBottomLeftRadius: Width(20), borderBottomRightRadius: Width(20), paddingHorizontal: Width(25), backgroundColor: 'white' }}>
                         <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginTop: Height(20) }}>
                             <Ionicons name='arrow-back' size={Height(30)} onPress={() => navigation.goBack()} />
@@ -75,7 +67,7 @@ const PlayerSelectScreen = () => {
                                 <NotificationComponent size={Height(25)} />
                             </TouchableOpacity>
                         </View>
-                        <Text style={{ textAlign: 'center', fontSize: Height(16), fontFamily: 'Poppins-Bold', marginTop: Height(10) }}>Create Team</Text>
+                        <Text style={globalStyles.headerText}>Create Team</Text>
                         <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginHorizontal: Width(15), marginTop: Height(15) }}>
                             <Image source={require('../assets/images/gt.png')} style={{ width: Width(65), height: Height(48) }} />
                             <Text style={{ fontSize: Height(10), fontFamily: 'Poppins-Medium', color: '#FF0000', marginLeft: Width(8) }}>23m</Text>

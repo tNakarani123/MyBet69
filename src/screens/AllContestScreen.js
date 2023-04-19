@@ -12,6 +12,7 @@ import ContestThirdComponent from '../assets/svg/ContestThird'
 import * as Progress from 'react-native-progress';
 import font from '../utils/fonts'
 import color from '../utils/color'
+import { globalStyles } from '../utils/globalStyle'
 
 
 const allContest = [
@@ -134,19 +135,10 @@ const AllContestScreen = () => {
     return (
         <>
             <SafeAreaView
-                style={{ flex: 0, backgroundColor: 'white' }}
+                style={globalStyles.safeView}
             />
-            <SafeAreaView style={{ flex: 1 }}>
-                <DropShadow style={{
-                    shadowColor: "#000000",
-                    shadowOffset: {
-                        width: 0,
-                        height: 3,
-                    },
-                    shadowOpacity: 0.17,
-                    shadowRadius: 3.05,
-                    elevation: 4
-                }}>
+            <SafeAreaView style={globalStyles.container}>
+                <DropShadow style={globalStyles.shadow}>
                     <View style={{ height: Height(130), borderBottomLeftRadius: Width(20), borderBottomRightRadius: Width(20), paddingHorizontal: Width(25), backgroundColor: 'white', zIndex: 0, position: 'absolute', width: Width(430) }}>
                         <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginTop: Height(20) }}>
                             <Ionicons name='arrow-back' size={Height(30)} onPress={() => navigation.goBack()} />

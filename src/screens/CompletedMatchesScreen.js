@@ -8,6 +8,7 @@ import font from '../utils/fonts'
 import Octicons from 'react-native-vector-icons/Octicons'
 import ContestFirstComponent from '../assets/svg/ContestFirst'
 import ContestThirdComponent from '../assets/svg/ContestThird'
+import { globalStyles } from '../utils/globalStyle'
 const CompletedMatchesScreen = () => {
     const route = useRoute()
     console.log({ route });
@@ -21,7 +22,7 @@ const CompletedMatchesScreen = () => {
                     <SafeAreaView
                         style={{ flex: 0, backgroundColor: '#5556CA' }}
                     />
-                    <SafeAreaView style={{ flex: 1 }}>
+                    <SafeAreaView style={globalStyles.container}>
                         <View style={{ height: Height(180), backgroundColor: '#5556CA', borderBottomLeftRadius: Width(20), borderBottomRightRadius: Width(20) }}>
                             <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginHorizontal: Width(20), marginTop: Height(15) }}>
                                 <Ionicons name='arrow-back' size={Height(30)} color={color.background} onPress={() => navigation.goBack()} />

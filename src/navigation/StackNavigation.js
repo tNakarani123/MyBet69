@@ -32,6 +32,12 @@ import AboutUsScreen from '../screens/AboutUsScreen'
 import PrivacySettingScreen from '../screens/PrivacySettingScreen'
 import TermsConditionScreen from '../screens/TermsConditionScreen'
 import ResponsiblePlayScreen from '../screens/ResponsiblePlayScreen'
+import AddCashScreen from '../screens/AddCashScreen'
+import QuickKYCScreen from '../screens/QuickKYCScreen'
+import UploadIdProofScreen from '../screens/UploadIdProofScreen'
+import AdharCardNumberScreen from '../screens/AdharCardNumberScreen'
+import DigitalOnBoardingScreen from '../screens/DigitalOnBoardingScreen'
+import CardDetailsScreen from '../screens/CardDetailsScreen'
 
 const Stack = createNativeStackNavigator()
 const StackNavigation = () => {
@@ -67,6 +73,12 @@ const StackNavigation = () => {
             <Stack.Screen name='PrivacySetting' component={PrivacySettingScreen} />
             <Stack.Screen name='TermsCondition' component={TermsConditionScreen} />
             <Stack.Screen name='ResponsiblePay' component={ResponsiblePlayScreen} />
+            <Stack.Screen name='AddCash' component={AddCashScreen} />
+            <Stack.Screen name='QuickKYC' component={QuickKYCScreen} />
+            <Stack.Screen name='UploadIdProof' component={UploadIdProofScreen} />
+            <Stack.Screen name='AdharCardNumber' component={AdharCardNumberScreen} />
+            <Stack.Screen name='DigitalOnboarding' component={DigitalOnBoardingScreen} />
+            <Stack.Screen name='CardDetails' component={CardDetailsScreen} />
         </Stack.Navigator>
     )
 }

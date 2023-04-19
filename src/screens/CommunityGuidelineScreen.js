@@ -8,33 +8,25 @@ import { useNavigation } from '@react-navigation/native'
 import Ionicons from 'react-native-vector-icons/Ionicons'
 import NotificationComponent from '../assets/svg/Notification'
 import font from '../utils/fonts'
+import { globalStyles } from '../utils/globalStyle'
 const CommunityGuidelineScreen = () => {
     const navigation = useNavigation()
     return (
         <>
             <SafeAreaView
-                style={{ flex: 0, backgroundColor: color.background }}
+                style={globalStyles.safeView}
             />
-            <SafeAreaView style={{ flex: 1 }}>
-                <DropShadow style={{
-                    shadowColor: "#000000",
-                    shadowOffset: {
-                        width: 0,
-                        height: 3,
-                    },
-                    shadowOpacity: 0.17,
-                    shadowRadius: 3.05,
-                    elevation: 4
-                }}>
-                    <View style={{ height: Height(90), borderBottomLeftRadius: Width(20), borderBottomRightRadius: Width(20), paddingHorizontal: Width(25), backgroundColor: 'white' }}>
-                        <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
+            <SafeAreaView style={globalStyles.container}>
+                <DropShadow style={globalStyles.shadow}>
+                    <View style={globalStyles.headerView}>
+                        <View style={globalStyles.headerSubView}>
                             <Ionicons name='arrow-back' size={Height(30)} onPress={() => navigation.goBack()} />
                             <MyBetComponent width={Width(102)} height={Height(15)} />
                             <TouchableOpacity onPress={() => navigation.navigate('Notification')}>
                                 <NotificationComponent size={Height(25)} />
                             </TouchableOpacity>
                         </View>
-                        <Text style={{ textAlign: 'center', fontSize: Height(16), fontFamily: 'Poppins-Bold', marginTop: Height(10) }}>Community Guideline</Text>
+                        <Text style={globalStyles.headerText}>Community Guideline</Text>
                     </View>
                 </DropShadow>
                 <Text style={{ marginHorizontal: Width(20), marginTop: Height(20), fontFamily: font.POPPINS_REGULAR, fontSize: Height(14), color: color.text }}>

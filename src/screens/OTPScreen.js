@@ -7,13 +7,14 @@ import Ionicons from 'react-native-vector-icons/Ionicons'
 import LogoComponent from '../assets/svg/Logo';
 import color from '../utils/color';
 import font from '../utils/fonts';
+import { globalStyles } from '../utils/globalStyle';
 
 const OTPScreen = () => {
     const navigation = useNavigation()
     return (
-        <ImageBackground style={styles.imageBack} source={require('../assets/images/background.png')}>
-            <SafeAreaView style={styles.container}>
-                <View style={styles.logo}>
+        <ImageBackground style={globalStyles.container} source={require('../assets/images/background.png')}>
+            <SafeAreaView style={globalStyles.container}>
+                <View style={globalStyles.logo}>
                     <LogoComponent height={Height(126)} width={Width(107)} />
                 </View>
                 <View style={styles.mainView}>
@@ -26,8 +27,8 @@ const OTPScreen = () => {
                         otpStyles={styles.otpView}
                     />
                     <Text style={styles.resendText}>Resend Code</Text>
-                    <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('MoreInfo')}>
-                        <Text style={styles.buttonText}>Continue</Text>
+                    <TouchableOpacity style={globalStyles.button} onPress={() => navigation.navigate('MoreInfo')}>
+                        <Text style={globalStyles.buttonText}>Continue</Text>
                     </TouchableOpacity>
                 </View>
             </SafeAreaView>
@@ -36,16 +37,7 @@ const OTPScreen = () => {
 };
 
 const styles = StyleSheet.create({
-    imageBack: {
-        flex: 1
-    },
-    container: {
-        flex: 1
-    },
-    logo: {
-        alignItems: 'center',
-        marginTop: Height(42)
-    },
+
     mainView: {
         height: Height(675),
         backgroundColor: color.background,
@@ -85,23 +77,6 @@ const styles = StyleSheet.create({
         marginRight: Width(30),
         marginTop: Height(15)
     },
-    button: {
-        height: Height(60),
-        width: Width(390),
-        alignSelf: 'center',
-        borderRadius: Width(10),
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: color.primaryButton,
-        marginTop: Height(15)
-    },
-    buttonText: {
-        fontWeight: '500',
-        fontSize: Height(18),
-        color: 'white',
-        position: 'absolute',
-        fontFamily: font.POPPINS_SEMI_BOLD,
-    }
 });
 
 export default OTPScreen;
