@@ -29,7 +29,7 @@ const TermsConditionScreen = () => {
                         <Text style={globalStyles.headerText}>Terms & Conditions</Text>
                     </View>
                 </DropShadow>
-                <Text style={{ marginHorizontal: Width(20), marginTop: Height(20), fontFamily: font.POPPINS_REGULAR, fontSize: Height(14), color: color.text }}>
+                <Text style={globalStyles.settingText}>
                     Lorem ipsum dolor sit amet consectetur. Est elit in lectus consequat erat. Elit non sit placerat quam et donec. Nullam eu purus rhoncus adipiscing nunc commodo in imperdiet. Neque duis at erat adipiscing et quis.
                     Odio et nunc massa eu ipsum aliquam neque dictumst. Ante felis pharetra enim aliquam mus condimentum pharetra. In et morbi habitant in. At tristique quis velit elementum neque diam pulvinar. Eros blandit amet hac felis in tellus ut. Magna sit montes scelerisque felis leo cursus facilisis. Malesuada pulvinar convallis accumsan dictum ultrices. Lorem aliquam congue donec tortor vitae. Purus bibendum convallis amet vulputate. Velit tellus a purus tempus sit fermentum eros orci euismod. In elementum pellentesque vitae netus mauris aliquet. Scelerisque dui amet tristique egestas.
                     Tortor senectus vivamus fermentum vulputate volutpat. Ornare id aliquet aliquet convallis lectus pharetra. Purus urna eget nec ipsum viverra sollicitudin aenean. Non.Lorem ipsum dolor sit amet consectetur. Est elit in lectus consequat erat. Elit non sit placerat quam et donec. Nullam eu purus rhoncus adipiscing nunc commodo in imperdiet. Neque duis at erat adipiscing et quis.

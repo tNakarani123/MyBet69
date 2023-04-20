@@ -59,8 +59,8 @@ const PlayerSelectScreen = () => {
             />
             <SafeAreaView style={globalStyles.container}>
                 <DropShadow style={globalStyles.shadow}>
-                    <View style={{ height: Height(165), borderBottomLeftRadius: Width(20), borderBottomRightRadius: Width(20), paddingHorizontal: Width(25), backgroundColor: 'white' }}>
-                        <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginTop: Height(20) }}>
+                    <View style={globalStyles.contestHeaderView}>
+                        <View style={globalStyles.contestRowView}>
                             <Ionicons name='arrow-back' size={Height(30)} onPress={() => navigation.goBack()} />
                             <MyBetComponent width={Width(102)} height={Height(15)} />
                             <TouchableOpacity onPress={() => navigation.navigate('Notification')}>
@@ -68,10 +68,10 @@ const PlayerSelectScreen = () => {
                             </TouchableOpacity>
                         </View>
                         <Text style={globalStyles.headerText}>Create Team</Text>
-                        <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginHorizontal: Width(15), marginTop: Height(15) }}>
-                            <Image source={require('../assets/images/gt.png')} style={{ width: Width(65), height: Height(48) }} />
-                            <Text style={{ fontSize: Height(10), fontFamily: 'Poppins-Medium', color: '#FF0000', marginLeft: Width(8) }}>23m</Text>
-                            <Image source={require('../assets/images/mi.png')} style={{ width: Width(65), height: Height(48) }} />
+                        <View style={globalStyles.contestRowSubView}>
+                            <Image source={require('../assets/images/gt.png')} style={globalStyles.teamImage} />
+                            <Text style={globalStyles.headerTimeText}>23m</Text>
+                            <Image source={require('../assets/images/mi.png')} style={globalStyles.teamImage} />
                         </View>
                     </View>
                 </DropShadow>
@@ -85,7 +85,7 @@ const PlayerSelectScreen = () => {
                             </View>
                             <View style={{ flexDirection: 'row', width: Width(95), justifyContent: 'space-between' }}>
                                 <Image source={require('../assets/images/gt.png')} style={{ width: Width(45), height: Height(30) }} />
-                                <View style={{ alignItems: 'center' }}>
+                                <View style={globalStyles.alignCenterView}>
                                     <Text style={{ fontSize: Height(14), fontFamily: 'Poppins-Medium', color: '#252525' }}>GT</Text>
                                     <Text style={{ fontSize: Height(14), fontFamily: 'Poppins-Bold', color: 'black' }}>0</Text>
                                 </View>
@@ -93,13 +93,13 @@ const PlayerSelectScreen = () => {
                         </View>
                         <View style={{ flexDirection: 'row', width: Width(160), justifyContent: 'space-between' }}>
                             <View style={{ flexDirection: 'row', width: Width(95), justifyContent: 'space-between' }}>
-                                <View style={{ alignItems: 'center' }}>
+                                <View style={globalStyles.alignCenterView}>
                                     <Text style={{ fontSize: Height(14), fontFamily: 'Poppins-Medium', color: '#252525' }}>MI</Text>
                                     <Text style={{ fontSize: Height(14), fontFamily: 'Poppins-Bold', color: 'black' }}>0</Text>
                                 </View>
                                 <Image source={require('../assets/images/mi.png')} style={{ width: Width(45), height: Height(30), }} />
                             </View>
-                            <View style={{ alignItems: 'center', }}>
+                            <View style={globalStyles.alignCenterView}>
                                 <Text style={{ fontSize: Height(10), fontFamily: 'Poppins-Regular', color: '#252525' }}>Credits Left</Text>
                                 <Text style={{ fontSize: Height(14), fontFamily: 'Poppins-SemiBold', color: 'black' }}>91.0</Text>
                             </View>
@@ -144,17 +144,17 @@ const PlayerSelectScreen = () => {
                     <Text style={{ color: 'white', fontSize: Height(10), fontFamily: 'Poppins-Medium' }}>Select 1-8 Wicket-Keepers</Text>
                     <Ionicons name='md-filter' size={Height(20)} color='white' onPress={() => setSecModalVisible(true)} />
                 </View>
-                <View style={{ height: Height(30), flexDirection: 'row' }}>
-                    <TouchableOpacity style={{ flexDirection: 'row', alignItems: 'center', marginLeft: Width(100) }}>
-                        <Text style={{ fontSize: Height(10), fontFamily: 'Poppins-Medium', color: 'black' }}>Selected By</Text>
+                <View style={globalStyles.playerSelectHeaderView}>
+                    <TouchableOpacity style={[globalStyles.playerSelectedHeaderBtn, { marginLeft: Width(100) }]}>
+                        <Text style={globalStyles.blackNormalText}>Selected By</Text>
                         <Octicons name='arrow-down' size={Height(15)} style={{ marginLeft: Width(2) }} />
                     </TouchableOpacity>
-                    <TouchableOpacity style={{ flexDirection: 'row', alignItems: 'center', marginLeft: Width(70) }}>
-                        <Text style={{ fontSize: Height(10), fontFamily: 'Poppins-Medium', color: 'black' }}>Points</Text>
+                    <TouchableOpacity style={[globalStyles.playerSelectedHeaderBtn, { marginLeft: Width(70) }]}>
+                        <Text style={globalStyles.blackNormalText}>Points</Text>
                         <Octicons name='arrow-down' size={Height(15)} style={{ marginLeft: Width(2) }} />
                     </TouchableOpacity>
-                    <TouchableOpacity style={{ flexDirection: 'row', alignItems: 'center', marginLeft: Width(70) }}>
-                        <Text style={{ fontSize: Height(10), fontFamily: 'Poppins-Medium', color: 'black' }}>Credits</Text>
+                    <TouchableOpacity style={[globalStyles.playerSelectedHeaderBtn, { marginLeft: Width(70) }]}>
+                        <Text style={globalStyles.blackNormalText}>Credits</Text>
                         <Octicons name='arrow-down' size={Height(15)} style={{ marginLeft: Width(2) }} />
                     </TouchableOpacity>
                 </View>
@@ -181,12 +181,12 @@ const PlayerSelectScreen = () => {
                     </View>
                 </ScrollView>
 
-                <View style={{ flexDirection: 'row', justifyContent: 'center', marginBottom: Width(15) }}>
-                    <TouchableOpacity style={{ height: Height(30), width: Width(140), flexDirection: 'row', backgroundColor: '#8D73BC', alignItems: 'center', borderRadius: Width(20), justifyContent: 'center' }}>
+                <View style={globalStyles.playerBottomView}>
+                    <TouchableOpacity style={globalStyles.playerBottomBtn}>
                         <Ionicons name='md-eye' size={Height(20)} color='white' />
-                        <Text style={{ fontSize: Height(15), color: 'white', marginLeft: Width(10), fontFamily: 'Poppins-Medium' }}>Preview</Text>
+                        <Text style={globalStyles.playerBottomBtnText}>Preview</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity style={{ height: Height(30), width: Width(98), backgroundColor: '#8D73BC', alignItems: 'center', borderRadius: Width(20), justifyContent: 'center', marginLeft: Width(50) }} onPress={() => {
+                    <TouchableOpacity style={globalStyles.playerBottomSecBtn} onPress={() => {
                         if (selectedPlayers.length < 11) {
                             Alert.alert("Please Player")
                         } else {
@@ -195,7 +195,7 @@ const PlayerSelectScreen = () => {
                     }
                     }
                     >
-                        <Text style={{ fontSize: Height(15), color: 'white', fontFamily: 'Poppins-Medium' }}>Next</Text>
+                        <Text style={globalStyles.playerBottomSecBtnText}>Next</Text>
                     </TouchableOpacity>
                 </View>
                 <View>
@@ -260,7 +260,7 @@ const PlayerSelectScreen = () => {
                                     </View>
                                     <TouchableOpacity style={{ flexDirection: "row", alignItems: 'center', justifyContent: "space-between", marginTop: Height(15), marginHorizontal: Width(25) }} onPress={() => { setIndex(1), setSecModalVisible(!secModalVisible) }}>
                                         <View>
-                                            <Text style={{ fontSize: Height(16), fontFamily: font.POPPINS_SEMI_BOLD, color: color.text }}>GT</Text>
+                                            <Text style={globalStyles.playerPrizeText}>GT</Text>
                                             <Text style={{ fontSize: Height(10), fontFamily: font.POPPINS_MEDIUM, color: color.text, opacity: 0.6 }}>Gujarat Titans</Text>
                                         </View>
                                         <Ionicons name={index === 1 ? 'radio-button-on' : 'radio-button-off'} size={Height(25)} color='#6B69D4' />
@@ -268,14 +268,14 @@ const PlayerSelectScreen = () => {
                                     <View style={{ height: Height(1), backgroundColor: 'grey', marginTop: Height(15) }} />
                                     <TouchableOpacity style={{ flexDirection: "row", alignItems: 'center', justifyContent: "space-between", marginTop: Height(15), marginHorizontal: Width(25) }} onPress={() => { setIndex(2), setSecModalVisible(!secModalVisible) }}>
                                         <View>
-                                            <Text style={{ fontSize: Height(16), fontFamily: font.POPPINS_SEMI_BOLD, color: color.text }}>MI</Text>
+                                            <Text style={globalStyles.playerPrizeText}>MI</Text>
                                             <Text style={{ fontSize: Height(10), fontFamily: font.POPPINS_MEDIUM, color: color.text, opacity: 0.6 }}>Mumbai Indians</Text>
                                         </View>
                                         <Ionicons name={index === 2 ? 'radio-button-on' : 'radio-button-off'} size={Height(25)} color='#6B69D4' />
                                     </TouchableOpacity>
                                     <View style={{ height: Height(1), backgroundColor: 'grey', marginTop: Height(15) }} />
                                     <TouchableOpacity style={{ flexDirection: "row", alignItems: 'center', justifyContent: "space-between", marginTop: Height(15), marginHorizontal: Width(25) }} onPress={() => { setIndex(3), setSecModalVisible(!secModalVisible) }}>
-                                        <Text style={{ fontSize: Height(16), fontFamily: font.POPPINS_SEMI_BOLD, color: color.text }}>Both</Text>
+                                        <Text style={globalStyles.playerPrizeText}>Both</Text>
                                         <Ionicons name={index === 3 ? 'radio-button-on' : 'radio-button-off'} size={Height(25)} color='#6B69D4' />
                                     </TouchableOpacity>
                                 </View>

@@ -30,8 +30,8 @@ const CardDetailsScreen = () => {
                             Pan Card Details</Text>
                     </View>
                 </DropShadow>
-                <Text style={{ fontSize: Height(20), fontFamily: font.POPPINS_SEMI_BOLD, marginTop: Height(25), marginLeft: Width(25) }}>Enter Your PAN Card Details</Text>
-                <Text style={{ fontSize: Height(12), fontFamily: font.POPPINS_REGULAR, color: color.text, opacity: 0.6, marginHorizontal: Width(25), lineHeight: Height(18), letterSpacing: 0.02, marginTop: Height(10) }}>
+                <Text style={globalStyles.walletHeaderText}>Enter Your PAN Card Details</Text>
+                <Text style={globalStyles.walletHeaderSubText}>
                     Please Enter Your PAN Card Details Below As They Appear On Your Card And Click On 'Submit'.
                 </Text>
             </SafeAreaView>

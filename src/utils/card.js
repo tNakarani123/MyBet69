@@ -3,18 +3,19 @@ import { View, Text, TouchableOpacity, StyleSheet, Image } from 'react-native';
 import { Height, Width } from './responsive';
 import EvilIcons from 'react-native-vector-icons/EvilIcons'
 import Octicons from 'react-native-vector-icons/Octicons'
+import { globalStyles } from './globalStyle';
 const PlayerCard = ({ player, isSelected, onSelect, onDeselect }) => {
     const { id, name, category, points, team, image, selby, credit } = player;
 
     return (
         <TouchableOpacity style={{ height: Height(70), width: Width(390), borderWidth: Height(1), borderColor: isSelected ? 'black' : '#BEBEBE', alignSelf: 'center', marginTop: Height(10), flexDirection: 'row', alignItems: 'center', borderRadius: Width(10), backgroundColor: isSelected ? 'rgba(167, 156, 241, 0.5)' : null, opacity: '' }} onPress={isSelected ? onDeselect : onSelect}>
-            <Image source={image} style={{ height: Height(65), width: Width(70), resizeMode: 'contain' }} />
-            <View style={{ marginLeft: Width(10), width: Width(100) }}>
-                <Text style={{ fontSize: Height(10), fontFamily: 'Poppins-Medium', color: 'black' }}>{name}</Text>
-                <Text style={{ fontSize: Height(8), fontFamily: 'Poppins-Regular', marginTop: Height(5), color: 'rgba(126, 126, 126, 1)' }}>Sel By {selby}</Text>
-                <View style={{ flexDirection: 'row', marginTop: Height(5), alignItems: 'center' }}>
+            <Image source={image} style={globalStyles.playerImage} />
+            <View style={globalStyles.playerView}>
+                <Text style={globalStyles.blackNormalText}>{name}</Text>
+                <Text style={globalStyles.selByText}>Sel By {selby}</Text>
+                <View style={globalStyles.CaptainRowView}>
                     <Octicons name='dot-fill' size={Height(10)} color='rgba(107, 105, 212, 1)' />
-                    <Text style={{ fontSize: Height(6), fontFamily: 'Poppins-Regular', color: 'rgba(107, 105, 212, 1)', marginLeft: Width(5) }}>played last match</Text>
+                    <Text style={globalStyles.playedText}>played last match</Text>
                 </View>
             </View>
             <Text style={{ fontSize: Height(10), fontFamily: 'Poppins-Medium', marginLeft: Width(50) }}>{points}</Text>

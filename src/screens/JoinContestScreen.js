@@ -21,8 +21,8 @@ const JoinContestScreen = () => {
             />
             <SafeAreaView style={globalStyles.container}>
                 <DropShadow style={globalStyles.shadow}>
-                    <View style={{ height: Height(165), borderBottomLeftRadius: Width(20), borderBottomRightRadius: Width(20), paddingHorizontal: Width(25), backgroundColor: 'white' }}>
-                        <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginTop: Height(20) }}>
+                    <View style={globalStyles.contestHeaderView}>
+                        <View style={globalStyles.contestRowView}>
                             <Ionicons name='arrow-back' size={Height(30)} onPress={() => navigation.goBack()} />
                             <MyBetComponent width={Width(102)} height={Height(15)} />
                             <TouchableOpacity onPress={() => navigation.navigate('Notification')}>
@@ -30,45 +30,48 @@ const JoinContestScreen = () => {
                             </TouchableOpacity>
                         </View>
                         <Text style={globalStyles.headerText}>Join Contest</Text>
-                        <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginHorizontal: Width(15), marginTop: Height(15) }}>
-                            <Image source={require('../assets/images/gt.png')} style={{ width: Width(65), height: Height(48) }} />
-                            <Text style={{ fontSize: Height(10), fontFamily: 'Poppins-Medium', color: '#FF0000', marginLeft: Width(8) }}>23m</Text>
-                            <Image source={require('../assets/images/mi.png')} style={{ width: Width(65), height: Height(48) }} />
+                        <View style={globalStyles.contestRowSubView}>
+                            <Image source={require('../assets/images/gt.png')} style={globalStyles.teamImage} />
+                            <Text style={globalStyles.headerTimeText}>23m</Text>
+                            <Image source={require('../assets/images/mi.png')} style={globalStyles.teamImage} />
                         </View>
                     </View>
                 </DropShadow>
-                <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginHorizontal: Width(25), marginTop: Height(25) }}>
-                    <View style={{ alignItems: 'center' }}>
-                        <Text style={{ fontSize: Height(12), fontFamily: font.POPPINS_REGULAR, color: color.text }}>Max Prize Pool</Text>
-                        <Text style={{ fontSize: Height(16), fontFamily: font.POPPINS_SEMI_BOLD, color: color.text }}>₹{route.params?.data.params.prize}</Text>
+                <View style={globalStyles.joinContestFrontView}>
+                    <View style={globalStyles.alignCenterView}>
+                        <Text style={globalStyles.contestRegularText}>Max Prize Pool</Text>
+                        <Text style={globalStyles.playerPrizeText}>₹{route.params?.data.params.prize}</Text>
                     </View>
-                    <View style={{ alignItems: 'center' }}>
-                        <Text style={{ fontSize: Height(12), fontFamily: font.POPPINS_REGULAR, color: color.text }}>Spots</Text>
-                        <Text style={{ fontSize: Height(16), fontFamily: font.POPPINS_SEMI_BOLD, color: color.text }}>5</Text>
+                    <View style={globalStyles.alignCenterView}>
+                        <Text style={globalStyles.contestRegularText}>Spots</Text>
+                        <Text style={globalStyles.playerPrizeText}>5</Text>
                     </View>
-                    <View style={{ alignItems: 'center' }}>
-                        <Text style={{ fontSize: Height(12), fontFamily: font.POPPINS_REGULAR, color: color.text }}>Entry</Text>
-                        <Text style={{ fontSize: Height(16), fontFamily: font.POPPINS_SEMI_BOLD, color: color.text }}>{route.params?.data.params.size}</Text>
+                    <View style={globalStyles.alignCenterView}>
+                        <Text style={globalStyles.contestRegularText}>Entry</Text>
+                        <Text style={globalStyles.playerPrizeText}>{route.params?.data.params.size}</Text>
                     </View>
                 </View>
-                <View style={{
-                    height: Height(50), width: Width(350), borderWidth: Height(1), borderStyle: 'dashed', borderRadius: Width(10), flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', paddingHorizontal: Width(12), alignSelf: 'center', marginTop: Height(10)
-                }}>
-                    < Text style={{ fontSize: Height(16), fontFamily: font.POPPINS_SEMI_BOLD, color: color.text }}> Share Contest Code</Text>
+                <View style={styles.view}>
+                    <Text style={globalStyles.playerPrizeText}> Share Contest Code</Text>
                     <MaterialIcons name='content-copy' size={Height(24)} color='black' />
                 </View>
-                <TouchableOpacity style={{
-                    height: Height(50), width: Width(350), borderWidth: Height(1), borderRadius: Width(10), flexDirection: 'row', alignItems: 'center', justifyContent: 'center', paddingHorizontal: Width(12), alignSelf: 'center', marginTop: Height(10)
-                }}>
+                <TouchableOpacity style={styles.btn}>
                     <MaterialIcons name='share' size={Height(24)} color='black' />
-                    < Text style={{ fontSize: Height(16), fontFamily: font.POPPINS_SEMI_BOLD, color: color.text, marginLeft: Width(5) }}> More option</Text>
+                    <Text style={[{ marginLeft: Width(5) }, globalStyles.playerPrizeText]}> More option</Text>
                 </TouchableOpacity>
-                < Text style={{ fontSize: Height(16), fontFamily: font.POPPINS_SEMI_BOLD, color: color.text, alignSelf: 'center', marginTop: Height(20) }}> Share On My Bet 69</Text>
-            </SafeAreaView >
+                < Text style={[{ alignSelf: 'center', marginTop: Height(20) }, globalStyles.playerPrizeText]}> Share On My Bet 69</Text>
+            </SafeAreaView>
         </>
     )
 }
 
 export default JoinContestScreen
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+    view: {
+        height: Height(50), width: Width(350), borderWidth: Height(1), borderStyle: 'dashed', borderRadius: Width(10), flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', paddingHorizontal: Width(12), alignSelf: 'center', marginTop: Height(10)
+    },
+    btn: {
+        height: Height(50), width: Width(350), borderWidth: Height(1), borderRadius: Width(10), flexDirection: 'row', alignItems: 'center', justifyContent: 'center', paddingHorizontal: Width(12), alignSelf: 'center', marginTop: Height(10)
+    }
+})

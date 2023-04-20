@@ -105,9 +105,9 @@ const ProfileScreen = () => {
                         <Text style={globalStyles.textInput}>+91 6355126777</Text>
                     </View>
                     <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginHorizontal: Width(20), marginTop: Height(20) }}>
-                        <Text style={{ fontSize: Height(14), fontFamily: font.POPPINS_SEMI_BOLD, color: color.text }}>Recently Played :</Text>
-                        <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-                            <Text style={{ fontSize: Height(12), fontFamily: font.POPPINS_REGULAR, color: color.text }}>View All</Text>
+                        <Text style={globalStyles.contestItemPrizeText}>Recently Played :</Text>
+                        <View style={globalStyles.contestItemRowView}>
+                            <Text style={globalStyles.contestRegularText}>View All</Text>
                             <Ionicons name='arrow-forward' size={Height(20)} color={color.text} style={{ marginLeft: Width(5) }} onPress={() => navigation.navigate('MyMatches')} />
                         </View>
                     </View>
@@ -125,7 +125,7 @@ const ProfileScreen = () => {
                                                 <View style={{}}>
                                                     <Text style={{ fontSize: Height(8), fontFamily: 'Poppins-Medium', color: 'black' }}>{item.teamOneName}</Text>
                                                     <View style={{ flexDirection: 'row', alignItems: 'center', marginTop: Height(3) }}>
-                                                        <Image source={item.teamOneLogo} style={{ width: Width(65), height: Height(48) }} />
+                                                        <Image source={item.teamOneLogo} style={globalStyles.teamImage} />
                                                         <Text style={{ fontSize: Height(14), fontFamily: 'Poppins-SemiBold', color: 'black', marginLeft: Width(15) }}>{item.teamOneShortName}</Text>
                                                     </View>
                                                 </View>
@@ -134,7 +134,7 @@ const ProfileScreen = () => {
                                                     <Text style={{ fontSize: Height(8), fontFamily: 'Poppins-Medium', color: 'black', marginLeft: Width(25) }}>{item.teamTwoName}</Text>
                                                     <View style={{ flexDirection: 'row', alignItems: 'center', marginTop: Height(3) }}>
                                                         <Text style={{ fontSize: Height(14), fontFamily: 'Poppins-SemiBold', color: 'black', marginRight: Width(15) }}>{item.teamTwoShortName}</Text>
-                                                        <Image source={item.teamTwoLogo} style={{ width: Width(65), height: Height(48) }} />
+                                                        <Image source={item.teamTwoLogo} style={globalStyles.teamImage} />
                                                     </View>
                                                 </View>
                                             </View>
@@ -149,8 +149,8 @@ const ProfileScreen = () => {
                     </ScrollView>
                     <Text style={{ fontSize: Height(14), fontFamily: font.POPPINS_SEMI_BOLD, color: color.text, marginLeft: Width(20), marginTop: Height(20) }}>Career Stats :</Text>
                     <View style={{ height: Height(80), width: Width(390), backgroundColor: color.background, alignSelf: 'center', marginTop: Height(10), borderRadius: Width(20), flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', paddingHorizontal: Width(25) }}>
-                        <View style={{ alignItems: 'center' }}>
-                            <Text style={{ fontSize: Height(16), fontFamily: font.POPPINS_SEMI_BOLD, color: color.text }}>Contests :</Text>
+                        <View style={globalStyles.alignCenterView}>
+                            <Text style={globalStyles.playerPrizeText}>Contests :</Text>
                             <Text style={{ fontSize: Height(16), fontFamily: font.POPPINS_SEMI_BOLD, color: '#5556CA' }}>26</Text>
                         </View>
                         <View style={{
@@ -159,8 +159,8 @@ const ProfileScreen = () => {
                             backgroundColor: color.text,
                             marginLeft: Width(12)
                         }} />
-                        <View style={{ alignItems: 'center' }}>
-                            <Text style={{ fontSize: Height(16), fontFamily: font.POPPINS_SEMI_BOLD, color: color.text }}>Matches :</Text>
+                        <View style={globalStyles.alignCenterView}>
+                            <Text style={globalStyles.playerPrizeText}>Matches :</Text>
                             <Text style={{ fontSize: Height(16), fontFamily: font.POPPINS_SEMI_BOLD, color: '#5556CA' }}>52</Text>
                         </View>
                     </View>
@@ -177,7 +177,7 @@ const ProfileScreen = () => {
                         <Text style={{ fontSize: Height(14), fontFamily: font.POPPINS_SEMI_BOLD, color: color.text, marginLeft: Width(20) }}>Copy</Text>
                     </View>
 
-                    <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginHorizontal: Width(30), marginTop: Height(10), marginBottom: Height(30) }}>
+                    <View style={globalStyles.contestItemSubView}>
                         <TouchableOpacity style={{ height: Height(54), width: Width(172), backgroundColor: '#5556CA', borderRadius: Width(10), flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', paddingHorizontal: Width(30) }}>
                             <WhatsAppComponent size={Height(22)} />
                             <Text style={{ fontSize: Height(14), fontFamily: font.POPPINS_SEMI_BOLD, color: color.background }}>WhatsApp</Text>

@@ -92,8 +92,8 @@ const CreateTeamScreen = () => {
                     />
                     <SafeAreaView style={globalStyles.container}>
                         <DropShadow style={globalStyles.shadow}>
-                            <View style={{ height: Height(165), borderBottomLeftRadius: Width(20), borderBottomRightRadius: Width(20), paddingHorizontal: Width(25), backgroundColor: 'white' }}>
-                                <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginTop: Height(20) }}>
+                            <View style={globalStyles.contestHeaderView}>
+                                <View style={globalStyles.contestRowView}>
                                     <Ionicons name='arrow-back' size={Height(30)} onPress={() => navigation.goBack()} />
                                     <MyBetComponent width={Width(102)} height={Height(15)} />
                                     <TouchableOpacity onPress={() => navigation.navigate('Notification')}>
@@ -101,61 +101,61 @@ const CreateTeamScreen = () => {
                                     </TouchableOpacity>
                                 </View>
                                 <Text style={globalStyles.headerText}>Create Team</Text>
-                                <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginHorizontal: Width(15), marginTop: Height(15) }}>
-                                    <Image source={require('../assets/images/gt.png')} style={{ width: Width(65), height: Height(48) }} />
-                                    <Text style={{ fontSize: Height(10), fontFamily: 'Poppins-Medium', color: '#FF0000', marginLeft: Width(8) }}>23m</Text>
-                                    <Image source={require('../assets/images/mi.png')} style={{ width: Width(65), height: Height(48) }} />
+                                <View style={globalStyles.contestRowSubView}>
+                                    <Image source={require('../assets/images/gt.png')} style={globalStyles.teamImage} />
+                                    <Text style={globalStyles.headerTimeText}>23m</Text>
+                                    <Image source={require('../assets/images/mi.png')} style={globalStyles.teamImage} />
                                 </View>
                             </View>
                         </DropShadow>
-                        <View style={{ width: Width(390), height: Height(242), backgroundColor: '#FFFFFF', alignSelf: 'center', marginTop: Height(25), borderRadius: Width(10) }}>
-                            <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginHorizontal: Width(34), marginTop: Height(10) }}>
-                                <Text style={{ fontSize: Height(10), fontFamily: 'Poppins-Regular', color: 'black' }}>Price Pool</Text>
+                        <View style={styles.leaderboard}>
+                            <View style={styles.prizePoolView}>
+                                <Text style={styles.prizeText}>Price Pool</Text>
                                 <Ionicons name='share-social' size={Height(15)} />
                             </View>
-                            <Text style={{ fontSize: Height(14), fontFamily: 'Poppins-SemiBold', marginTop: Height(10), marginLeft: Width(34) }}>₹ 13 Crores</Text>
-                            <Progress.Bar progress={0.3} width={Width(322)} style={{ alignSelf: "center", marginTop: Height(12) }} color='#F99500' unfilledColor='#D9D9D9' borderColor='transparent' height={Height(5)} />
-                            <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginHorizontal: Width(34), marginTop: Height(10) }}>
-                                <Text style={{ fontSize: Height(10), fontFamily: 'Poppins-Regular', color: '#F96464' }}>27,22,717  Sports Left</Text>
-                                <Text style={{ fontSize: Height(10), fontFamily: 'Poppins-Regular', color: '#6B6B6B' }}>35,37,414 Sports</Text>
+                            <Text style={styles.prizeMainText}>₹ 13 Crores</Text>
+                            <Progress.Bar progress={0.3} width={Width(322)} style={globalStyles.contestItemProgress} color='#F99500' unfilledColor='#D9D9D9' borderColor='transparent' height={Height(5)} />
+                            <View style={styles.prizePoolView}>
+                                <Text style={styles.spotLeftText}>27,22,717  Sports Left</Text>
+                                <Text style={styles.spotText}>35,37,414 Sports</Text>
                             </View>
-                            <TouchableOpacity style={{ height: Height(45), width: Width(320), backgroundColor: '#5556CA', alignSelf: 'center', borderRadius: Width(10), marginTop: Height(30), justifyContent: 'center', alignItems: 'center' }} onPress={() => navigation.navigate('PlayerSelect')}>
-                                <Text style={{ fontSize: Height(16), fontFamily: 'Poppins-SemiBold', color: 'white' }}>₹4</Text>
+                            <TouchableOpacity style={styles.EntryBtn} onPress={() => navigation.navigate('PlayerSelect')}>
+                                <Text style={styles.entryBtnText}>₹4</Text>
                             </TouchableOpacity>
-                            <View style={{ height: Height(35), width: Width(390), backgroundColor: '#D9D9D9', position: "absolute", bottom: 0, borderBottomLeftRadius: Width(10), borderBottomRightRadius: Width(10), flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', paddingHorizontal: Width(34) }}>
-                                <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                            <View style={styles.winningsView}>
+                                <View style={globalStyles.contestItemRowView}>
                                     <ContestFirstComponent width={Width(24)} height={Height(18)} />
-                                    <Text style={{ fontSize: Height(10), fontFamily: 'Poppins-SemiBold', color: '#565656', marginLeft: Width(5) }}>2.5 Crores</Text>
+                                    <Text style={styles.winningsText}>2.5 Crores</Text>
                                 </View>
-                                <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                                <View style={globalStyles.contestItemRowView}>
                                     <ContestSecondComponent width={Width(16)} height={Height(19)} />
-                                    <Text style={{ fontSize: Height(10), fontFamily: 'Poppins-SemiBold', color: '#565656', marginLeft: Width(5) }}>58%</Text>
+                                    <Text style={styles.winningsText}>58%</Text>
                                 </View>
-                                <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                                <View style={globalStyles.contestItemRowView}>
                                     <ContestThirdComponent width={Width(20)} height={Height(21)} />
-                                    <Text style={{ fontSize: Height(10), fontFamily: 'Poppins-SemiBold', color: '#565656', marginLeft: Width(5) }}>Guaranteed</Text>
+                                    <Text style={styles.winningsText}>Guaranteed</Text>
                                 </View>
                             </View>
                         </View>
-                        <View style={{ flexDirection: 'row', alignItems: 'center', height: Height(35), marginLeft: Width(35) }}>
-                            <TouchableOpacity style={{ borderBottomWidth: Width(3), borderColor: index !== 1 ? 'transparent' : '#5556CA', }} onPress={() => { setSelected(''), setIndex(1) }}>
-                                <Text style={{ fontSize: Height(12), fontFamily: 'Poppins-SemiBold', color: index !== 1 ? '#666666' : 'black', paddingBottom: Width(5) }}>Winnings</Text>
+                        <View style={styles.headerView}>
+                            <TouchableOpacity style={[{ borderColor: index !== 1 ? 'transparent' : '#5556CA', }, styles.header1Btn]} onPress={() => { setSelected(''), setIndex(1) }}>
+                                <Text style={[{ color: index !== 1 ? '#666666' : 'black', }, styles.headerText]}>Winnings</Text>
                             </TouchableOpacity>
-                            <TouchableOpacity style={{ marginLeft: Width(50), borderBottomWidth: Width(3), borderBottomColor: index !== 2 ? 'transparent' : '#5556CA', }} onPress={() => setIndex(2)}>
-                                <Text style={{ fontSize: Height(12), fontFamily: 'Poppins-SemiBold', color: index !== 2 ? '#666666' : 'black', paddingBottom: Width(5) }}>Leaderboard</Text>
+                            <TouchableOpacity style={[{ borderBottomColor: index !== 2 ? 'transparent' : '#5556CA', }, styles.header2Btn]} onPress={() => setIndex(2)}>
+                                <Text style={[{ color: index !== 2 ? '#666666' : 'black', }, styles.headerText]}>Leaderboard</Text>
                             </TouchableOpacity>
                         </View>
                         <ScrollView>
                             {data.map((item, i) => {
                                 return (
                                     <View>
-                                        <View key={i} style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginTop: Height(10), marginHorizontal: Width(30) }}>
-                                            <Image source={require('../assets/images/Profile.png')} style={{ height: Height(50), width: Width(50) }} />
-                                            <Text style={{ fontSize: Height(12), fontFamily: 'Poppins-Medium', color: 'black' }}>{item.playerId}</Text>
-                                            <Text style={{ fontSize: Height(12), fontFamily: 'Poppins-Medium', color: 'black' }}>{item.points}</Text>
-                                            <Text style={{ fontSize: Height(12), fontFamily: 'Poppins-Medium', color: 'black' }}>{item.credit}</Text>
+                                        <View key={i} style={styles.scrollView}>
+                                            <Image source={require('../assets/images/Profile.png')} style={styles.scrollImage} />
+                                            <Text style={styles.scrollText}>{item.playerId}</Text>
+                                            <Text style={styles.scrollText}>{item.points}</Text>
+                                            <Text style={styles.scrollText}>{item.credit}</Text>
                                         </View>
-                                        <View style={{ height: Height(1), backgroundColor: 'rgba(0, 0, 0, 0.3)', marginTop: Height(10) }} />
+                                        <View style={styles.view} />
                                     </View>
                                 )
                             })}
@@ -164,7 +164,6 @@ const CreateTeamScreen = () => {
                 </>
             )
         default: {
-
             return (
                 <>
                     <SafeAreaView
@@ -172,8 +171,8 @@ const CreateTeamScreen = () => {
                     />
                     <SafeAreaView style={globalStyles.container}>
                         <DropShadow style={globalStyles.shadow}>
-                            <View style={{ height: Height(165), borderBottomLeftRadius: Width(20), borderBottomRightRadius: Width(20), paddingHorizontal: Width(25), backgroundColor: 'white' }}>
-                                <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginTop: Height(20) }}>
+                            <View style={globalStyles.contestHeaderView}>
+                                <View style={globalStyles.contestRowView}>
                                     <Ionicons name='arrow-back' size={Height(30)} onPress={() => navigation.goBack()} />
                                     <MyBetComponent width={Width(102)} height={Height(15)} />
                                     <TouchableOpacity onPress={() => navigation.navigate('Notification')}>
@@ -181,77 +180,77 @@ const CreateTeamScreen = () => {
                                     </TouchableOpacity>
                                 </View>
                                 <Text style={globalStyles.headerText}>Create Team</Text>
-                                <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginHorizontal: Width(15), marginTop: Height(15) }}>
-                                    <Image source={require('../assets/images/gt.png')} style={{ width: Width(65), height: Height(48) }} />
-                                    <Text style={{ fontSize: Height(10), fontFamily: 'Poppins-Medium', color: '#FF0000', marginLeft: Width(8) }}>23m</Text>
-                                    <Image source={require('../assets/images/mi.png')} style={{ width: Width(65), height: Height(48) }} />
+                                <View style={globalStyles.contestRowSubView}>
+                                    <Image source={require('../assets/images/gt.png')} style={globalStyles.teamImage} />
+                                    <Text style={globalStyles.headerTimeText}>23m</Text>
+                                    <Image source={require('../assets/images/mi.png')} style={globalStyles.teamImage} />
                                 </View>
                             </View>
                         </DropShadow>
-                        <View style={{ width: Width(390), height: Height(242), backgroundColor: '#FFFFFF', alignSelf: 'center', marginTop: Height(25), borderRadius: Width(10) }}>
-                            <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginHorizontal: Width(34), marginTop: Height(10) }}>
-                                <Text style={{ fontSize: Height(10), fontFamily: 'Poppins-Regular', color: 'black' }}>Price Pool</Text>
+                        <View style={styles.leaderboard}>
+                            <View style={styles.prizePoolView}>
+                                <Text style={styles.prizeText}>Price Pool</Text>
                                 <Ionicons name='share-social' size={Height(15)} />
                             </View>
-                            <Text style={{ fontSize: Height(14), fontFamily: 'Poppins-SemiBold', marginTop: Height(10), marginLeft: Width(34) }}>₹ 13 Crores</Text>
-                            <Progress.Bar progress={0.3} width={Width(322)} style={{ alignSelf: "center", marginTop: Height(12) }} color='#F99500' unfilledColor='#D9D9D9' borderColor='transparent' height={Height(5)} />
-                            <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginHorizontal: Width(34), marginTop: Height(10) }}>
-                                <Text style={{ fontSize: Height(10), fontFamily: 'Poppins-Regular', color: '#F96464' }}>27,22,717  Sports Left</Text>
-                                <Text style={{ fontSize: Height(10), fontFamily: 'Poppins-Regular', color: '#6B6B6B' }}>35,37,414 Sports</Text>
+                            <Text style={styles.prizeMainText}>₹ 13 Crores</Text>
+                            <Progress.Bar progress={0.3} width={Width(322)} style={globalStyles.contestItemProgress} color='#F99500' unfilledColor='#D9D9D9' borderColor='transparent' height={Height(5)} />
+                            <View style={styles.prizePoolView}>
+                                <Text style={styles.spotLeftText}>27,22,717  Sports Left</Text>
+                                <Text style={styles.spotText}>35,37,414 Sports</Text>
                             </View>
-                            <TouchableOpacity style={{ height: Height(45), width: Width(320), backgroundColor: '#5556CA', alignSelf: 'center', borderRadius: Width(10), marginTop: Height(30), justifyContent: 'center', alignItems: 'center' }} onPress={() => navigation.navigate('PlayerSelect')}>
-                                <Text style={{ fontSize: Height(16), fontFamily: 'Poppins-SemiBold', color: 'white' }}>₹4</Text>
+                            <TouchableOpacity style={styles.EntryBtn} onPress={() => navigation.navigate('PlayerSelect')}>
+                                <Text style={styles.entryBtnText}>₹4</Text>
                             </TouchableOpacity>
-                            <View style={{ height: Height(35), width: Width(390), backgroundColor: '#D9D9D9', position: "absolute", bottom: 0, borderBottomLeftRadius: Width(10), borderBottomRightRadius: Width(10), flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', paddingHorizontal: Width(34) }}>
-                                <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                            <View style={styles.winningsView}>
+                                <View style={globalStyles.contestItemRowView}>
                                     <ContestFirstComponent width={Width(24)} height={Height(18)} />
-                                    <Text style={{ fontSize: Height(10), fontFamily: 'Poppins-SemiBold', color: '#565656', marginLeft: Width(5) }}>2.5 Crores</Text>
+                                    <Text style={styles.winningsText}>2.5 Crores</Text>
                                 </View>
-                                <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                                <View style={globalStyles.contestItemRowView}>
                                     <ContestSecondComponent width={Width(16)} height={Height(19)} />
-                                    <Text style={{ fontSize: Height(10), fontFamily: 'Poppins-SemiBold', color: '#565656', marginLeft: Width(5) }}>58%</Text>
+                                    <Text style={styles.winningsText}>58%</Text>
                                 </View>
-                                <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                                <View style={globalStyles.contestItemRowView}>
                                     <ContestThirdComponent width={Width(20)} height={Height(21)} />
-                                    <Text style={{ fontSize: Height(10), fontFamily: 'Poppins-SemiBold', color: '#565656', marginLeft: Width(5) }}>Guaranteed</Text>
+                                    <Text style={styles.winningsText}>Guaranteed</Text>
                                 </View>
                             </View>
                         </View>
-                        <View style={{ flexDirection: 'row', alignItems: 'center', height: Height(35), marginLeft: Width(35) }}>
-                            <TouchableOpacity style={{ borderBottomWidth: Width(3), borderColor: index !== 1 ? 'transparent' : '#5556CA', }} onPress={() => setIndex(1)}>
-                                <Text style={{ fontSize: Height(12), fontFamily: 'Poppins-SemiBold', color: index !== 1 ? '#666666' : 'black', paddingBottom: Width(5) }}>Winnings</Text>
+                        <View style={styles.headerView}>
+                            <TouchableOpacity style={[{ borderColor: index !== 1 ? 'transparent' : '#5556CA', }, styles.header1Btn]} onPress={() => setIndex(1)}>
+                                <Text style={[{ color: index !== 1 ? '#666666' : 'black', }, styles.headerText]}>Winnings</Text>
                             </TouchableOpacity>
-                            <TouchableOpacity style={{ marginLeft: Width(50), marginLeft: Width(50), borderBottomWidth: Width(3), borderBottomColor: index !== 2 ? 'transparent' : '#5556CA', }} onPress={() => { setSelected('Leaderboard'), setIndex(2) }}>
-                                <Text style={{ fontSize: Height(12), fontFamily: 'Poppins-SemiBold', color: index !== 2 ? '#666666' : 'black', paddingBottom: Width(5) }}>Leaderboard</Text>
+                            <TouchableOpacity style={[{ borderBottomColor: index !== 2 ? 'transparent' : '#5556CA', }, styles.header2Btn]} onPress={() => { setSelected('Leaderboard'), setIndex(2) }}>
+                                <Text style={[{ color: index !== 2 ? '#666666' : 'black', }, styles.headerText]}>Leaderboard</Text>
                             </TouchableOpacity>
                         </View>
                         <ScrollView>
-                            <Text style={{ fontSize: Height(10), fontFamily: 'Poppins-Medium', marginLeft: Width(45), marginTop: Height(10), color: 'black' }}>Be The First In Your Network To Join This Contest</Text>
-                            <View style={{ height: Height(1), backgroundColor: 'black', marginTop: Height(10) }} />
-                            <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginHorizontal: Width(20), marginTop: Height(10) }}>
-                                <Text style={{ fontSize: Height(10), fontFamily: 'Poppins-Medium', color: 'black' }}>Rank</Text>
-                                <Text style={{ fontSize: Height(10), fontFamily: 'Poppins-Medium', color: 'black' }}>Winning</Text>
+                            <Text style={styles.winningJoinText}>Be The First In Your Network To Join This Contest</Text>
+                            <View style={styles.lineView} />
+                            <View style={[{ alignItems: 'center', }, styles.winningRowView]}>
+                                <Text style={globalStyles.blackNormalText}>Rank</Text>
+                                <Text style={globalStyles.blackNormalText}>Winning</Text>
                             </View>
-                            <View style={{ height: Height(1), backgroundColor: 'black', marginTop: Height(10) }} />
-                            <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginTop: Height(10), marginHorizontal: Width(20), }}>
+                            <View style={styles.lineView} />
+                            <View style={styles.winningRowView}>
                                 <RankOneComponent size={Height(20)} />
-                                <Text style={{ fontSize: Height(10), fontFamily: 'Poppins-Medium', color: 'black' }}>10,000</Text>
+                                <Text style={globalStyles.blackNormalText}>10,000</Text>
                             </View>
-                            <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginTop: Height(10), marginHorizontal: Width(20), }}>
+                            <View style={styles.winningRowView}>
                                 <RankTwoComponent size={Height(20)} />
-                                <Text style={{ fontSize: Height(10), fontFamily: 'Poppins-Medium', color: 'black' }}>5,000</Text>
+                                <Text style={globalStyles.blackNormalText}>5,000</Text>
                             </View>
-                            <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginTop: Height(10), marginHorizontal: Width(20), }}>
+                            <View style={styles.winningRowView}>
                                 <RankThreeComponent size={Height(20)} />
-                                <Text style={{ fontSize: Height(10), fontFamily: 'Poppins-Medium', color: 'black' }}>2,500</Text>
+                                <Text style={globalStyles.blackNormalText}>2,500</Text>
                             </View>
-                            <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginTop: Height(10), marginHorizontal: Width(20), }}>
-                                <Text style={{ fontSize: Height(10), fontFamily: 'Poppins-Medium', color: 'black' }}>#4-5</Text>
-                                <Text style={{ fontSize: Height(10), fontFamily: 'Poppins-Medium', color: 'black' }}>500</Text>
+                            <View style={styles.winningRowView}>
+                                <Text style={globalStyles.blackNormalText}>#4-5</Text>
+                                <Text style={globalStyles.blackNormalText}>500</Text>
                             </View>
-                            <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginTop: Height(10), marginHorizontal: Width(20), }}>
-                                <Text style={{ fontSize: Height(10), fontFamily: 'Poppins-Medium', color: 'black' }}>#6-10</Text>
-                                <Text style={{ fontSize: Height(10), fontFamily: 'Poppins-Medium', color: 'black' }}>0</Text>
+                            <View style={styles.winningRowView}>
+                                <Text style={globalStyles.blackNormalText}>#6-10</Text>
+                                <Text style={globalStyles.blackNormalText}>0</Text>
                             </View>
 
                         </ScrollView>
@@ -265,4 +264,68 @@ const CreateTeamScreen = () => {
 
 export default CreateTeamScreen
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+    leaderboard: {
+        width: Width(390), height: Height(242), backgroundColor: '#FFFFFF', alignSelf: 'center', marginTop: Height(25), borderRadius: Width(10)
+    },
+    prizePoolView: {
+        flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginHorizontal: Width(34), marginTop: Height(10)
+    },
+    prizeText: {
+        fontSize: Height(10), fontFamily: 'Poppins-Regular', color: 'black'
+    },
+    spotLeftText: {
+        fontSize: Height(10), fontFamily: 'Poppins-Regular', color: '#F96464'
+    },
+    spotText: {
+        fontSize: Height(10), fontFamily: 'Poppins-Regular', color: '#6B6B6B'
+    },
+    EntryBtn: {
+        height: Height(45), width: Width(320), backgroundColor: '#5556CA', alignSelf: 'center', borderRadius: Width(10), marginTop: Height(30), justifyContent: 'center', alignItems: 'center'
+    },
+    entryBtnText: {
+        fontSize: Height(16), fontFamily: 'Poppins-SemiBold', color: 'white'
+    },
+    winningsView: {
+        height: Height(35), width: Width(390), backgroundColor: '#D9D9D9', position: "absolute", bottom: 0, borderBottomLeftRadius: Width(10), borderBottomRightRadius: Width(10), flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', paddingHorizontal: Width(34)
+    },
+    winningsText: {
+        fontSize: Height(10), fontFamily: 'Poppins-SemiBold', color: '#565656', marginLeft: Width(5)
+    },
+    headerView: {
+        flexDirection: 'row', alignItems: 'center', height: Height(35), marginLeft: Width(35)
+    },
+    header1Btn: {
+        borderBottomWidth: Width(3),
+    },
+    header2Btn: {
+        marginLeft: Width(50), marginLeft: Width(50), borderBottomWidth: Width(3),
+    },
+    headerText: {
+        fontSize: Height(12), fontFamily: 'Poppins-SemiBold', paddingBottom: Width(5)
+    },
+    winningJoinText: {
+        fontSize: Height(10), fontFamily: 'Poppins-Medium', marginLeft: Width(45), marginTop: Height(10), color: 'black'
+    },
+    lineView: {
+        height: Height(1), backgroundColor: 'black', marginTop: Height(10)
+    },
+    winningRowView: {
+        flexDirection: 'row', justifyContent: 'space-between', marginTop: Height(10), marginHorizontal: Width(20),
+    },
+    prizeMainText: {
+        fontSize: Height(14), fontFamily: 'Poppins-SemiBold', marginTop: Height(10), marginLeft: Width(34)
+    },
+    scrollView: {
+        flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginTop: Height(10), marginHorizontal: Width(30)
+    },
+    scrollImage: {
+        height: Height(50), width: Width(50)
+    },
+    scrollText: {
+        fontSize: Height(12), fontFamily: 'Poppins-Medium', color: 'black'
+    },
+    view: {
+        height: Height(1), backgroundColor: 'rgba(0, 0, 0, 0.3)', marginTop: Height(10)
+    }
+})

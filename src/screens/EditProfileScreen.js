@@ -77,11 +77,11 @@ const EditProfileScreen = () => {
                             />
                     }
                 </TouchableOpacity>
-                <TouchableOpacity style={{ height: Height(50), width: Width(185), backgroundColor: '#A097EE', alignSelf: 'center', justifyContent: 'center', borderRadius: Width(10), marginTop: Height(20) }} onPress={chooseFile}>
-                    <Text style={{ textAlign: 'center', fontSize: Height(16), fontFamily: font.POPPINS_MEDIUM, color: color.background }}>Change Photo</Text>
+                <TouchableOpacity style={styles.firstBtn} onPress={chooseFile}>
+                    <Text style={styles.firstBtnText}>Change Photo</Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={{ height: Height(50), width: Width(185), alignSelf: 'center', justifyContent: 'center', borderRadius: Width(10), marginTop: Height(10), borderWidth: Height(3), borderColor: '#A097EE' }} onPress={removePhoto}>
-                    <Text style={{ textAlign: 'center', fontSize: Height(16), fontFamily: font.POPPINS_MEDIUM, color: color.text }}>Remove Photo</Text>
+                <TouchableOpacity style={styles.secondBtn} onPress={removePhoto}>
+                    <Text style={styles.secondBtnText}>Remove Photo</Text>
                 </TouchableOpacity>
                 <View style={globalStyles.textView}>
                     <UserComponent size={Height(35)} />
@@ -108,4 +108,16 @@ const EditProfileScreen = () => {
 export default EditProfileScreen
 
 const styles = StyleSheet.create({
+    firstBtn: {
+        height: Height(50), width: Width(185), backgroundColor: '#A097EE', alignSelf: 'center', justifyContent: 'center', borderRadius: Width(10), marginTop: Height(20)
+    },
+    secondBtn: {
+        height: Height(50), width: Width(185), alignSelf: 'center', justifyContent: 'center', borderRadius: Width(10), marginTop: Height(10), borderWidth: Height(3), borderColor: '#A097EE'
+    },
+    firstBtnText: {
+        textAlign: 'center', fontSize: Height(16), fontFamily: font.POPPINS_MEDIUM, color: color.background
+    },
+    secondBtnText: {
+        textAlign: 'center', fontSize: Height(16), fontFamily: font.POPPINS_MEDIUM, color: color.text
+    }
 })

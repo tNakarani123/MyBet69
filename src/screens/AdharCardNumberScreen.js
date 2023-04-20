@@ -35,33 +35,26 @@ const AdharCardNumberScreen = () => {
                                 Add Aadhaar Number</Text>
                         </View>
                     </DropShadow>
-                    <Text style={{ fontSize: Height(20), fontFamily: font.POPPINS_SEMI_BOLD, marginTop: Height(25), marginLeft: Width(25) }}>Aadhaar No.</Text>
-                    <Text style={{ fontSize: Height(12), fontFamily: font.POPPINS_REGULAR, color: color.text, opacity: 0.6, marginHorizontal: Width(25), lineHeight: Height(18), letterSpacing: 0.02, marginTop: Height(10) }}>
+                    <Text style={globalStyles.walletHeaderText}>Aadhaar No.</Text>
+                    <Text style={globalStyles.walletHeaderSubText}>
                         You are about to link your DigiLocker account with Digital Onboarding application of Baldor Technologies Private Limited. You will be signed up for DigiLocker account if it does not exist.
                     </Text>
-                    <View style={{ height: Height(60), width: Width(390), borderWidth: Height(1), alignSelf: 'center', flexDirection: 'row', alignItems: 'center', paddingHorizontal: Width(20), borderRadius: Width(10), borderColor: '#B0B0B0', marginTop: Height(20) }}>
+                    <View style={styles.notLinkedView}>
                         <NotLinkedComponent size={Height(28)} />
-                        <TextInput placeholder='Aadhaar Number' style={{ marginLeft: Width(22), fontSize: Height(16), fontFamily: font.POPPINS_SEMI_BOLD, width: Width(300), color: color.text }} />
+                        <TextInput placeholder='Aadhaar Number' style={styles.notLinkedTextInput} />
                     </View>
-                    <Text style={{ fontSize: Height(14), fontFamily: font.POPPINS_MEDIUM, color: color.text, marginLeft: Width(20), marginTop: Height(20) }}>Please enter the following text in the box below:</Text>
-                    <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginHorizontal: Width(20), marginTop: Height(15) }}>
-                        <View style={{ height: Height(45), width: Width(135), backgroundColor: '#D9D9D9', justifyContent: 'center', alignItems: 'center' }}>
-                            <Text style={{ fontSize: Height(14), fontFamily: 'PostNoBillsColombo-ExtraBold' }}>vghjk jkdn jkd</Text>
+                    <Text style={styles.text}>Please enter the following text in the box below:</Text>
+                    <View style={globalStyles.rowView}>
+                        <View style={styles.view}>
+                            <Text style={styles.viewText}>vghjk jkdn jkd</Text>
                         </View>
                         <TextInput
                             placeholder='Enter side box Number*'
-                            style={{
-                                fontSize: Height(16),
-                                fontFamily: font.POPPINS_MEDIUM,
-                                color: color.text,
-                                height: Height(45),
-                                borderBottomWidth: Height(1),
-                                width: Width(220)
-                            }}
+                            style={styles.textInput}
                             placeholderTextColor='#B0B0B0'
                         />
                     </View>
-                    <Text style={{ fontSize: Height(14), fontFamily: font.POPPINS_MEDIUM, color: color.text, marginLeft: Width(20), marginTop: Height(20) }}>Unable to read the above image?<Text style={{ color: '#5556CA' }}>Try another!</Text> </Text>
+                    <Text style={styles.text}>Unable to read the above image?<Text style={{ color: '#5556CA' }}>Try another!</Text> </Text>
                     <TouchableOpacity style={globalStyles.button} onPress={() => navigation.navigate('DigitalOnboarding')}>
                         <Text style={globalStyles.buttonText}>Continue</Text>
                     </TouchableOpacity>
@@ -74,4 +67,49 @@ const AdharCardNumberScreen = () => {
 export default AdharCardNumberScreen
 
 const styles = StyleSheet.create({
+    notLinkedView: {
+        height: Height(60),
+        width: Width(390),
+        borderWidth: Height(1),
+        alignSelf: 'center',
+        flexDirection: 'row',
+        alignItems: 'center',
+        paddingHorizontal: Width(20),
+        borderRadius: Width(10),
+        borderColor: '#B0B0B0',
+        marginTop: Height(20)
+    },
+    notLinkedTextInput: {
+        marginLeft: Width(22),
+        fontSize: Height(16),
+        fontFamily: font.POPPINS_SEMI_BOLD,
+        width: Width(300),
+        color: color.text
+    },
+    text: {
+        fontSize: Height(14),
+        fontFamily: font.POPPINS_MEDIUM,
+        color: color.text,
+        marginLeft: Width(20),
+        marginTop: Height(20)
+    },
+    view: {
+        height: Height(45),
+        width: Width(135),
+        backgroundColor: '#D9D9D9',
+        justifyContent: 'center',
+        alignItems: 'center'
+    },
+    viewText: {
+        fontSize: Height(14),
+        fontFamily: 'PostNoBillsColombo-ExtraBold'
+    },
+    textInput: {
+        fontSize: Height(16),
+        fontFamily: font.POPPINS_MEDIUM,
+        color: color.text,
+        height: Height(45),
+        borderBottomWidth: Height(1),
+        width: Width(220)
+    }
 })

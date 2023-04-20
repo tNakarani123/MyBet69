@@ -20,55 +20,55 @@ const CompletedMatchesScreen = () => {
             return (
                 <>
                     <SafeAreaView
-                        style={{ flex: 0, backgroundColor: '#5556CA' }}
+                        style={styles.safeView}
                     />
                     <SafeAreaView style={globalStyles.container}>
-                        <View style={{ height: Height(180), backgroundColor: '#5556CA', borderBottomLeftRadius: Width(20), borderBottomRightRadius: Width(20) }}>
-                            <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginHorizontal: Width(20), marginTop: Height(15) }}>
+                        <View style={styles.headerView}>
+                            <View style={globalStyles.rowView}>
                                 <Ionicons name='arrow-back' size={Height(30)} color={color.background} onPress={() => navigation.goBack()} />
-                                <Text style={{ fontSize: Height(20), fontFamily: font.POPPINS_SEMI_BOLD, color: color.background }}>{route.params?.data.teamOneShortName} vs {route.params?.data.teamTwoShortName}</Text>
+                                <Text style={styles.teamNameText}>{route.params?.data.teamOneShortName} vs {route.params?.data.teamTwoShortName}</Text>
                                 <Ionicons name='arrow-back' size={Height(30)} color='transparent' />
                             </View>
-                            <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginHorizontal: Width(20), marginTop: Height(30) }}>
-                                <View style={{ alignItems: 'flex-start' }}>
-                                    <Text style={{ fontSize: Height(14), fontFamily: font.POPPINS_MEDIUM, color: color.background }}>{route.params?.data.teamOneName}</Text>
-                                    <Text style={{ fontSize: Height(18), fontFamily: font.POPPINS_SEMI_BOLD, color: color.background }}>78/8 <Text style={{ fontSize: Height(14), fontFamily: font.POPPINS_REGULAR, color: color.background }}>(13)</Text></Text>
+                            <View style={styles.headersubView}>
+                                <View style={styles.flexStart}>
+                                    <Text style={styles.teamNameSubText}>{route.params?.data.teamOneName}</Text>
+                                    <Text style={styles.runText}>78/8 <Text style={styles.overText}>(13)</Text></Text>
                                 </View>
-                                <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                                <View style={globalStyles.contestItemRowView}>
                                     <Octicons name='dot-fill' size={Height(20)} color='#00A65C' />
-                                    <Text style={{ fontSize: Height(12), fontFamily: font.POPPINS_MEDIUM, color: color.background, marginLeft: Width(15) }}>{route.params?.data.time}</Text>
+                                    <Text style={styles.timeText}>{route.params?.data.time}</Text>
                                 </View>
-                                <View style={{ alignItems: 'flex-end' }}>
-                                    <Text style={{ fontSize: Height(14), fontFamily: font.POPPINS_MEDIUM, color: color.background }}>{route.params?.data.teamTwoName}</Text>
-                                    <Text style={{ fontSize: Height(18), fontFamily: font.POPPINS_SEMI_BOLD, color: color.background }}>78/8<Text style={{ fontSize: Height(14), fontFamily: font.POPPINS_REGULAR, color: color.background }}> (13)</Text></Text>
+                                <View style={styles.flexEnd}>
+                                    <Text style={styles.teamNameSubText}>{route.params?.data.teamTwoName}</Text>
+                                    <Text style={styles.runText}>78/8<Text style={styles.overText}> (13)</Text></Text>
                                 </View>
                             </View>
-                            <Text style={{ fontSize: Height(14), fontFamily: font.POPPINS_SEMI_BOLD, color: color.background, textAlign: 'center', marginTop: Height(20) }}>GT won by 6 wickets</Text>
+                            <Text style={styles.wonText}>GT won by 6 wickets</Text>
                         </View>
                         <View>
                             <ScrollView horizontal={true}
                                 showsHorizontalScrollIndicator={false}
                             >
-                                <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginTop: Height(10) }}>
-                                    <TouchableOpacity style={{ marginLeft: Width(25), borderBottomWidth: index === 1 ? Height(3) : null, paddingBottom: Height(5), borderColor: index === 1 ? '#5556CA' : 'transparent' }} onPress={() => { setSelected(''), setIndex(1) }} >
-                                        <Text style={{ fontSize: Height(14), fontFamily: font.POPPINS_MEDIUM, color: index === 1 ? color.text : 'rgba(0, 0, 0, 0.6)' }}>My Contests</Text>
+                                <View style={styles.headerBtnView}>
+                                    <TouchableOpacity style={[{ borderBottomWidth: index === 1 ? Height(3) : null, borderColor: index === 1 ? '#5556CA' : 'transparent' }, styles.headerBtn]} onPress={() => { setSelected(''), setIndex(1) }} >
+                                        <Text style={[{ color: index === 1 ? color.text : 'rgba(0, 0, 0, 0.6)' }, styles.headerBtnText]}>My Contests</Text>
                                     </TouchableOpacity>
-                                    <TouchableOpacity style={{ marginLeft: Width(25), borderBottomWidth: index === 2 ? Height(3) : null, paddingBottom: Height(5), borderColor: index === 2 ? '#5556CA' : 'transparent' }} onPress={() => setIndex(2)}>
-                                        <Text style={{ fontSize: Height(14), fontFamily: font.POPPINS_MEDIUM, color: index === 2 ? color.text : 'rgba(0, 0, 0, 0.6)' }}>My Team</Text>
+                                    <TouchableOpacity style={[{ borderBottomWidth: index === 2 ? Height(3) : null, borderColor: index === 2 ? '#5556CA' : 'transparent' }, styles.headerBtn]} onPress={() => setIndex(2)}>
+                                        <Text style={[{ color: index === 2 ? color.text : 'rgba(0, 0, 0, 0.6)' }, styles.headerBtnText]}>My Team</Text>
                                     </TouchableOpacity>
-                                    <TouchableOpacity style={{ marginLeft: Width(25), borderBottomWidth: index === 3 ? Height(3) : null, paddingBottom: Height(5), borderColor: index === 3 ? '#5556CA' : 'transparent' }} onPress={() => { setSelected('Commentary'), setIndex(3) }}>
-                                        <Text style={{ fontSize: Height(14), fontFamily: font.POPPINS_MEDIUM, color: index === 3 ? color.text : 'rgba(0, 0, 0, 0.6)' }}>Commentary</Text>
+                                    <TouchableOpacity style={[{ borderBottomWidth: index === 3 ? Height(3) : null, borderColor: index === 3 ? '#5556CA' : 'transparent' }, styles.headerBtn]} onPress={() => { setSelected('Commentary'), setIndex(3) }}>
+                                        <Text style={[{ color: index === 3 ? color.text : 'rgba(0, 0, 0, 0.6)' }, styles.headerBtnText]}>Commentary</Text>
                                     </TouchableOpacity>
-                                    <TouchableOpacity style={{ marginLeft: Width(25), borderBottomWidth: index === 4 ? Height(3) : null, paddingBottom: Height(5), borderColor: index === 4 ? '#5556CA' : 'transparent' }} onPress={() => { setSelected('Scorecard'), setIndex(4) }}>
-                                        <Text style={{ fontSize: Height(14), fontFamily: font.POPPINS_MEDIUM, color: index === 4 ? color.text : 'rgba(0, 0, 0, 0.6)' }}>Scorecard</Text>
+                                    <TouchableOpacity style={[{ borderBottomWidth: index === 4 ? Height(3) : null, borderColor: index === 4 ? '#5556CA' : 'transparent' }, styles.headerBtn]} onPress={() => { setSelected('Scorecard'), setIndex(4) }}>
+                                        <Text style={[{ color: index === 4 ? color.text : 'rgba(0, 0, 0, 0.6)' }, styles.headerBtnText]}>Scorecard</Text>
                                     </TouchableOpacity>
-                                    <TouchableOpacity style={{ marginHorizontal: Width(25), borderBottomWidth: index === 5 ? Height(3) : null, paddingBottom: Height(5), borderColor: index === 5 ? '#5556CA' : 'transparent' }} onPress={() => { setSelected('Stats'), setIndex(5) }}>
-                                        <Text style={{ fontSize: Height(14), fontFamily: font.POPPINS_MEDIUM, color: index === 5 ? color.text : 'rgba(0, 0, 0, 0.6)' }}>Stats</Text>
+                                    <TouchableOpacity style={[{ marginHorizontal: Width(25), borderBottomWidth: index === 5 ? Height(3) : null, borderColor: index === 5 ? '#5556CA' : 'transparent' }, styles.headerBtn]} onPress={() => { setSelected('Stats'), setIndex(5) }}>
+                                        <Text style={[{ color: index === 5 ? color.text : 'rgba(0, 0, 0, 0.6)' }, styles.headerBtnText]}>Stats</Text>
                                     </TouchableOpacity>
                                 </View>
                             </ScrollView>
                         </View>
-                        <View style={{ height: Height(1), backgroundColor: color.text, marginTop: Height(8), opacity: 0.6 }} />
+                        <View style={styles.lineView} />
                         <Text>My Teams</Text>
                     </SafeAreaView>
                 </>
@@ -77,55 +77,55 @@ const CompletedMatchesScreen = () => {
             return (
                 <>
                     <SafeAreaView
-                        style={{ flex: 0, backgroundColor: '#5556CA' }}
+                        style={styles.safeView}
                     />
-                    <SafeAreaView style={{ flex: 1 }}>
-                        <View style={{ height: Height(180), backgroundColor: '#5556CA', borderBottomLeftRadius: Width(20), borderBottomRightRadius: Width(20) }}>
-                            <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginHorizontal: Width(20), marginTop: Height(15) }}>
+                    <SafeAreaView style={globalStyles.container}>
+                        <View style={styles.headerView}>
+                            <View style={globalStyles.rowView}>
                                 <Ionicons name='arrow-back' size={Height(30)} color={color.background} onPress={() => navigation.goBack()} />
-                                <Text style={{ fontSize: Height(20), fontFamily: font.POPPINS_SEMI_BOLD, color: color.background }}>{route.params?.data.teamOneShortName} vs {route.params?.data.teamTwoShortName}</Text>
+                                <Text style={styles.teamNameText}>{route.params?.data.teamOneShortName} vs {route.params?.data.teamTwoShortName}</Text>
                                 <Ionicons name='arrow-back' size={Height(30)} color='transparent' />
                             </View>
-                            <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginHorizontal: Width(20), marginTop: Height(30) }}>
-                                <View style={{ alignItems: 'flex-start' }}>
-                                    <Text style={{ fontSize: Height(14), fontFamily: font.POPPINS_MEDIUM, color: color.background }}>{route.params?.data.teamOneName}</Text>
-                                    <Text style={{ fontSize: Height(18), fontFamily: font.POPPINS_SEMI_BOLD, color: color.background }}>78/8 <Text style={{ fontSize: Height(14), fontFamily: font.POPPINS_REGULAR, color: color.background }}>(13)</Text></Text>
+                            <View style={styles.headersubView}>
+                                <View style={styles.flexStart}>
+                                    <Text style={styles.teamNameSubText}>{route.params?.data.teamOneName}</Text>
+                                    <Text style={styles.runText}>78/8 <Text style={styles.overText}>(13)</Text></Text>
                                 </View>
-                                <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                                <View style={globalStyles.contestItemRowView}>
                                     <Octicons name='dot-fill' size={Height(20)} color='#00A65C' />
-                                    <Text style={{ fontSize: Height(12), fontFamily: font.POPPINS_MEDIUM, color: color.background, marginLeft: Width(15) }}>{route.params?.data.time}</Text>
+                                    <Text style={styles.timeText}>{route.params?.data.time}</Text>
                                 </View>
-                                <View style={{ alignItems: 'flex-end' }}>
-                                    <Text style={{ fontSize: Height(14), fontFamily: font.POPPINS_MEDIUM, color: color.background }}>{route.params?.data.teamTwoName}</Text>
-                                    <Text style={{ fontSize: Height(18), fontFamily: font.POPPINS_SEMI_BOLD, color: color.background }}>78/8<Text style={{ fontSize: Height(14), fontFamily: font.POPPINS_REGULAR, color: color.background }}> (13)</Text></Text>
+                                <View style={styles.flexEnd}>
+                                    <Text style={styles.teamNameSubText}>{route.params?.data.teamTwoName}</Text>
+                                    <Text style={styles.runText}>78/8<Text style={styles.overText}> (13)</Text></Text>
                                 </View>
                             </View>
-                            <Text style={{ fontSize: Height(14), fontFamily: font.POPPINS_SEMI_BOLD, color: color.background, textAlign: 'center', marginTop: Height(20) }}>GT won by 6 wickets</Text>
+                            <Text style={styles.wonText}>GT won by 6 wickets</Text>
                         </View>
                         <View>
                             <ScrollView horizontal={true}
                                 showsHorizontalScrollIndicator={false}
                             >
-                                <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginTop: Height(10) }}>
-                                    <TouchableOpacity style={{ marginLeft: Width(25), borderBottomWidth: index === 1 ? Height(3) : null, paddingBottom: Height(5), borderColor: index === 1 ? '#5556CA' : 'transparent' }} onPress={() => { setSelected(''), setIndex(1) }}>
-                                        <Text style={{ fontSize: Height(14), fontFamily: font.POPPINS_MEDIUM, color: index === 1 ? color.text : 'rgba(0, 0, 0, 0.6)' }}>My Contests</Text>
+                                <View style={styles.headerBtnView}>
+                                    <TouchableOpacity style={[{ borderBottomWidth: index === 1 ? Height(3) : null, borderColor: index === 1 ? '#5556CA' : 'transparent' }, styles.headerBtn]} onPress={() => { setSelected(''), setIndex(1) }}>
+                                        <Text style={[{ color: index === 1 ? color.text : 'rgba(0, 0, 0, 0.6)' }, styles.headerBtnText]}>My Contests</Text>
                                     </TouchableOpacity>
-                                    <TouchableOpacity style={{ marginLeft: Width(25), borderBottomWidth: index === 2 ? Height(3) : null, paddingBottom: Height(5), borderColor: index === 2 ? '#5556CA' : 'transparent' }} onPress={() => { setSelected('MyTeam'), setIndex(2) }}>
-                                        <Text style={{ fontSize: Height(14), fontFamily: font.POPPINS_MEDIUM, color: index === 2 ? color.text : 'rgba(0, 0, 0, 0.6)' }}>My Team</Text>
+                                    <TouchableOpacity style={[{ borderBottomWidth: index === 2 ? Height(3) : null, borderColor: index === 2 ? '#5556CA' : 'transparent' }, styles.headerBtn]} onPress={() => { setSelected('MyTeam'), setIndex(2) }}>
+                                        <Text style={[{ color: index === 2 ? color.text : 'rgba(0, 0, 0, 0.6)' }, styles.headerBtnText]}>My Team</Text>
                                     </TouchableOpacity>
-                                    <TouchableOpacity style={{ marginLeft: Width(25), borderBottomWidth: index === 3 ? Height(3) : null, paddingBottom: Height(5), borderColor: index === 3 ? '#5556CA' : 'transparent' }} onPress={() => setIndex(3)}>
-                                        <Text style={{ fontSize: Height(14), fontFamily: font.POPPINS_MEDIUM, color: index === 3 ? color.text : 'rgba(0, 0, 0, 0.6)' }}>Commentary</Text>
+                                    <TouchableOpacity style={[{ borderBottomWidth: index === 3 ? Height(3) : null, borderColor: index === 3 ? '#5556CA' : 'transparent' }, styles.headerBtn]} onPress={() => setIndex(3)}>
+                                        <Text style={[{ color: index === 3 ? color.text : 'rgba(0, 0, 0, 0.6)' }, styles.headerBtnText]}>Commentary</Text>
                                     </TouchableOpacity>
-                                    <TouchableOpacity style={{ marginLeft: Width(25), borderBottomWidth: index === 4 ? Height(3) : null, paddingBottom: Height(5), borderColor: index === 4 ? '#5556CA' : 'transparent' }} onPress={() => { setSelected('Scorecard'), setIndex(4) }}>
-                                        <Text style={{ fontSize: Height(14), fontFamily: font.POPPINS_MEDIUM, color: index === 4 ? color.text : 'rgba(0, 0, 0, 0.6)' }}>Scorecard</Text>
+                                    <TouchableOpacity style={[{ borderBottomWidth: index === 4 ? Height(3) : null, borderColor: index === 4 ? '#5556CA' : 'transparent' }, styles.headerBtn]} onPress={() => { setSelected('Scorecard'), setIndex(4) }}>
+                                        <Text style={[{ color: index === 4 ? color.text : 'rgba(0, 0, 0, 0.6)' }, styles.headerBtnText]}>Scorecard</Text>
                                     </TouchableOpacity>
-                                    <TouchableOpacity style={{ marginHorizontal: Width(25), borderBottomWidth: index === 5 ? Height(3) : null, paddingBottom: Height(5), borderColor: index === 5 ? '#5556CA' : 'transparent' }} onPress={() => { setSelected('Stats'), setIndex(5) }}>
-                                        <Text style={{ fontSize: Height(14), fontFamily: font.POPPINS_MEDIUM, color: index === 5 ? color.text : 'rgba(0, 0, 0, 0.6)' }}>Stats</Text>
+                                    <TouchableOpacity style={[{ marginHorizontal: Width(25), borderBottomWidth: index === 5 ? Height(3) : null, borderColor: index === 5 ? '#5556CA' : 'transparent' }, styles.headerBtn]} onPress={() => { setSelected('Stats'), setIndex(5) }}>
+                                        <Text style={[{ color: index === 5 ? color.text : 'rgba(0, 0, 0, 0.6)' }, styles.headerBtnText]}>Stats</Text>
                                     </TouchableOpacity>
                                 </View>
                             </ScrollView>
                         </View>
-                        <View style={{ height: Height(1), backgroundColor: color.text, marginTop: Height(8), opacity: 0.6 }} />
+                        <View style={styles.lineView} />
                         <Text>Commentary</Text>
                     </SafeAreaView>
                 </>
@@ -134,55 +134,55 @@ const CompletedMatchesScreen = () => {
             return (
                 <>
                     <SafeAreaView
-                        style={{ flex: 0, backgroundColor: '#5556CA' }}
+                        style={styles.safeView}
                     />
-                    <SafeAreaView style={{ flex: 1 }}>
-                        <View style={{ height: Height(180), backgroundColor: '#5556CA', borderBottomLeftRadius: Width(20), borderBottomRightRadius: Width(20) }}>
-                            <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginHorizontal: Width(20), marginTop: Height(15) }}>
+                    <SafeAreaView style={globalStyles.container}>
+                        <View style={styles.headerView}>
+                            <View style={globalStyles.rowView}>
                                 <Ionicons name='arrow-back' size={Height(30)} color={color.background} onPress={() => navigation.goBack()} />
-                                <Text style={{ fontSize: Height(20), fontFamily: font.POPPINS_SEMI_BOLD, color: color.background }}>{route.params?.data.teamOneShortName} vs {route.params?.data.teamTwoShortName}</Text>
+                                <Text style={styles.teamNameText}>{route.params?.data.teamOneShortName} vs {route.params?.data.teamTwoShortName}</Text>
                                 <Ionicons name='arrow-back' size={Height(30)} color='transparent' />
                             </View>
-                            <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginHorizontal: Width(20), marginTop: Height(30) }}>
-                                <View style={{ alignItems: 'flex-start' }}>
-                                    <Text style={{ fontSize: Height(14), fontFamily: font.POPPINS_MEDIUM, color: color.background }}>{route.params?.data.teamOneName}</Text>
-                                    <Text style={{ fontSize: Height(18), fontFamily: font.POPPINS_SEMI_BOLD, color: color.background }}>78/8 <Text style={{ fontSize: Height(14), fontFamily: font.POPPINS_REGULAR, color: color.background }}>(13)</Text></Text>
+                            <View style={styles.headersubView}>
+                                <View style={styles.flexStart}>
+                                    <Text style={styles.teamNameSubText}>{route.params?.data.teamOneName}</Text>
+                                    <Text style={styles.runText}>78/8 <Text style={styles.overText}>(13)</Text></Text>
                                 </View>
-                                <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                                <View style={globalStyles.contestItemRowView}>
                                     <Octicons name='dot-fill' size={Height(20)} color='#00A65C' />
-                                    <Text style={{ fontSize: Height(12), fontFamily: font.POPPINS_MEDIUM, color: color.background, marginLeft: Width(15) }}>{route.params?.data.time}</Text>
+                                    <Text style={styles.timeText}>{route.params?.data.time}</Text>
                                 </View>
-                                <View style={{ alignItems: 'flex-end' }}>
-                                    <Text style={{ fontSize: Height(14), fontFamily: font.POPPINS_MEDIUM, color: color.background }}>{route.params?.data.teamTwoName}</Text>
-                                    <Text style={{ fontSize: Height(18), fontFamily: font.POPPINS_SEMI_BOLD, color: color.background }}>78/8<Text style={{ fontSize: Height(14), fontFamily: font.POPPINS_REGULAR, color: color.background }}> (13)</Text></Text>
+                                <View style={styles.flexEnd}>
+                                    <Text style={styles.teamNameSubText}>{route.params?.data.teamTwoName}</Text>
+                                    <Text style={styles.runText}>78/8<Text style={styles.overText}> (13)</Text></Text>
                                 </View>
                             </View>
-                            <Text style={{ fontSize: Height(14), fontFamily: font.POPPINS_SEMI_BOLD, color: color.background, textAlign: 'center', marginTop: Height(20) }}>GT won by 6 wickets</Text>
+                            <Text style={styles.wonText}>GT won by 6 wickets</Text>
                         </View>
                         <View>
                             <ScrollView horizontal={true}
                                 showsHorizontalScrollIndicator={false}
                             >
-                                <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginTop: Height(10) }}>
-                                    <TouchableOpacity style={{ marginLeft: Width(25), borderBottomWidth: index === 1 ? Height(3) : null, paddingBottom: Height(5), borderColor: index === 1 ? '#5556CA' : 'transparent' }} onPress={() => { setSelected(''), setIndex(1) }}>
-                                        <Text style={{ fontSize: Height(14), fontFamily: font.POPPINS_MEDIUM, color: index === 1 ? color.text : 'rgba(0, 0, 0, 0.6)' }}>My Contests</Text>
+                                <View style={styles.headerBtnView}>
+                                    <TouchableOpacity style={[{ borderBottomWidth: index === 1 ? Height(3) : null, borderColor: index === 1 ? '#5556CA' : 'transparent' }, styles.headerBtn]} onPress={() => { setSelected(''), setIndex(1) }}>
+                                        <Text style={[{ color: index === 1 ? color.text : 'rgba(0, 0, 0, 0.6)' }, styles.headerBtnText]}>My Contests</Text>
                                     </TouchableOpacity>
-                                    <TouchableOpacity style={{ marginLeft: Width(25), borderBottomWidth: index === 2 ? Height(3) : null, paddingBottom: Height(5), borderColor: index === 2 ? '#5556CA' : 'transparent' }} onPress={() => { setSelected('MyTeam'), setIndex(2) }}>
-                                        <Text style={{ fontSize: Height(14), fontFamily: font.POPPINS_MEDIUM, color: index === 2 ? color.text : 'rgba(0, 0, 0, 0.6)' }}>My Team</Text>
+                                    <TouchableOpacity style={[{ borderBottomWidth: index === 2 ? Height(3) : null, borderColor: index === 2 ? '#5556CA' : 'transparent' }, styles.headerBtn]} onPress={() => { setSelected('MyTeam'), setIndex(2) }}>
+                                        <Text style={[{ color: index === 2 ? color.text : 'rgba(0, 0, 0, 0.6)' }, styles.headerBtnText]}>My Team</Text>
                                     </TouchableOpacity>
-                                    <TouchableOpacity style={{ marginLeft: Width(25), borderBottomWidth: index === 3 ? Height(3) : null, paddingBottom: Height(5), borderColor: index === 3 ? '#5556CA' : 'transparent' }} onPress={() => { setSelected('Commentary'), setIndex(3) }}>
-                                        <Text style={{ fontSize: Height(14), fontFamily: font.POPPINS_MEDIUM, color: index === 3 ? color.text : 'rgba(0, 0, 0, 0.6)' }}>Commentary</Text>
+                                    <TouchableOpacity style={[{ borderBottomWidth: index === 3 ? Height(3) : null, borderColor: index === 3 ? '#5556CA' : 'transparent' }, styles.headerBtn]} onPress={() => { setSelected('Commentary'), setIndex(3) }}>
+                                        <Text style={[{ color: index === 3 ? color.text : 'rgba(0, 0, 0, 0.6)' }, styles.headerBtnText]}>Commentary</Text>
                                     </TouchableOpacity>
-                                    <TouchableOpacity style={{ marginLeft: Width(25), borderBottomWidth: index === 4 ? Height(3) : null, paddingBottom: Height(5), borderColor: index === 4 ? '#5556CA' : 'transparent' }} onPress={() => setIndex(4)}>
-                                        <Text style={{ fontSize: Height(14), fontFamily: font.POPPINS_MEDIUM, color: index === 4 ? color.text : 'rgba(0, 0, 0, 0.6)' }}>Scorecard</Text>
+                                    <TouchableOpacity style={[{ borderBottomWidth: index === 4 ? Height(3) : null, borderColor: index === 4 ? '#5556CA' : 'transparent' }, styles.headerBtn]} onPress={() => setIndex(4)}>
+                                        <Text style={[{ color: index === 4 ? color.text : 'rgba(0, 0, 0, 0.6)' }, styles.headerBtnText]}>Scorecard</Text>
                                     </TouchableOpacity>
-                                    <TouchableOpacity style={{ marginHorizontal: Width(25), borderBottomWidth: index === 5 ? Height(3) : null, paddingBottom: Height(5), borderColor: index === 5 ? '#5556CA' : 'transparent' }} onPress={() => { setSelected('Stats'), setIndex(5) }}>
-                                        <Text style={{ fontSize: Height(14), fontFamily: font.POPPINS_MEDIUM, color: index === 5 ? color.text : 'rgba(0, 0, 0, 0.6)' }}>Stats</Text>
+                                    <TouchableOpacity style={[{ marginHorizontal: Width(25), borderBottomWidth: index === 5 ? Height(3) : null, borderColor: index === 5 ? '#5556CA' : 'transparent' }, styles.headerBtn]} onPress={() => { setSelected('Stats'), setIndex(5) }}>
+                                        <Text style={[{ color: index === 5 ? color.text : 'rgba(0, 0, 0, 0.6)' }, styles.headerBtnText]}>Stats</Text>
                                     </TouchableOpacity>
                                 </View>
                             </ScrollView>
                         </View>
-                        <View style={{ height: Height(1), backgroundColor: color.text, marginTop: Height(8), opacity: 0.6 }} />
+                        <View style={styles.lineView} />
                         <Text>Scorecard</Text>
                     </SafeAreaView>
                 </>
@@ -191,55 +191,55 @@ const CompletedMatchesScreen = () => {
             return (
                 <>
                     <SafeAreaView
-                        style={{ flex: 0, backgroundColor: '#5556CA' }}
+                        style={styles.safeView}
                     />
-                    <SafeAreaView style={{ flex: 1 }}>
-                        <View style={{ height: Height(180), backgroundColor: '#5556CA', borderBottomLeftRadius: Width(20), borderBottomRightRadius: Width(20) }}>
-                            <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginHorizontal: Width(20), marginTop: Height(15) }}>
+                    <SafeAreaView style={globalStyles.container}>
+                        <View style={styles.headerView}>
+                            <View style={globalStyles.rowView}>
                                 <Ionicons name='arrow-back' size={Height(30)} color={color.background} onPress={() => navigation.goBack()} />
-                                <Text style={{ fontSize: Height(20), fontFamily: font.POPPINS_SEMI_BOLD, color: color.background }}>{route.params?.data.teamOneShortName} vs {route.params?.data.teamTwoShortName}</Text>
+                                <Text style={styles.teamNameText}>{route.params?.data.teamOneShortName} vs {route.params?.data.teamTwoShortName}</Text>
                                 <Ionicons name='arrow-back' size={Height(30)} color='transparent' />
                             </View>
-                            <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginHorizontal: Width(20), marginTop: Height(30) }}>
-                                <View style={{ alignItems: 'flex-start' }}>
-                                    <Text style={{ fontSize: Height(14), fontFamily: font.POPPINS_MEDIUM, color: color.background }}>{route.params?.data.teamOneName}</Text>
-                                    <Text style={{ fontSize: Height(18), fontFamily: font.POPPINS_SEMI_BOLD, color: color.background }}>78/8 <Text style={{ fontSize: Height(14), fontFamily: font.POPPINS_REGULAR, color: color.background }}>(13)</Text></Text>
+                            <View style={styles.headersubView}>
+                                <View style={styles.flexStart}>
+                                    <Text style={styles.teamNameSubText}>{route.params?.data.teamOneName}</Text>
+                                    <Text style={styles.runText}>78/8 <Text style={styles.overText}>(13)</Text></Text>
                                 </View>
-                                <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                                <View style={globalStyles.contestItemRowView}>
                                     <Octicons name='dot-fill' size={Height(20)} color='#00A65C' />
-                                    <Text style={{ fontSize: Height(12), fontFamily: font.POPPINS_MEDIUM, color: color.background, marginLeft: Width(15) }}>{route.params?.data.time}</Text>
+                                    <Text style={styles.timeText}>{route.params?.data.time}</Text>
                                 </View>
-                                <View style={{ alignItems: 'flex-end' }}>
-                                    <Text style={{ fontSize: Height(14), fontFamily: font.POPPINS_MEDIUM, color: color.background }}>{route.params?.data.teamTwoName}</Text>
-                                    <Text style={{ fontSize: Height(18), fontFamily: font.POPPINS_SEMI_BOLD, color: color.background }}>78/8<Text style={{ fontSize: Height(14), fontFamily: font.POPPINS_REGULAR, color: color.background }}> (13)</Text></Text>
+                                <View style={styles.flexEnd}>
+                                    <Text style={styles.teamNameSubText}>{route.params?.data.teamTwoName}</Text>
+                                    <Text style={styles.runText}>78/8<Text style={styles.overText}> (13)</Text></Text>
                                 </View>
                             </View>
-                            <Text style={{ fontSize: Height(14), fontFamily: font.POPPINS_SEMI_BOLD, color: color.background, textAlign: 'center', marginTop: Height(20) }}>GT won by 6 wickets</Text>
+                            <Text style={styles.wonText}>GT won by 6 wickets</Text>
                         </View>
                         <View>
                             <ScrollView horizontal={true}
                                 showsHorizontalScrollIndicator={false}
                             >
-                                <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginTop: Height(10) }}>
-                                    <TouchableOpacity style={{ marginLeft: Width(25), borderBottomWidth: index === 1 ? Height(3) : null, paddingBottom: Height(5), borderColor: index === 1 ? '#5556CA' : 'transparent' }} onPress={() => { setSelected(''), setIndex(1) }}>
-                                        <Text style={{ fontSize: Height(14), fontFamily: font.POPPINS_MEDIUM, color: index === 1 ? color.text : 'rgba(0, 0, 0, 0.6)' }}>My Contests</Text>
+                                <View style={styles.headerBtnView}>
+                                    <TouchableOpacity style={[{ borderBottomWidth: index === 1 ? Height(3) : null, borderColor: index === 1 ? '#5556CA' : 'transparent' }, styles.headerBtn]} onPress={() => { setSelected(''), setIndex(1) }}>
+                                        <Text style={[{ color: index === 1 ? color.text : 'rgba(0, 0, 0, 0.6)' }, styles.headerBtnText]}>My Contests</Text>
                                     </TouchableOpacity>
-                                    <TouchableOpacity style={{ marginLeft: Width(25), borderBottomWidth: index === 2 ? Height(3) : null, paddingBottom: Height(5), borderColor: index === 2 ? '#5556CA' : 'transparent' }} onPress={() => { setSelected('MyTeam'), setIndex(2) }}>
-                                        <Text style={{ fontSize: Height(14), fontFamily: font.POPPINS_MEDIUM, color: index === 2 ? color.text : 'rgba(0, 0, 0, 0.6)' }}>My Team</Text>
+                                    <TouchableOpacity style={[{ borderBottomWidth: index === 2 ? Height(3) : null, borderColor: index === 2 ? '#5556CA' : 'transparent' }, styles.headerBtn]} onPress={() => { setSelected('MyTeam'), setIndex(2) }}>
+                                        <Text style={[{ color: index === 2 ? color.text : 'rgba(0, 0, 0, 0.6)' }, styles.headerBtnText]}>My Team</Text>
                                     </TouchableOpacity>
-                                    <TouchableOpacity style={{ marginLeft: Width(25), borderBottomWidth: index === 3 ? Height(3) : null, paddingBottom: Height(5), borderColor: index === 3 ? '#5556CA' : 'transparent' }} onPress={() => { setSelected('Commentary'), setIndex(3) }}>
-                                        <Text style={{ fontSize: Height(14), fontFamily: font.POPPINS_MEDIUM, color: index === 3 ? color.text : 'rgba(0, 0, 0, 0.6)' }}>Commentary</Text>
+                                    <TouchableOpacity style={[{ borderBottomWidth: index === 3 ? Height(3) : null, borderColor: index === 3 ? '#5556CA' : 'transparent' }, styles.headerBtn]} onPress={() => { setSelected('Commentary'), setIndex(3) }}>
+                                        <Text style={[{ color: index === 3 ? color.text : 'rgba(0, 0, 0, 0.6)' }, styles.headerBtnText]}>Commentary</Text>
                                     </TouchableOpacity>
-                                    <TouchableOpacity style={{ marginLeft: Width(25), borderBottomWidth: index === 4 ? Height(3) : null, paddingBottom: Height(5), borderColor: index === 4 ? '#5556CA' : 'transparent' }} onPress={() => { setSelected('Scorecard'), setIndex(4) }}>
-                                        <Text style={{ fontSize: Height(14), fontFamily: font.POPPINS_MEDIUM, color: index === 4 ? color.text : 'rgba(0, 0, 0, 0.6)' }}>Scorecard</Text>
+                                    <TouchableOpacity sstyle={[{ borderBottomWidth: index === 4 ? Height(3) : null, borderColor: index === 4 ? '#5556CA' : 'transparent' }, styles.headerBtn]} onPress={() => { setSelected('Scorecard'), setIndex(4) }}>
+                                        <Text style={[{ color: index === 4 ? color.text : 'rgba(0, 0, 0, 0.6)' }, styles.headerBtnText]}>Scorecard</Text>
                                     </TouchableOpacity>
-                                    <TouchableOpacity style={{ marginHorizontal: Width(25), borderBottomWidth: index === 5 ? Height(3) : null, paddingBottom: Height(5), borderColor: index === 5 ? '#5556CA' : 'transparent' }} onPress={() => setIndex(5)}>
-                                        <Text style={{ fontSize: Height(14), fontFamily: font.POPPINS_MEDIUM, color: index === 5 ? color.text : 'rgba(0, 0, 0, 0.6)' }}>Stats</Text>
+                                    <TouchableOpacity style={[{ marginHorizontal: Width(25), borderBottomWidth: index === 5 ? Height(3) : null, borderColor: index === 5 ? '#5556CA' : 'transparent' }, styles.headerBtn]} onPress={() => setIndex(5)}>
+                                        <Text style={[{ color: index === 5 ? color.text : 'rgba(0, 0, 0, 0.6)' }, styles.headerBtnText]}>Stats</Text>
                                     </TouchableOpacity>
                                 </View>
                             </ScrollView>
                         </View>
-                        <View style={{ height: Height(1), backgroundColor: color.text, marginTop: Height(8), opacity: 0.6 }} />
+                        <View style={styles.lineView} />
                         <Text>Stats</Text>
                     </SafeAreaView>
                 </>
@@ -248,86 +248,86 @@ const CompletedMatchesScreen = () => {
             return (
                 <>
                     <SafeAreaView
-                        style={{ flex: 0, backgroundColor: '#5556CA' }}
+                        style={styles.safeView}
                     />
-                    <SafeAreaView style={{ flex: 1 }}>
-                        <View style={{ height: Height(180), backgroundColor: '#5556CA', borderBottomLeftRadius: Width(20), borderBottomRightRadius: Width(20) }}>
-                            <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginHorizontal: Width(20), marginTop: Height(15) }}>
+                    <SafeAreaView style={globalStyles.container}>
+                        <View style={styles.headerView}>
+                            <View style={globalStyles.rowView}>
                                 <Ionicons name='arrow-back' size={Height(30)} color={color.background} onPress={() => navigation.goBack()} />
                                 <Text style={{ fontSize: Height(20), fontFamily: font.POPPINS_SEMI_BOLD, color: color.background }}>{route.params?.data.teamOneShortName} vs {route.params?.data.teamTwoShortName}</Text>
                                 <Ionicons name='arrow-back' size={Height(30)} color='transparent' />
                             </View>
                             <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginHorizontal: Width(20), marginTop: Height(30) }}>
-                                <View style={{ alignItems: 'flex-start' }}>
-                                    <Text style={{ fontSize: Height(14), fontFamily: font.POPPINS_MEDIUM, color: color.background }}>{route.params?.data.teamOneName}</Text>
-                                    <Text style={{ fontSize: Height(18), fontFamily: font.POPPINS_SEMI_BOLD, color: color.background }}>78/8 <Text style={{ fontSize: Height(14), fontFamily: font.POPPINS_REGULAR, color: color.background }}>(13)</Text></Text>
+                                <View style={styles.flexStart}>
+                                    <Text style={styles.teamNameSubText}>{route.params?.data.teamOneName}</Text>
+                                    <Text style={styles.runText}>78/8 <Text style={styles.overText}>(13)</Text></Text>
                                 </View>
-                                <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                                <View style={globalStyles.contestItemRowView}>
                                     <Octicons name='dot-fill' size={Height(20)} color='#00A65C' />
-                                    <Text style={{ fontSize: Height(12), fontFamily: font.POPPINS_MEDIUM, color: color.background, marginLeft: Width(15) }}>{route.params?.data.time}</Text>
+                                    <Text style={styles.timeText}>{route.params?.data.time}</Text>
                                 </View>
                                 <View style={{ alignItems: 'flex-end' }}>
-                                    <Text style={{ fontSize: Height(14), fontFamily: font.POPPINS_MEDIUM, color: color.background }}>{route.params?.data.teamTwoName}</Text>
-                                    <Text style={{ fontSize: Height(18), fontFamily: font.POPPINS_SEMI_BOLD, color: color.background }}>78/8<Text style={{ fontSize: Height(14), fontFamily: font.POPPINS_REGULAR, color: color.background }}> (13)</Text></Text>
+                                    <Text style={styles.teamNameSubText}>{route.params?.data.teamTwoName}</Text>
+                                    <Text style={styles.runText}>78/8<Text style={styles.overText}> (13)</Text></Text>
                                 </View>
                             </View>
-                            <Text style={{ fontSize: Height(14), fontFamily: font.POPPINS_SEMI_BOLD, color: color.background, textAlign: 'center', marginTop: Height(20) }}>GT won by 6 wickets</Text>
+                            <Text style={styles.wonText}>GT won by 6 wickets</Text>
                         </View>
                         <View>
                             <ScrollView horizontal={true}
                                 showsHorizontalScrollIndicator={false}
                             >
-                                <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginTop: Height(10) }}>
-                                    <TouchableOpacity style={{ marginLeft: Width(25), borderBottomWidth: index === 1 ? Height(3) : null, paddingBottom: Height(5), borderColor: index === 1 ? '#5556CA' : 'transparent' }} onPress={() => setIndex(1)}>
-                                        <Text style={{ fontSize: Height(14), fontFamily: font.POPPINS_MEDIUM, color: index === 1 ? color.text : 'rgba(0, 0, 0, 0.6)' }}>My Contests</Text>
+                                <View style={styles.headerBtnView}>
+                                    <TouchableOpacity style={[{ borderBottomWidth: index === 1 ? Height(3) : null, borderColor: index === 1 ? '#5556CA' : 'transparent' }, styles.headerBtn]} onPress={() => setIndex(1)}>
+                                        <Text style={[{ color: index === 1 ? color.text : 'rgba(0, 0, 0, 0.6)' }, styles.headerBtnText]}>My Contests</Text>
                                     </TouchableOpacity>
-                                    <TouchableOpacity style={{ marginLeft: Width(25), borderBottomWidth: index === 2 ? Height(3) : null, paddingBottom: Height(5), borderColor: index === 2 ? '#5556CA' : 'transparent' }} onPress={() => { setSelected('MyTeam'), setIndex(2) }}>
-                                        <Text style={{ fontSize: Height(14), fontFamily: font.POPPINS_MEDIUM, color: index === 2 ? color.text : 'rgba(0, 0, 0, 0.6)' }}>My Team</Text>
+                                    <TouchableOpacity style={[{ borderBottomWidth: index === 2 ? Height(3) : null, borderColor: index === 2 ? '#5556CA' : 'transparent' }, styles.headerBtn]} onPress={() => { setSelected('MyTeam'), setIndex(2) }}>
+                                        <Text style={[{ color: index === 2 ? color.text : 'rgba(0, 0, 0, 0.6)' }, styles.headerBtnText]}>My Team</Text>
                                     </TouchableOpacity>
-                                    <TouchableOpacity style={{ marginLeft: Width(25), borderBottomWidth: index === 3 ? Height(3) : null, paddingBottom: Height(5), borderColor: index === 3 ? '#5556CA' : 'transparent' }} onPress={() => { setSelected('Commentary'), setIndex(3) }}>
-                                        <Text style={{ fontSize: Height(14), fontFamily: font.POPPINS_MEDIUM, color: index === 3 ? color.text : 'rgba(0, 0, 0, 0.6)' }}>Commentary</Text>
+                                    <TouchableOpacity style={[{ borderBottomWidth: index === 3 ? Height(3) : null, borderColor: index === 3 ? '#5556CA' : 'transparent' }, styles.headerBtn]} onPress={() => { setSelected('Commentary'), setIndex(3) }}>
+                                        <Text style={[{ color: index === 3 ? color.text : 'rgba(0, 0, 0, 0.6)' }, styles.headerBtnText]}>Commentary</Text>
                                     </TouchableOpacity>
-                                    <TouchableOpacity style={{ marginLeft: Width(25), borderBottomWidth: index === 4 ? Height(3) : null, paddingBottom: Height(5), borderColor: index === 4 ? '#5556CA' : 'transparent' }} onPress={() => { setSelected('Scorecard'), setIndex(4) }}>
-                                        <Text style={{ fontSize: Height(14), fontFamily: font.POPPINS_MEDIUM, color: index === 4 ? color.text : 'rgba(0, 0, 0, 0.6)' }}>Scorecard</Text>
+                                    <TouchableOpacity style={[{ borderBottomWidth: index === 4 ? Height(3) : null, borderColor: index === 4 ? '#5556CA' : 'transparent' }, styles.headerBtn]} onPress={() => { setSelected('Scorecard'), setIndex(4) }}>
+                                        <Text style={[{ color: index === 4 ? color.text : 'rgba(0, 0, 0, 0.6)' }, styles.headerBtnText]}>Scorecard</Text>
                                     </TouchableOpacity>
-                                    <TouchableOpacity style={{ marginHorizontal: Width(25), borderBottomWidth: index === 5 ? Height(3) : null, paddingBottom: Height(5), borderColor: index === 5 ? '#5556CA' : 'transparent' }} onPress={() => { setSelected('Stats'), setIndex(5) }}>
-                                        <Text style={{ fontSize: Height(14), fontFamily: font.POPPINS_MEDIUM, color: index === 5 ? color.text : 'rgba(0, 0, 0, 0.6)' }}>Stats</Text>
+                                    <TouchableOpacity style={[{ marginHorizontal: Width(25), borderBottomWidth: index === 5 ? Height(3) : null, borderColor: index === 5 ? '#5556CA' : 'transparent' }, styles.headerBtn]} onPress={() => { setSelected('Stats'), setIndex(5) }}>
+                                        <Text style={[{ color: index === 5 ? color.text : 'rgba(0, 0, 0, 0.6)' }, styles.headerBtnText]}>Stats</Text>
                                     </TouchableOpacity>
                                 </View>
                             </ScrollView>
                         </View>
-                        <View style={{ height: Height(1), backgroundColor: color.text, marginTop: Height(8), opacity: 0.6 }} />
+                        <View style={styles.lineView} />
                         <ScrollView>
-                            <TouchableOpacity style={{ height: Height(108), width: Width(350), borderWidth: Height(1), borderRadius: Width(10), alignSelf: 'center', marginTop: Height(15) }}>
-                                <View style={{ width: Width(350), height: Height(35), flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', paddingHorizontal: Width(20) }}>
+                            <TouchableOpacity style={styles.contestBtn}>
+                                <View style={styles.contestFrontView}>
                                     <Text>Practice Contest</Text>
                                     <Text>2<Text> Posts</Text></Text>
                                 </View>
-                                <View style={{ width: Width(347), height: Height(35), flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', backgroundColor: 'rgba(0, 0, 0, 0.2)', paddingHorizontal: Width(20) }}>
-                                    <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                                <View style={styles.contestSubView}>
+                                    <View style={globalStyles.contestItemRowView}>
                                         <ContestFirstComponent width={Width(24)} height={Height(18)} />
-                                        <Text style={{ fontSize: Height(10), fontFamily: font.POPPINS_SEMI_BOLD, color: color.contestText, marginLeft: Width(5) }}>Glory awaits!</Text>
+                                        <Text style={globalStyles.contestItemEndText}>Glory awaits!</Text>
                                     </View>
 
-                                    <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-                                        <View style={{ height: Height(18), width: Height(18), borderRadius: Height(18) / 2, borderWidth: 1, justifyContent: 'center', alignItems: 'center' }}>
-                                            <Text style={{ fontSize: Height(10), fontFamily: font.POPPINS_SEMI_BOLD, color: color.contestText, }}>S</Text>
+                                    <View style={globalStyles.contestItemRowView}>
+                                        <View style={globalStyles.contestItemEndSubView}>
+                                            <Text style={styles.contestS}>S</Text>
                                         </View>
-                                        <Text style={{ fontSize: Height(10), fontFamily: font.POPPINS_SEMI_BOLD, color: color.contestText, marginLeft: Width(5) }}>Single</Text>
+                                        <Text style={globalStyles.contestItemEndText}>Single</Text>
                                     </View>
-                                    <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                                    <View style={globalStyles.contestItemRowView}>
                                         <ContestThirdComponent width={Width(20)} height={Height(21)} />
-                                        <Text style={{ fontSize: Height(10), fontFamily: font.POPPINS_SEMI_BOLD, color: color.contestText, marginLeft: Width(5) }}>Guaranteed</Text>
+                                        <Text style={globalStyles.contestItemEndText}>Guaranteed</Text>
                                     </View>
                                 </View>
-                                <TouchableOpacity style={{ width: Width(347), height: Height(35), flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', backgroundColor: '#FEFAEF', borderBottomLeftRadius: Width(10), borderBottomRightRadius: Width(10), paddingHorizontal: Width(20) }}>
-                                    <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-                                        <Text style={{ marginRight: Width(20), fontSize: Height(12), fontFamily: font.POPPINS_REGULAR, color: color.text }}>HBJHBCBB554</Text>
-                                        <Text style={{ fontSize: Height(12), fontFamily: font.POPPINS_REGULAR, color: color.text }}>T1</Text>
+                                <TouchableOpacity style={styles.contestEndBtn}>
+                                    <View style={globalStyles.contestItemRowView}>
+                                        <Text style={[{ marginRight: Width(20), }, globalStyles.contestRegularText]}>HBJHBCBB554</Text>
+                                        <Text style={globalStyles.contestRegularText}>T1</Text>
                                     </View>
-                                    <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-                                        <Text style={{ fontSize: Height(12), fontFamily: font.POPPINS_REGULAR, color: color.text, opacity: 0.6 }}>181</Text>
-                                        <Text style={{ marginLeft: Width(60), fontSize: Height(12), fontFamily: font.POPPINS_REGULAR, color: color.text, opacity: 0.6 }}>#2 -</Text>
+                                    <View style={globalStyles.contestItemRowView}>
+                                        <Text style={styles.contestEndText}>181</Text>
+                                        <Text style={[{ fontSize: Height(12), fontFamily: font.POPPINS_REGULAR, color: color.text, opacity: 0.6 }, styles.contestEndText]}>#2 -</Text>
                                     </View>
                                 </TouchableOpacity>
                             </TouchableOpacity>
@@ -341,4 +341,69 @@ const CompletedMatchesScreen = () => {
 
 export default CompletedMatchesScreen
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+    safeView: {
+        flex: 0, backgroundColor: '#5556CA'
+    },
+    headerView: {
+        height: Height(180), backgroundColor: '#5556CA', borderBottomLeftRadius: Width(20), borderBottomRightRadius: Width(20)
+    },
+    teamNameText: {
+        fontSize: Height(20), fontFamily: font.POPPINS_SEMI_BOLD, color: color.background
+    },
+    headersubView: {
+        flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginHorizontal: Width(20), marginTop: Height(30)
+    },
+    teamNameSubText: {
+        fontSize: Height(14), fontFamily: font.POPPINS_MEDIUM, color: color.background
+    },
+    flexStart: {
+        alignItems: 'flex-start'
+    },
+    runText: {
+        fontSize: Height(18), fontFamily: font.POPPINS_SEMI_BOLD, color: color.background
+    },
+    overText: {
+        fontSize: Height(14), fontFamily: font.POPPINS_REGULAR, color: color.background
+    },
+    timeText: {
+        fontSize: Height(12), fontFamily: font.POPPINS_MEDIUM, color: color.background, marginLeft: Width(15)
+    },
+    wonText: {
+        fontSize: Height(14), fontFamily: font.POPPINS_SEMI_BOLD, color: color.background, textAlign: 'center', marginTop: Height(20)
+    },
+    headerBtnView: {
+        flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginTop: Height(10)
+    },
+    flexEnd: {
+        alignItems: 'flex-end'
+    },
+    headerBtn: {
+        marginLeft: Width(25), paddingBottom: Height(5),
+    },
+    headerBtnText: {
+        fontSize: Height(14), fontFamily: font.POPPINS_MEDIUM,
+    },
+    lineView: {
+        height: Height(1), backgroundColor: color.text, marginTop: Height(8), opacity: 0.6
+    },
+    contestBtn: {
+        height: Height(108), width: Width(350), borderWidth: Height(1), borderRadius: Width(10), alignSelf: 'center', marginTop: Height(15)
+    },
+    contestFrontView: {
+        width: Width(350), height: Height(35), flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', paddingHorizontal: Width(20)
+    },
+    contestSubView: {
+        width: Width(347), height: Height(35), flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', backgroundColor: 'rgba(0, 0, 0, 0.2)', paddingHorizontal: Width(20)
+    },
+    contestS: {
+        fontSize: Height(10), fontFamily: font.POPPINS_SEMI_BOLD, color: color.contestText,
+    },
+    contestEndBtn: {
+        width: Width(347), height: Height(35), flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', backgroundColor: '#FEFAEF', borderBottomLeftRadius: Width(10), borderBottomRightRadius: Width(10), paddingHorizontal: Width(20)
+    },
+    contestEndText: {
+        fontSize: Height(12), fontFamily: font.POPPINS_REGULAR, color: color.text, opacity: 0.6
+    }
+
+})

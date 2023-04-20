@@ -21,8 +21,8 @@ const EnterContestCodeScreen = () => {
             />
             <SafeAreaView style={globalStyles.container}>
                 <DropShadow style={globalStyles.shadow}>
-                    <View style={{ height: Height(165), borderBottomLeftRadius: Width(20), borderBottomRightRadius: Width(20), paddingHorizontal: Width(25), backgroundColor: 'white' }}>
-                        <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginTop: Height(20) }}>
+                    <View style={globalStyles.contestHeaderView}>
+                        <View style={globalStyles.contestRowView}>
                             <Ionicons name='arrow-back' size={Height(30)} onPress={() => navigation.goBack()} />
                             <MyBetComponent width={Width(102)} height={Height(15)} />
                             <TouchableOpacity onPress={() => navigation.navigate('Notification')}>
@@ -30,10 +30,10 @@ const EnterContestCodeScreen = () => {
                             </TouchableOpacity>
                         </View>
                         <Text style={globalStyles.headerText}>Enter Contest Code</Text>
-                        <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginHorizontal: Width(15), marginTop: Height(15) }}>
-                            <Image source={require('../assets/images/gt.png')} style={{ width: Width(65), height: Height(48) }} />
-                            <Text style={{ fontSize: Height(10), fontFamily: 'Poppins-Medium', color: '#FF0000', marginLeft: Width(8) }}>23m</Text>
-                            <Image source={require('../assets/images/mi.png')} style={{ width: Width(65), height: Height(48) }} />
+                        <View style={globalStyles.contestRowSubView}>
+                            <Image source={require('../assets/images/gt.png')} style={globalStyles.teamImage} />
+                            <Text style={globalStyles.headerTimeText}>23m</Text>
+                            <Image source={require('../assets/images/mi.png')} style={globalStyles.teamImage} />
                         </View>
                     </View>
                 </DropShadow>
@@ -42,8 +42,8 @@ const EnterContestCodeScreen = () => {
                     <View style={globalStyles.lineView} />
                     <TextInput style={globalStyles.textInput} maxLength={10} placeholder='Enter Contest Code' placeholderTextColor='#767676' onChangeText={(val) => setContestCode(val)} value={contestCode} />
                 </View>
-                <TouchableOpacity style={{ height: Height(40), width: Width(240), backgroundColor: color.primaryText, alignSelf: 'center', marginTop: Height(476), justifyContent: 'center', alignItems: 'center', borderRadius: Width(10) }} onPress={() => navigation.navigate('JoinContest')} >
-                    <Text style={{ fontSize: Height(14), fontFamily: font.POPPINS_MEDIUM, color: color.background }}>Join Contest</Text>
+                <TouchableOpacity style={styles.joinBtn} onPress={() => navigation.navigate('JoinContest')} >
+                    <Text style={styles.joinBtnText}>Join Contest</Text>
                 </TouchableOpacity>
             </SafeAreaView>
         </>
@@ -53,4 +53,10 @@ const EnterContestCodeScreen = () => {
 export default EnterContestCodeScreen
 
 const styles = StyleSheet.create({
+    joinBtn: {
+        height: Height(40), width: Width(240), backgroundColor: color.primaryText, alignSelf: 'center', marginTop: Height(476), justifyContent: 'center', alignItems: 'center', borderRadius: Width(10)
+    },
+    joinBtnText: {
+        fontSize: Height(14), fontFamily: font.POPPINS_MEDIUM, color: color.background
+    }
 })

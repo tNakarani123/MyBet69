@@ -59,21 +59,21 @@ const ChooseNewContestPrizeScreen = () => {
         const winners = Winners.slice(0, winnersToShow);
 
         return (
-            <View style={{ borderWidth: Height(1), borderRadius: Width(10), marginHorizontal: Width(10), marginTop: Height(25) }} key={i}>
-                <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginTop: Height(5) }}>
-                    <Text style={{ fontSize: Height(12), fontFamily: font.POPPINS_MEDIUM, color: color.text, width: Width(100), textAlign: 'center' }}>Rank</Text>
-                    <Text style={{ fontSize: Height(12), fontFamily: font.POPPINS_MEDIUM, color: color.text, width: Width(100), textAlign: 'center' }}>%of Prize Pool</Text>
-                    <Text style={{ fontSize: Height(12), fontFamily: font.POPPINS_MEDIUM, color: color.text, width: Width(100), textAlign: 'center' }}>Winnings</Text>
+            <View style={styles.winMainView} key={i}>
+                <View style={styles.winSubView}>
+                    <Text style={styles.comnText}>Rank</Text>
+                    <Text style={styles.comnText}>%of Prize Pool</Text>
+                    <Text style={styles.comnText}>Winnings</Text>
                 </View>
-                <View style={{ height: Height(1), backgroundColor: '#CFCFCF', marginTop: Height(5) }} />
+                <View style={styles.winLine} />
                 {winners.map(winner => (
                     <View>
-                        <View key={winner.id} style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginTop: Height(5) }}>
-                            <Text style={{ fontSize: Height(12), fontFamily: font.POPPINS_MEDIUM, color: color.text, width: Width(100), textAlign: 'center' }}>{winner.rank}</Text>
-                            <Text style={{ fontSize: Height(12), fontFamily: font.POPPINS_MEDIUM, color: color.text, width: Width(100), textAlign: 'center' }}>{winner.prizePool}</Text>
-                            <Text style={{ fontSize: Height(12), fontFamily: font.POPPINS_MEDIUM, color: color.text, width: Width(100), textAlign: 'center' }}>{winner.winnings}</Text>
+                        <View key={winner.id} style={styles.winSubView}>
+                            <Text style={styles.comnText}>{winner.rank}</Text>
+                            <Text style={styles.comnText}>{winner.prizePool}</Text>
+                            <Text style={styles.comnText}>{winner.winnings}</Text>
                         </View>
-                        <View style={{ height: Height(1), backgroundColor: '#CFCFCF', marginTop: Height(5) }} />
+                        <View style={styles.winLine} />
                     </View>
                 ))}
             </View>
@@ -96,8 +96,8 @@ const ChooseNewContestPrizeScreen = () => {
             />
             <SafeAreaView>
                 <DropShadow style={globalStyles.shadow}>
-                    <View style={{ height: Height(165), borderBottomLeftRadius: Width(20), borderBottomRightRadius: Width(20), paddingHorizontal: Width(25), backgroundColor: 'white' }}>
-                        <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginTop: Height(20) }}>
+                    <View style={globalStyles.contestHeaderView}>
+                        <View style={globalStyles.contestRowView}>
                             <Ionicons name='arrow-back' size={Height(30)} onPress={() => navigation.goBack()} />
                             <MyBetComponent width={Width(102)} height={Height(15)} />
                             <TouchableOpacity onPress={() => navigation.navigate('Notification')}>
@@ -105,41 +105,41 @@ const ChooseNewContestPrizeScreen = () => {
                             </TouchableOpacity>
                         </View>
                         <Text style={globalStyles.headerText}>Create New Contest</Text>
-                        <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginHorizontal: Width(15), marginTop: Height(15) }}>
-                            <Image source={require('../assets/images/gt.png')} style={{ width: Width(65), height: Height(48) }} />
-                            <Text style={{ fontSize: Height(10), fontFamily: 'Poppins-Medium', color: '#FF0000', marginLeft: Width(8) }}>23m</Text>
-                            <Image source={require('../assets/images/mi.png')} style={{ width: Width(65), height: Height(48) }} />
+                        <View style={globalStyles.contestRowSubView}>
+                            <Image source={require('../assets/images/gt.png')} style={globalStyles.teamImage} />
+                            <Text style={globalStyles.headerTimeText}>23m</Text>
+                            <Image source={require('../assets/images/mi.png')} style={globalStyles.teamImage} />
                         </View>
                     </View>
                 </DropShadow>
 
 
-                <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginHorizontal: Width(25), marginTop: Height(25) }}>
-                    <View style={{ alignItems: 'center' }}>
-                        <Text style={{ fontSize: Height(12), fontFamily: font.POPPINS_REGULAR, color: color.text }}>Max Prize Pool</Text>
-                        <Text style={{ fontSize: Height(16), fontFamily: font.POPPINS_SEMI_BOLD, color: color.text }}>₹{route.params?.prize}</Text>
+                <View style={globalStyles.joinContestFrontView}>
+                    <View style={globalStyles.alignCenterView}>
+                        <Text style={globalStyles.contestRegularText}>Max Prize Pool</Text>
+                        <Text style={globalStyles.playerPrizeText}>₹{route.params?.prize}</Text>
                     </View>
-                    <View style={{ alignItems: 'center' }}>
-                        <Text style={{ fontSize: Height(12), fontFamily: font.POPPINS_REGULAR, color: color.text }}>Spots</Text>
-                        <Text style={{ fontSize: Height(16), fontFamily: font.POPPINS_SEMI_BOLD, color: color.text }}>5</Text>
+                    <View style={globalStyles.alignCenterView}>
+                        <Text style={globalStyles.contestRegularText}>Spots</Text>
+                        <Text style={globalStyles.playerPrizeText}>5</Text>
                     </View>
-                    <View style={{ alignItems: 'center' }}>
-                        <Text style={{ fontSize: Height(12), fontFamily: font.POPPINS_REGULAR, color: color.text }}>Entry</Text>
-                        <Text style={{ fontSize: Height(16), fontFamily: font.POPPINS_SEMI_BOLD, color: color.text }}>{route.params?.size}</Text>
+                    <View style={globalStyles.alignCenterView}>
+                        <Text style={globalStyles.contestRegularText}>Entry</Text>
+                        <Text style={globalStyles.playerPrizeText}>{route.params?.size}</Text>
                     </View>
                 </View>
 
-                <View style={{ height: Height(1), backgroundColor: '#D1D1D1', marginTop: Height(10) }} />
-                <Text style={{ fontSize: Height(16), fontFamily: font.POPPINS_MEDIUM, color: color.text, marginLeft: Width(25), marginTop: Height(10) }}>Select the Number of Winners</Text>
+                <View style={styles.lineView} />
+                <Text style={styles.selectText}>Select the Number of Winners</Text>
 
-                <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginHorizontal: Width(35), marginTop: Height(15) }}>
+                <View style={styles.mainView}>
                     {
                         Winners.map((item, i) => {
 
                             return (
                                 <View key={i}>
-                                    <TouchableOpacity onPress={() => { handleSelectWinners(i + 1), handleButtonPress(item.id) }} style={{ height: Height(30), width: Width(40), borderWidth: Height(1), backgroundColor: selectedButtonId === i + 1 ? '#5556CA' : 'transparent', borderColor: selectedButtonId === i + 1 ? '#5556CA' : '#9F9F9F', borderRadius: Width(10), justifyContent: 'center', alignItems: 'center' }} >
-                                        <Text style={{ fontSize: Height(12), fontFamily: font.POPPINS_MEDIUM, color: selectedButtonId === i + 1 ? 'white' : 'black' }}>{(i + 1).toString()}</Text>
+                                    <TouchableOpacity onPress={() => { handleSelectWinners(i + 1), handleButtonPress(item.id) }} style={[styles.winnerBtn, { backgroundColor: selectedButtonId === i + 1 ? '#5556CA' : 'transparent', borderColor: selectedButtonId === i + 1 ? '#5556CA' : '#9F9F9F' }]} >
+                                        <Text style={[{ color: selectedButtonId === i + 1 ? 'white' : 'black' }, styles.winnerBTnText]}>{(i + 1).toString()}</Text>
                                     </TouchableOpacity>
                                 </View>
 
@@ -149,8 +149,8 @@ const ChooseNewContestPrizeScreen = () => {
                 </View>
 
                 <WinnerDisplay winnersToShow={winnersToShow} />
-                <TouchableOpacity style={{ height: Height(40), width: Width(240), backgroundColor: color.primaryText, alignSelf: 'center', marginTop: Height(250), justifyContent: 'center', alignItems: 'center', borderRadius: Width(10) }} onPress={() => setModalVisible(true)} >
-                    <Text style={{ fontSize: Height(14), fontFamily: font.POPPINS_MEDIUM, color: color.background }}>Create A Contest</Text>
+                <TouchableOpacity style={styles.createContestBtn} onPress={() => setModalVisible(true)} >
+                    <Text style={styles.createContestBtnText}>Create A Contest</Text>
                 </TouchableOpacity>
                 <View style={styles.centeredView}>
                     <Modal
@@ -163,34 +163,34 @@ const ChooseNewContestPrizeScreen = () => {
                         }}>
                         <View style={styles.centeredView}>
                             <View style={styles.modalView}>
-                                <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginHorizontal: Width(25), marginTop: Height(15) }}>
+                                <View style={styles.modalMAinView}>
                                     <View>
-                                        <Text style={{ fontSize: Height(16), fontFamily: font.POPPINS_REGULAR, color: color.text }}>Confirmation</Text>
-                                        <Text style={{ fontSize: Height(10), fontFamily: font.POPPINS_REGULAR, color: '#7B7B7B' }}>Amount Added (Unitialised) + Winnings= ₹0</Text>
+                                        <Text style={styles.confirmText}>Confirmation</Text>
+                                        <Text style={styles.winningsText}>Amount Added (Unitialised) + Winnings= ₹0</Text>
                                     </View>
                                     <AntDesign name='closecircleo' size={Height(20)} color='#828282' onPress={() => setModalVisible(!modalVisible)} />
                                 </View>
-                                <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginHorizontal: Width(25), marginTop: Height(25) }}>
-                                    <Text style={{ fontSize: Height(14), fontFamily: font.POPPINS_REGULAR, color: color.text }}>Entry</Text>
-                                    <Text style={{ fontSize: Height(16), fontFamily: font.POPPINS_REGULAR, color: color.text }}>₹36</Text>
+                                <View style={[{ marginTop: Height(25) }, styles.modalSubView]}>
+                                    <Text style={styles.modalText}>Entry</Text>
+                                    <Text style={styles.confirmText}>₹36</Text>
                                 </View>
-                                <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginHorizontal: Width(25), marginTop: Height(25), alignItems: 'center' }}>
-                                    <Text style={{ fontSize: Height(14), fontFamily: font.POPPINS_REGULAR, color: color.text }}>Usable Cash Bonus</Text>
-                                    <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                                <View style={[{ marginTop: Height(25), alignItems: 'center' }, styles.modalSubView]}>
+                                    <Text style={styles.modalText}>Usable Cash Bonus</Text>
+                                    <View style={globalStyles.contestItemRowView}>
                                         <SimpleLineIcons name='question' size={Height(18)} color='#5556CA' />
-                                        <Text style={{ fontSize: Height(16), fontFamily: font.POPPINS_REGULAR, color: color.text, marginLeft: Width(15) }}>₹4</Text>
+                                        <Text style={[{ marginLeft: Width(15) }, styles.confirmText]}>₹4</Text>
                                     </View>
                                 </View>
-                                <View style={{ height: Height(1), width: Width(310), backgroundColor: '#BCBCBC', alignSelf: 'center', marginTop: Height(18) }} />
-                                <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginHorizontal: Width(25), marginTop: Height(10) }}>
-                                    <Text style={{ fontSize: Height(14), fontFamily: font.POPPINS_REGULAR, color: '#3EB54A' }}>To Pay</Text>
-                                    <Text style={{ fontSize: Height(16), fontFamily: font.POPPINS_REGULAR, color: '#3EB54A' }}>₹36</Text>
+                                <View style={styles.lineSubView} />
+                                <View style={[{ marginTop: Height(10) }, styles.modalSubView]}>
+                                    <Text style={styles.payText}>To Pay</Text>
+                                    <Text style={[{ color: '#3EB54A' }, styles.confirmText]}>₹36</Text>
                                 </View>
-                                <Text style={{ fontSize: Height(8), fontFamily: font.POPPINS_REGULAR, marginHorizontal: Width(25), marginTop: Height(15) }}>
+                                <Text style={styles.text}>
                                     Lorem ipsum dolor sit amet consectetur. Lacus sit cursus egestas gravida volutpat quam. Eleifend mollis lacus imperdiet eu velit phasellus augue sed platea. Leo in tellus ullamcorper lectus. Vel nascetur id at rhoncus nibh cursus. Nunc sociis
                                 </Text>
-                                <TouchableOpacity style={{ height: Height(40), width: Width(200), backgroundColor: color.primaryText, alignSelf: 'center', marginTop: Height(25), justifyContent: 'center', alignItems: 'center', borderRadius: Width(10) }} onPress={() => { navigation.navigate('JoinContest', { data: route }), setModalVisible(!modalVisible) }}>
-                                    <Text style={{ fontSize: Height(14), fontFamily: font.POPPINS_MEDIUM, color: color.background }}>Join Contest</Text>
+                                <TouchableOpacity style={styles.joinBtn} onPress={() => { navigation.navigate('JoinContest', { data: route }), setModalVisible(!modalVisible) }}>
+                                    <Text style={styles.joinBtnText}>Join Contest</Text>
                                 </TouchableOpacity>
                             </View>
                         </View>
@@ -214,4 +214,67 @@ const styles = StyleSheet.create({
     modalView: {
         height: Height(350), width: Width(350), backgroundColor: 'white', borderRadius: Width(20)
     },
+    lineView: {
+        height: Height(1), backgroundColor: '#D1D1D1', marginTop: Height(10)
+    },
+    selectText: {
+        fontSize: Height(16), fontFamily: font.POPPINS_MEDIUM, color: color.text, marginLeft: Width(25), marginTop: Height(10)
+    },
+    mainView: {
+        flexDirection: 'row', justifyContent: 'space-between', marginHorizontal: Width(35), marginTop: Height(15)
+    },
+    winnerBtn: {
+        height: Height(30), width: Width(40), borderWidth: Height(1), borderRadius: Width(10), justifyContent: 'center', alignItems: 'center'
+    },
+    winnerBTnText: {
+        fontSize: Height(12), fontFamily: font.POPPINS_MEDIUM,
+    },
+    createContestBtn: {
+        height: Height(40), width: Width(240), backgroundColor: color.primaryText, alignSelf: 'center', marginTop: Height(250), justifyContent: 'center', alignItems: 'center', borderRadius: Width(10)
+    },
+    createContestBtnText: {
+        fontSize: Height(14), fontFamily: font.POPPINS_MEDIUM, color: color.background
+    },
+    modalMAinView: {
+        flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginHorizontal: Width(25), marginTop: Height(15)
+    },
+    confirmText: {
+        fontSize: Height(16), fontFamily: font.POPPINS_REGULAR, color: color.text
+    },
+    winningsText: {
+        fontSize: Height(10), fontFamily: font.POPPINS_REGULAR, color: '#7B7B7B'
+    },
+    modalSubView: {
+        flexDirection: 'row', justifyContent: 'space-between', marginHorizontal: Width(25),
+    },
+    modalText: {
+        fontSize: Height(14), fontFamily: font.POPPINS_REGULAR, color: color.text
+    },
+    lineSubView: {
+        height: Height(1), width: Width(310), backgroundColor: '#BCBCBC', alignSelf: 'center', marginTop: Height(18)
+    },
+    payText: {
+        fontSize: Height(14), fontFamily: font.POPPINS_REGULAR, color: '#3EB54A'
+    },
+    text: {
+        fontSize: Height(8), fontFamily: font.POPPINS_REGULAR, marginHorizontal: Width(25), marginTop: Height(15)
+    },
+    joinBtn: {
+        height: Height(40), width: Width(200), backgroundColor: color.primaryText, alignSelf: 'center', marginTop: Height(25), justifyContent: 'center', alignItems: 'center', borderRadius: Width(10)
+    },
+    joinBtnText: {
+        fontSize: Height(14), fontFamily: font.POPPINS_MEDIUM, color: color.background
+    },
+    comnText: {
+        fontSize: Height(12), fontFamily: font.POPPINS_MEDIUM, color: color.text, width: Width(100), textAlign: 'center'
+    },
+    winLine: {
+        height: Height(1), backgroundColor: '#CFCFCF', marginTop: Height(5)
+    },
+    winMainView: {
+        borderWidth: Height(1), borderRadius: Width(10), marginHorizontal: Width(10), marginTop: Height(25)
+    },
+    winSubView: {
+        flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginTop: Height(5)
+    }
 })

@@ -30,8 +30,8 @@ const CreateNewContestScreen = () => {
             />
             <SafeAreaView style={globalStyles.container}>
                 <DropShadow style={globalStyles.shadow}>
-                    <View style={{ height: Height(165), borderBottomLeftRadius: Width(20), borderBottomRightRadius: Width(20), paddingHorizontal: Width(25), backgroundColor: 'white' }}>
-                        <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginTop: Height(20) }}>
+                    <View style={globalStyles.contestHeaderView}>
+                        <View style={globalStyles.contestRowView}>
                             <Ionicons name='arrow-back' size={Height(30)} onPress={() => navigation.goBack()} />
                             <MyBetComponent width={Width(102)} height={Height(15)} />
                             <TouchableOpacity onPress={() => navigation.navigate('Notification')}>
@@ -39,10 +39,10 @@ const CreateNewContestScreen = () => {
                             </TouchableOpacity>
                         </View>
                         <Text style={globalStyles.headerText}>Create New Contest</Text>
-                        <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginHorizontal: Width(15), marginTop: Height(15) }}>
-                            <Image source={require('../assets/images/gt.png')} style={{ width: Width(65), height: Height(48) }} />
-                            <Text style={{ fontSize: Height(10), fontFamily: 'Poppins-Medium', color: '#FF0000', marginLeft: Width(8) }}>23m</Text>
-                            <Image source={require('../assets/images/mi.png')} style={{ width: Width(65), height: Height(48) }} />
+                        <View style={globalStyles.contestRowSubView}>
+                            <Image source={require('../assets/images/gt.png')} style={globalStyles.teamImage} />
+                            <Text style={globalStyles.headerTimeText}>23m</Text>
+                            <Image source={require('../assets/images/mi.png')} style={globalStyles.teamImage} />
                         </View>
                     </View>
                 </DropShadow>
@@ -62,23 +62,23 @@ const CreateNewContestScreen = () => {
                     <TextInput keyboardType='number-pad' style={styles.textInput} maxLength={10} placeholder='Entry Price' placeholderTextColor='#767676' onChangeText={(val) => setEntryPrize(val)} value={entryPrize} />
                 </View>
 
-                <View style={{ flexDirection: 'row', alignItems: 'center', marginLeft: Width(20), marginTop: Height(20) }}>
+                <View style={styles.view}>
                     <TouchableOpacity onPress={() => setCheck(!check)}>
                         {check === false ? <CheckEmptyComponent size={Height(18)} /> : <CheckComponent size={Height(18)} />}
                     </TouchableOpacity>
-                    <Text style={{ fontSize: Height(12), fontFamily: font.POPPINS_MEDIUM, color: '#767676', marginLeft: Width(15) }}>Allow Multiple Terms Per User</Text>
+                    <Text style={styles.text}>Allow Multiple Terms Per User</Text>
                 </View>
 
-                <View style={{ height: Height(70), backgroundColor: '#5556CA', marginTop: Height(25), flexDirection: 'row', alignItems: 'center', paddingLeft: Width(50) }}>
+                <View style={styles.subView}>
                     <ContestCupComponent size={Height(30)} color={'white'} />
-                    <View style={{ marginLeft: Width(10) }}>
-                        <Text style={{ fontSize: Height(12), fontFamily: font.POPPINS_MEDIUM, color: color.background }}>Max Prize Pool</Text>
-                        <Text style={{ fontSize: Height(12), fontFamily: font.POPPINS_MEDIUM, color: color.background }}>₹0</Text>
+                    <View style={styles.poolView}>
+                        <Text style={styles.subText}>Max Prize Pool</Text>
+                        <Text style={styles.subText}>₹0</Text>
                     </View>
                 </View>
 
-                <TouchableOpacity style={{ height: Height(40), width: Width(240), backgroundColor: color.primaryText, alignSelf: 'center', marginTop: Height(150), justifyContent: 'center', alignItems: 'center', borderRadius: Width(10) }} onPress={() => navigation.navigate('ChooseNewContestPrize', { name: contestName, size: contestSize, prize: entryPrize })}>
-                    <Text style={{ fontSize: Height(14), fontFamily: font.POPPINS_MEDIUM, color: color.background }}>Choose Prize Breakup</Text>
+                <TouchableOpacity style={styles.btn} onPress={() => navigation.navigate('ChooseNewContestPrize', { name: contestName, size: contestSize, prize: entryPrize })}>
+                    <Text style={styles.btnText}>Choose Prize Breakup</Text>
                 </TouchableOpacity>
 
             </SafeAreaView>
@@ -89,4 +89,25 @@ const CreateNewContestScreen = () => {
 export default CreateNewContestScreen
 
 const styles = StyleSheet.create({
+    view: {
+        flexDirection: 'row', alignItems: 'center', marginLeft: Width(20), marginTop: Height(20)
+    },
+    subView: {
+        height: Height(70), backgroundColor: '#5556CA', marginTop: Height(25), flexDirection: 'row', alignItems: 'center', paddingLeft: Width(50)
+    },
+    text: {
+        fontSize: Height(12), fontFamily: font.POPPINS_MEDIUM, color: '#767676', marginLeft: Width(15)
+    },
+    subText: {
+        fontSize: Height(12), fontFamily: font.POPPINS_MEDIUM, color: color.background
+    },
+    poolView: {
+        marginLeft: Width(10)
+    },
+    btn: {
+        height: Height(40), width: Width(240), backgroundColor: color.primaryText, alignSelf: 'center', marginTop: Height(150), justifyContent: 'center', alignItems: 'center', borderRadius: Width(10)
+    },
+    btnText: {
+        fontSize: Height(14), fontFamily: font.POPPINS_MEDIUM, color: color.background
+    }
 })

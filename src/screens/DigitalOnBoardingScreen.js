@@ -35,8 +35,8 @@ const DigitalOnBoardingScreen = () => {
                                 Digital Onboarding</Text>
                         </View>
                     </DropShadow>
-                    <Text style={{ fontSize: Height(20), fontFamily: font.POPPINS_SEMI_BOLD, marginTop: Height(25), marginLeft: Width(25) }}>Digital Onboarding</Text>
-                    <Text style={{ fontSize: Height(12), fontFamily: font.POPPINS_REGULAR, color: color.text, opacity: 0.6, marginHorizontal: Width(25), lineHeight: Height(18), letterSpacing: 0.02, marginTop: Height(10) }}>
+                    <Text style={globalStyles.walletHeaderText}>Digital Onboarding</Text>
+                    <Text style={globalStyles.walletHeaderSubText}>
                         UIDAI has sent a temporary OTP to your mobile ending in *******6110(valid for 10 mins).
                     </Text>
                     <OTP

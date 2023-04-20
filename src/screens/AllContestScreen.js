@@ -84,44 +84,44 @@ const allContest = [
 
 const renderItem = (item, i) =>
 (
-    <View key={i} style={{ paddingTop: Height(10) }}>
-        <TouchableOpacity style={{ height: Platform.OS === 'android' ? Height(175) : Height(155), width: Width(350), backgroundColor: color.background, alignSelf: 'center', borderRadius: Width(10) }} >
-            <View style={{ flexDirection: "row", alignItems: 'center', justifyContent: 'space-between', marginHorizontal: Width(30), marginTop: Height(20) }}>
-                <Text style={{ fontSize: Height(8), fontFamily: font.POPPINS_REGULAR, color: color.text }}>Prize Pool</Text>
-                <Text style={{ fontSize: Height(8), fontFamily: font.POPPINS_REGULAR, color: color.text }}>Entry</Text>
+    <View key={i} style={globalStyles.contestItemMainView}>
+        <TouchableOpacity style={globalStyles.contestItemMainBtn} >
+            <View style={globalStyles.contestItemFrontView}>
+                <Text style={globalStyles.contestItemFrontText}>Prize Pool</Text>
+                <Text style={globalStyles.contestItemFrontText}>Entry</Text>
             </View>
-            <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginHorizontal: Width(30), marginTop: Height(10) }}>
-                <Text style={{ fontSize: Height(14), fontFamily: font.POPPINS_SEMI_BOLD, color: color.text }}>{item.prizePool}</Text>
-                <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-                    <Text style={{ fontSize: Height(8), fontFamily: font.POPPINS_REGULAR, textDecorationLine: 'line-through', color: color.greenText }}>{item.entry}</Text>
-                    <TouchableOpacity style={{ height: Height(15), width: Width(30), backgroundColor: color.greenText, justifyContent: 'center', alignItems: 'center', borderRadius: Width(3), marginLeft: Width(8) }}>
-                        <Text style={{ fontSize: Height(8), fontFamily: font.POPPINS_REGULAR, color: color.background }}>{item.dentry}</Text>
+            <View style={globalStyles.contestItemSubView}>
+                <Text style={globalStyles.contestItemPrizeText}>{item.prizePool}</Text>
+                <View style={globalStyles.contestItemRowView}>
+                    <Text style={globalStyles.contestItemEntryText}>{item.entry}</Text>
+                    <TouchableOpacity style={globalStyles.contestItemEntryBtn}>
+                        <Text style={globalStyles.contestItemEntryBtnText}>{item.dentry}</Text>
                     </TouchableOpacity>
                 </View>
             </View>
-            <Progress.Bar progress={0.3} width={Width(290)} height={Height(4)} style={{ alignSelf: 'center', marginTop: Height(10) }} unfilledColor='#D9D9D9' borderColor='transparent' color='#F99500' />
-            <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginHorizontal: Width(30), marginTop: Height(8) }}>
-                <Text style={{ fontSize: Height(10), fontFamily: font.POPPINS_REGULAR, color: color.spotsLeftText }}>{item.spotsLeft} Spots Left</Text>
-                <Text style={{ fontSize: Height(10), fontFamily: font.POPPINS_REGULAR, color: color.text }}>{item.spots} Spots</Text>
+            <Progress.Bar progress={0.3} width={Width(290)} height={Height(4)} style={globalStyles.contestItemProgress} unfilledColor='#D9D9D9' borderColor='transparent' color='#F99500' />
+            <View style={globalStyles.contestItemSpotView}>
+                <Text style={globalStyles.contestItemSpotLeftText}>{item.spotsLeft} Spots Left</Text>
+                <Text style={globalStyles.contestItemSpotText}>{item.spots} Spots</Text>
             </View>
-            <View style={{ height: Height(30), backgroundColor: '#D9D9D9', borderBottomLeftRadius: Width(10), borderBottomRightRadius: Width(10), marginTop: Platform.OS === 'android' ? Height(33) : Height(25), flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', paddingHorizontal: Width(25) }}>
-                <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+            <View style={globalStyles.contestItemEndView}>
+                <View style={globalStyles.contestItemRowView}>
                     {item.contestFirst}
-                    <Text style={{ fontSize: Height(10), fontFamily: font.POPPINS_SEMI_BOLD, color: color.contestText, marginLeft: Width(5) }}>{item.firstPrice}</Text>
+                    <Text style={globalStyles.contestItemEndText}>{item.firstPrice}</Text>
                 </View>
-                <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                <View style={globalStyles.contestItemRowView}>
                     {item.contestSecond}
-                    <Text style={{ fontSize: Height(10), fontFamily: font.POPPINS_SEMI_BOLD, color: color.contestText, marginLeft: Width(5) }}>{item.secondPercent}</Text>
+                    <Text style={globalStyles.contestItemEndText}>{item.secondPercent}</Text>
                 </View>
-                <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-                    <View style={{ height: Height(18), width: Height(18), borderRadius: Height(18) / 2, borderWidth: 1, justifyContent: 'center', alignItems: 'center' }}>
+                <View style={globalStyles.contestItemRowView}>
+                    <View style={globalStyles.contestItemEndSubView}>
                         <Text style={{ fontSize: Height(10), fontFamily: font.POPPINS_SEMI_BOLD, color: color.contestText, }}>{item.contestForth}</Text>
                     </View>
-                    <Text style={{ fontSize: Height(10), fontFamily: font.POPPINS_SEMI_BOLD, color: color.contestText, marginLeft: Width(5) }}>{item.upTo}</Text>
+                    <Text style={globalStyles.contestItemEndText}>{item.upTo}</Text>
                 </View>
-                <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                <View style={globalStyles.contestItemRowView}>
                     {item.contestThird}
-                    <Text style={{ fontSize: Height(10), fontFamily: font.POPPINS_SEMI_BOLD, color: color.contestText, marginLeft: Width(5) }}>{item.guaranteed}</Text>
+                    <Text style={globalStyles.contestItemEndText}>{item.guaranteed}</Text>
                 </View>
             </View>
         </TouchableOpacity>
@@ -139,23 +139,23 @@ const AllContestScreen = () => {
             />
             <SafeAreaView style={globalStyles.container}>
                 <DropShadow style={globalStyles.shadow}>
-                    <View style={{ height: Height(130), borderBottomLeftRadius: Width(20), borderBottomRightRadius: Width(20), paddingHorizontal: Width(25), backgroundColor: 'white', zIndex: 0, position: 'absolute', width: Width(430) }}>
-                        <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginTop: Height(20) }}>
+                    <View style={globalStyles.allContestHeaderView}>
+                        <View style={globalStyles.contestRowView}>
                             <Ionicons name='arrow-back' size={Height(30)} onPress={() => navigation.goBack()} />
                             <MyBetComponent width={Width(102)} height={Height(15)} />
                             <TouchableOpacity onPress={() => navigation.navigate('Notification')}>
                                 <NotificationComponent size={Height(25)} />
                             </TouchableOpacity>
                         </View>
-                        <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginHorizontal: Width(15), marginTop: Height(15) }}>
-                            <Image source={require('../assets/images/gt.png')} style={{ width: Width(65), height: Height(48) }} />
-                            <Text style={{ fontSize: Height(10), fontFamily: 'Poppins-Medium', color: '#FF0000', marginLeft: Width(8) }}>23m</Text>
-                            <Image source={require('../assets/images/mi.png')} style={{ width: Width(65), height: Height(48) }} />
+                        <View style={globalStyles.contestRowSubView}>
+                            <Image source={require('../assets/images/gt.png')} style={globalStyles.teamImage} />
+                            <Text style={globalStyles.headerTimeText}>23m</Text>
+                            <Image source={require('../assets/images/mi.png')} style={globalStyles.teamImage} />
                         </View>
                     </View>
                 </DropShadow>
-                <ScrollView style={{ marginTop: Height(150), }}>
-                    <Text style={{ fontSize: Height(16), fontFamily: font.POPPINS_BOLD, marginLeft: Width(20), marginBottom: Height(10), color: color.text }}>All Contests</Text>
+                <ScrollView style={styles.scrollView}>
+                    <Text style={styles.text}>All Contests</Text>
                     {
                         allContest.map(renderItem)
                     }
@@ -168,4 +168,15 @@ const AllContestScreen = () => {
 
 export default AllContestScreen
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+    text: {
+        fontSize: Height(16),
+        fontFamily: font.POPPINS_BOLD,
+        marginLeft: Width(20),
+        marginBottom: Height(10),
+        color: color.text
+    },
+    scrollView: {
+        marginTop: Height(150),
+    }
+})

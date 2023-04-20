@@ -64,18 +64,7 @@ const AddCashScreen = () => {
                     </DropShadow>
 
                     <TextInput
-                        style={{
-                            height: Height(50),
-                            width: Width(390),
-                            borderWidth: Height(3),
-                            alignSelf: 'center',
-                            marginTop: Height(25),
-                            borderRadius: Width(10),
-                            borderColor: '#9F9F9F',
-                            fontSize: Height(16),
-                            fontFamily: font.POPPINS_REGULAR,
-                            paddingLeft: Width(20)
-                        }}
+                        style={styles.textInput}
                         placeholder='Amount Enter'
                         keyboardType='number-pad'
                         placeholderTextColor='#9F9F9F'
@@ -87,8 +76,8 @@ const AddCashScreen = () => {
                             data.map((item, i) => {
                                 return (
                                     <DropShadow style={globalStyles.shadow}>
-                                        <TouchableOpacity key={i} style={{ height: Height(30), width: Width(75), backgroundColor: color.background, borderRadius: Width(20), marginLeft: Width(30), marginTop: Height(15), justifyContent: 'center', alignItems: 'center', borderWidth: Height(1), borderColor: '#B8B8B8' }} onPress={() => handleButtonPress(item.amount)}>
-                                            <Text style={{ fontSize: Height(12), fontFamily: font.POPPINS_SEMI_BOLD, color: color.text }}>{item.amount}</Text>
+                                        <TouchableOpacity key={i} style={styles.btn} onPress={() => handleButtonPress(item.amount)}>
+                                            <Text style={styles.btnText}>{item.amount}</Text>
                                         </TouchableOpacity>
                                     </DropShadow>
                                 )
@@ -109,4 +98,33 @@ const AddCashScreen = () => {
 export default AddCashScreen
 
 const styles = StyleSheet.create({
+    textInput: {
+        height: Height(50),
+        width: Width(390),
+        borderWidth: Height(3),
+        alignSelf: 'center',
+        marginTop: Height(25),
+        borderRadius: Width(10),
+        borderColor: '#9F9F9F',
+        fontSize: Height(16),
+        fontFamily: font.POPPINS_REGULAR,
+        paddingLeft: Width(20)
+    },
+    btn: {
+        height: Height(30),
+        width: Width(75),
+        backgroundColor: color.background,
+        borderRadius: Width(20),
+        marginLeft: Width(30),
+        marginTop: Height(15),
+        justifyContent: 'center',
+        alignItems: 'center',
+        borderWidth: Height(1),
+        borderColor: '#B8B8B8'
+    },
+    btnText: {
+        fontSize: Height(12),
+        fontFamily: font.POPPINS_SEMI_BOLD,
+        color: color.text
+    }
 })

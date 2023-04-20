@@ -137,26 +137,26 @@ const HomeScreen = () => {
                                         scrollData.map((item, i) => {
                                             return (
 
-                                                <TouchableOpacity key={i} style={{ height: Height(145), width: Width(335), backgroundColor: 'white', marginLeft: Width(50), borderRadius: Width(10), marginTop: Height(10) }} onPress={() => navigation.navigate('CreateContest')}>
-                                                    <Text style={{ fontSize: Height(10), fontFamily: 'Poppins-Regular', color: 'black', marginTop: Height(5), marginLeft: Width(10) }}>{item.matchName}</Text>
-                                                    <View style={{ height: Height(1), backgroundColor: '#D9D9D9', marginTop: Height(5), }} />
+                                                <TouchableOpacity key={i} style={[{ marginTop: Height(10) }, styles.mainTochable]} onPress={() => navigation.navigate('CreateContest')}>
+                                                    <Text style={styles.matchNameText}>{item.matchName}</Text>
+                                                    <View style={styles.lineView} />
                                                     <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginHorizontal: Width(15), marginTop: Height(5) }}>
                                                         <View style={{}}>
                                                             <Text style={{ fontSize: Height(8), fontFamily: 'Poppins-Medium', color: 'black' }}>{item.teamOneName}</Text>
                                                             <View style={{ flexDirection: 'row', alignItems: 'center', marginTop: Height(3) }}>
-                                                                <Image source={item.teamOneLogo} style={{ width: Width(65), height: Height(48) }} />
+                                                                <Image source={item.teamOneLogo} style={globalStyles.teamImage} />
                                                                 <Text style={{ fontSize: Height(14), fontFamily: 'Poppins-SemiBold', color: 'black', marginLeft: Width(15) }}>{item.teamOneShortName}</Text>
                                                             </View>
                                                         </View>
-                                                        <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                                                        <View style={globalStyles.contestItemRowView}>
                                                             <Octicons name='dot-fill' size={Height(20)} color='#FF0707' />
-                                                            <Text style={{ fontSize: Height(10), fontFamily: 'Poppins-Medium', color: 'black', marginLeft: Width(8) }}>Live</Text>
+                                                            <Text style={[globalStyles.blackNormalText, { marginLeft: Width(8) }]}>Live</Text>
                                                         </View>
                                                         <View>
                                                             <Text style={{ fontSize: Height(8), fontFamily: 'Poppins-Medium', color: 'black', marginLeft: Width(25) }}>{item.teamTwoName}</Text>
                                                             <View style={{ flexDirection: 'row', alignItems: 'center', marginTop: Height(3) }}>
                                                                 <Text style={{ fontSize: Height(14), fontFamily: 'Poppins-SemiBold', color: 'black', marginRight: Width(15) }}>{item.teamTwoShortName}</Text>
-                                                                <Image source={item.teamTwoLogo} style={{ width: Width(65), height: Height(48) }} />
+                                                                <Image source={item.teamTwoLogo} style={globalStyles.teamImage} />
                                                             </View>
                                                         </View>
                                                     </View>
@@ -187,29 +187,29 @@ const HomeScreen = () => {
                                             return (
                                                 <TouchableOpacity key={i} style={{ height: Height(180), width: Width(390), backgroundColor: 'white', borderRadius: Width(10), marginTop: Height(20), alignSelf: 'center' }} onPress={() => navigation.navigate('CreateContest')}>
                                                     <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginHorizontal: Width(20), marginTop: Height(5) }}>
-                                                        <Text style={{ fontSize: Height(10), fontFamily: 'Poppins-Medium', color: 'black' }}>{item.fansCode}</Text>
-                                                        <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                                                        <Text style={globalStyles.blackNormalText}>{item.fansCode}</Text>
+                                                        <View style={globalStyles.contestItemRowView}>
                                                             <Feather name='clock' size={Height(15)} color='#5556CA' />
                                                             <Text style={{ fontSize: Height(10), fontFamily: 'Poppins-Medium', color: '#5556CA', marginLeft: Width(15) }}>Lineups Out</Text>
                                                         </View>
                                                     </View>
-                                                    <View style={{ height: Height(1), backgroundColor: '#D9D9D9', marginTop: Height(5), }} />
+                                                    <View style={styles.lineView} />
                                                     <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginHorizontal: Width(15), marginTop: Height(10) }}>
                                                         <View style={{}}>
-                                                            <Text style={{ fontSize: Height(10), fontFamily: 'Poppins-Medium', color: 'black' }}>{item.teamOneName}</Text>
+                                                            <Text style={globalStyles.blackNormalText}>{item.teamOneName}</Text>
                                                             <View style={{ flexDirection: 'row', alignItems: 'center', marginTop: Height(10) }}>
-                                                                <Image source={item.teamOneLogo} style={{ width: Width(65), height: Height(48) }} />
+                                                                <Image source={item.teamOneLogo} style={globalStyles.teamImage} />
                                                                 <Text style={{ fontSize: Height(14), fontFamily: 'Poppins-SemiBold', color: 'black', marginLeft: Width(15) }}>{item.teamOneShortName}</Text>
                                                             </View>
                                                         </View>
 
-                                                        <Text style={{ fontSize: Height(10), fontFamily: 'Poppins-Medium', color: '#FF0000', marginLeft: Width(8) }}>{item.time}</Text>
+                                                        <Text style={globalStyles.headerTimeText}>{item.time}</Text>
 
                                                         <View>
-                                                            <Text style={{ fontSize: Height(10), fontFamily: 'Poppins-Medium', color: 'black', marginLeft: Width(25) }}>{item.teamTwoName}</Text>
+                                                            <Text style={[globalStyles.blackNormalText, { marginLeft: Width(25) }]}>{item.teamTwoName}</Text>
                                                             <View style={{ flexDirection: 'row', alignItems: 'center', marginTop: Height(10) }}>
                                                                 <Text style={{ fontSize: Height(14), fontFamily: 'Poppins-SemiBold', color: 'black', marginRight: Width(15) }}>{item.teamTwoShortName}</Text>
-                                                                <Image source={item.teamTwoLogo} style={{ width: Width(65), height: Height(48) }} />
+                                                                <Image source={item.teamTwoLogo} style={globalStyles.teamImage} />
                                                             </View>
                                                         </View>
                                                     </View>
@@ -217,7 +217,7 @@ const HomeScreen = () => {
                                                         <View style={{ height: Height(20), width: Width(55), borderWidth: Height(1), borderColor: '#5556CA', justifyContent: 'center', alignItems: 'center', borderRadius: Width(3), marginLeft: Width(22) }}>
                                                             <Text style={{ fontSize: Height(10), fontFamily: 'Poppins-Medium', color: '#5556CA' }}>MEGA</Text>
                                                         </View>
-                                                        <Text style={{ fontSize: Height(10), fontFamily: 'Poppins-Medium', color: 'black', marginLeft: Width(17) }}>{item.price}</Text>
+                                                        <Text style={[globalStyles.blackNormalText, { marginLeft: Width(17) }]}>{item.price}</Text>
                                                     </View>
                                                 </TouchableOpacity>
                                             )
@@ -231,7 +231,7 @@ const HomeScreen = () => {
                 <View style={{ position: 'absolute', marginTop: Height(100) }}>
                     <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginHorizontal: Width(50) }}>
                         <Text style={{ fontSize: Height(12), fontFamily: 'Poppins-SemiBold', color: 'white' }}>My Matches</Text>
-                        <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                        <View style={globalStyles.contestItemRowView}>
                             <Text style={{ fontSize: Height(12), fontFamily: 'Poppins-Regular', color: 'white' }}>View All</Text>
                             <Ionicons name='arrow-forward' size={Height(20)} color='white' style={{ marginLeft: Width(5) }} onPress={() => navigation.navigate('MyMatches')} />
                         </View>
@@ -244,26 +244,26 @@ const HomeScreen = () => {
                                         <DropShadow
                                             style={globalStyles.shadow}
                                             key={i}  >
-                                            <TouchableOpacity style={{ height: Height(145), width: Width(335), backgroundColor: 'white', marginLeft: Width(50), borderRadius: Width(10) }} onPress={() => navigation.navigate('CreateContest')}>
-                                                <Text style={{ fontSize: Height(10), fontFamily: 'Poppins-Regular', color: 'black', marginTop: Height(5), marginLeft: Width(10) }}>{item.matchName}</Text>
-                                                <View style={{ height: Height(1), backgroundColor: '#D9D9D9', marginTop: Height(5), }} />
+                                            <TouchableOpacity style={styles.mainTochable} onPress={() => navigation.navigate('CreateContest')}>
+                                                <Text style={styles.matchNameText}>{item.matchName}</Text>
+                                                <View style={styles.lineView} />
                                                 <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginHorizontal: Width(15), marginTop: Height(5) }}>
                                                     <View style={{}}>
                                                         <Text style={{ fontSize: Height(8), fontFamily: 'Poppins-Medium', color: 'black' }}>{item.teamOneName}</Text>
                                                         <View style={{ flexDirection: 'row', alignItems: 'center', marginTop: Height(3) }}>
-                                                            <Image source={item.teamOneLogo} style={{ width: Width(65), height: Height(48) }} />
+                                                            <Image source={item.teamOneLogo} style={globalStyles.teamImage} />
                                                             <Text style={{ fontSize: Height(14), fontFamily: 'Poppins-SemiBold', color: 'black', marginLeft: Width(15) }}>{item.teamOneShortName}</Text>
                                                         </View>
                                                     </View>
-                                                    <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                                                    <View style={globalStyles.contestItemRowView}>
                                                         <Octicons name='dot-fill' size={Height(20)} color='#FF0707' />
-                                                        <Text style={{ fontSize: Height(10), fontFamily: 'Poppins-Medium', color: 'black', marginLeft: Width(8) }}>Live</Text>
+                                                        <Text style={[globalStyles.blackNormalText, { marginLeft: Width(8) }]}>Live</Text>
                                                     </View>
                                                     <View>
                                                         <Text style={{ fontSize: Height(8), fontFamily: 'Poppins-Medium', color: 'black', marginLeft: Width(25) }}>{item.teamTwoName}</Text>
                                                         <View style={{ flexDirection: 'row', alignItems: 'center', marginTop: Height(3) }}>
                                                             <Text style={{ fontSize: Height(14), fontFamily: 'Poppins-SemiBold', color: 'black', marginRight: Width(15) }}>{item.teamTwoShortName}</Text>
-                                                            <Image source={item.teamTwoLogo} style={{ width: Width(65), height: Height(48) }} />
+                                                            <Image source={item.teamTwoLogo} style={globalStyles.teamImage} />
                                                         </View>
                                                     </View>
                                                 </View>
@@ -286,4 +286,14 @@ const HomeScreen = () => {
 
 export default HomeScreen
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+    mainTochable: {
+        height: Height(145), width: Width(335), backgroundColor: 'white', marginLeft: Width(50), borderRadius: Width(10)
+    },
+    matchNameText: {
+        fontSize: Height(10), fontFamily: 'Poppins-Regular', color: 'black', marginTop: Height(5), marginLeft: Width(10)
+    },
+    lineView: {
+        height: Height(1), backgroundColor: '#D9D9D9', marginTop: Height(5),
+    }
+})

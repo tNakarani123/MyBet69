@@ -34,15 +34,15 @@ const NotificationSettingScreen = () => {
                 </DropShadow>
 
 
-                <TouchableOpacity style={{ flexDirection: 'row', alignItems: 'center', height: Height(50), width: Width(390), borderWidth: Height(3), marginTop: Height(20), alignSelf: 'center', borderRadius: Width(10), borderColor: '#9F9F9F', justifyContent: 'space-between', paddingHorizontal: Width(20) }}>
-                    <Text style={{ fontSize: Height(16), fontFamily: font.POPPINS_REGULAR, color: color.text }}>Allow SMS Notification</Text>
+                <TouchableOpacity style={styles.btn}>
+                    <Text style={styles.text}>Allow SMS Notification</Text>
                     <Switch
                         trackColor={{ false: '#767577', true: '#81b0ff' }}
                         thumbColor={isEnabled ? '#f5dd4b' : '#f4f3f4'}
                         ios_backgroundColor="#3e3e3e"
                         onValueChange={toggleSwitch}
                         value={isEnabled}
-                        style={{ transform: [{ scaleX: .8 }, { scaleY: .8 }] }}
+                        style={styles.switch}
                     />
                 </TouchableOpacity>
 
@@ -53,4 +53,14 @@ const NotificationSettingScreen = () => {
 
 export default NotificationSettingScreen
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+    btn: {
+        flexDirection: 'row', alignItems: 'center', height: Height(50), width: Width(390), borderWidth: Height(3), marginTop: Height(20), alignSelf: 'center', borderRadius: Width(10), borderColor: '#9F9F9F', justifyContent: 'space-between', paddingHorizontal: Width(20)
+    },
+    text: {
+        fontSize: Height(16), fontFamily: font.POPPINS_REGULAR, color: color.text
+    },
+    switch: {
+        transform: [{ scaleX: .8 }, { scaleY: .8 }]
+    }
+})
