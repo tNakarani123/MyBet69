@@ -31,61 +31,61 @@ const PrivacySettingScreen = () => {
                         <Text style={globalStyles.headerText}>Privacy Setting</Text>
                     </View>
                 </DropShadow>
-                <Text style={{ fontSize: Height(16), fontFamily: font.POPPINS_BOLD, color: color.text, marginLeft: Width(20), marginTop: Height(20) }}>Privacy Settings</Text>
-                <TouchableOpacity style={{ flexDirection: 'row', alignItems: 'center', height: Height(50), width: Width(390), borderWidth: Height(3), marginTop: Height(20), alignSelf: 'center', borderRadius: Width(10), borderColor: '#9F9F9F', justifyContent: 'space-between', paddingHorizontal: Width(20) }}>
-                    <Text style={{ fontSize: Height(16), fontFamily: font.POPPINS_REGULAR, color: color.text }}>Allow SMS Notification</Text>
+                <Text style={styles.text}>Privacy Settings</Text>
+                <TouchableOpacity style={styles.btn}>
+                    <Text style={styles.btnText}>Allow SMS Notification</Text>
                     <Switch
                         trackColor={{ false: '#767577', true: '#81b0ff' }}
                         thumbColor={isEnabled ? '#f5dd4b' : '#f4f3f4'}
                         ios_backgroundColor="#3e3e3e"
                         onValueChange={toggleSwitch}
                         value={isEnabled}
-                        style={{ transform: [{ scaleX: .8 }, { scaleY: .8 }] }}
+                        style={styles.switch}
                     />
                 </TouchableOpacity>
-                <Text style={{ fontSize: Height(16), fontFamily: font.POPPINS_BOLD, color: color.text, marginLeft: Width(20), marginTop: Height(20) }}>Gameplay</Text>
-                <TouchableOpacity style={{ flexDirection: 'row', alignItems: 'center', height: Height(50), width: Width(390), borderWidth: Height(3), marginTop: Height(20), alignSelf: 'center', borderRadius: Width(10), borderColor: '#9F9F9F', justifyContent: 'space-between', paddingHorizontal: Width(20) }}>
-                    <Text style={{ fontSize: Height(16), fontFamily: font.POPPINS_REGULAR, color: color.text }}>Allow SMS Notification</Text>
+                <Text style={styles.text}>Gameplay</Text>
+                <TouchableOpacity style={styles.btn}>
+                    <Text style={styles.btnText}>Allow SMS Notification</Text>
                     <Switch
                         trackColor={{ false: '#767577', true: '#81b0ff' }}
                         thumbColor={isEnabled ? '#f5dd4b' : '#f4f3f4'}
                         ios_backgroundColor="#3e3e3e"
                         onValueChange={toggleSwitch}
                         value={isEnabled}
-                        style={{ transform: [{ scaleX: .8 }, { scaleY: .8 }] }}
+                        style={styles.switch}
                     />
                 </TouchableOpacity>
-                <TouchableOpacity style={{ flexDirection: 'row', alignItems: 'center', height: Height(50), width: Width(390), borderWidth: Height(3), marginTop: Height(20), alignSelf: 'center', borderRadius: Width(10), borderColor: '#9F9F9F', justifyContent: 'space-between', paddingHorizontal: Width(20) }}>
-                    <Text style={{ fontSize: Height(16), fontFamily: font.POPPINS_REGULAR, color: color.text }}>Allow SMS Notification</Text>
+                <TouchableOpacity style={styles.btn}>
+                    <Text style={styles.btnText}>Allow SMS Notification</Text>
                     <Switch
                         trackColor={{ false: '#767577', true: '#81b0ff' }}
                         thumbColor={isEnabled ? '#f5dd4b' : '#f4f3f4'}
                         ios_backgroundColor="#3e3e3e"
                         onValueChange={toggleSwitch}
                         value={isEnabled}
-                        style={{ transform: [{ scaleX: .8 }, { scaleY: .8 }] }}
+                        style={styles.switch}
                     />
                 </TouchableOpacity>
-                <TouchableOpacity style={{ flexDirection: 'row', alignItems: 'center', height: Height(50), width: Width(390), borderWidth: Height(3), marginTop: Height(20), alignSelf: 'center', borderRadius: Width(10), borderColor: '#9F9F9F', justifyContent: 'space-between', paddingHorizontal: Width(20) }}>
-                    <Text style={{ fontSize: Height(16), fontFamily: font.POPPINS_REGULAR, color: color.text }}>Allow SMS Notification</Text>
+                <TouchableOpacity style={styles.btn}>
+                    <Text style={styles.btnText}>Allow SMS Notification</Text>
                     <Switch
                         trackColor={{ false: '#767577', true: '#81b0ff' }}
                         thumbColor={isEnabled ? '#f5dd4b' : '#f4f3f4'}
                         ios_backgroundColor="#3e3e3e"
                         onValueChange={toggleSwitch}
                         value={isEnabled}
-                        style={{ transform: [{ scaleX: .8 }, { scaleY: .8 }] }}
+                        style={styles.switch}
                     />
                 </TouchableOpacity>
-                <TouchableOpacity style={{ flexDirection: 'row', alignItems: 'center', height: Height(50), width: Width(390), borderWidth: Height(3), marginTop: Height(20), alignSelf: 'center', borderRadius: Width(10), borderColor: '#9F9F9F', justifyContent: 'space-between', paddingHorizontal: Width(20) }}>
-                    <Text style={{ fontSize: Height(16), fontFamily: font.POPPINS_REGULAR, color: color.text }}>Allow SMS Notification</Text>
+                <TouchableOpacity style={styles.btn}>
+                    <Text style={styles.btnText}>Allow SMS Notification</Text>
                     <Switch
                         trackColor={{ false: '#767577', true: '#81b0ff' }}
                         thumbColor={isEnabled ? '#f5dd4b' : '#f4f3f4'}
                         ios_backgroundColor="#3e3e3e"
                         onValueChange={toggleSwitch}
                         value={isEnabled}
-                        style={{ transform: [{ scaleX: .8 }, { scaleY: .8 }] }}
+                        style={styles.switch}
                     />
                 </TouchableOpacity>
             </SafeAreaView>
@@ -95,4 +95,17 @@ const PrivacySettingScreen = () => {
 
 export default PrivacySettingScreen
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+    text: {
+        fontSize: Height(16), fontFamily: font.POPPINS_BOLD, color: color.text, marginLeft: Width(20), marginTop: Height(20)
+    },
+    btn: {
+        lexDirection: 'row', alignItems: 'center', height: Height(50), width: Width(390), borderWidth: Height(3), marginTop: Height(20), alignSelf: 'center', borderRadius: Width(10), borderColor: '#9F9F9F', justifyContent: 'space-between', paddingHorizontal: Width(20)
+    },
+    btnText: {
+        fontSize: Height(16), fontFamily: font.POPPINS_REGULAR, color: color.text
+    },
+    switch: {
+        transform: [{ scaleX: .8 }, { scaleY: .8 }]
+    }
+})

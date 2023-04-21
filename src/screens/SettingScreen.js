@@ -75,8 +75,8 @@ const SettingScreen = () => {
                         renderItem={({ item }) => {
                             return (
                                 <View>
-                                    <TouchableOpacity style={{ flexDirection: 'row', alignItems: 'center', height: Height(50), width: Width(390), borderWidth: Height(3), marginTop: Height(20), alignSelf: 'center', borderRadius: Width(10), borderColor: '#9F9F9F', justifyContent: 'space-between', paddingHorizontal: Width(20) }} onPress={() => navigation.navigate(item.navigate)}>
-                                        <Text style={{ fontSize: Height(16), fontFamily: font.POPPINS_REGULAR, color: color.text }}>{item.title}</Text>
+                                    <TouchableOpacity style={styles.flatListBtn} onPress={() => navigation.navigate(item.navigate)}>
+                                        <Text style={styles.title}>{item.title}</Text>
                                         <MaterialIcons name='arrow-right' size={Height(25)} color={color.text} />
                                     </TouchableOpacity>
                                 </View>
@@ -84,8 +84,8 @@ const SettingScreen = () => {
                         }}
                     />
                 </View>
-                <TouchableOpacity style={{ alignItems: 'center', height: Height(50), width: Width(390), marginTop: Height(20), alignSelf: 'center', borderRadius: Width(10), justifyContent: 'center', backgroundColor: '#FF8A8A' }}>
-                    <Text style={{ fontSize: Height(16), fontFamily: font.POPPINS_SEMI_BOLD, color: color.background }}>Logout</Text>
+                <TouchableOpacity style={styles.btn}>
+                    <Text style={styles.btnText}>Logout</Text>
                 </TouchableOpacity>
             </SafeAreaView>
         </>
@@ -94,4 +94,17 @@ const SettingScreen = () => {
 
 export default SettingScreen
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+    flatListBtn: {
+        flexDirection: 'row', alignItems: 'center', height: Height(50), width: Width(390), borderWidth: Height(3), marginTop: Height(20), alignSelf: 'center', borderRadius: Width(10), borderColor: '#9F9F9F', justifyContent: 'space-between', paddingHorizontal: Width(20)
+    },
+    title: {
+        fontSize: Height(16), fontFamily: font.POPPINS_REGULAR, color: color.text
+    },
+    btn: {
+        alignItems: 'center', height: Height(50), width: Width(390), marginTop: Height(20), alignSelf: 'center', borderRadius: Width(10), justifyContent: 'center', backgroundColor: '#FF8A8A'
+    },
+    btnText: {
+        fontSize: Height(16), fontFamily: font.POPPINS_SEMI_BOLD, color: color.background
+    }
+})

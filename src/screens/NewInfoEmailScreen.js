@@ -34,7 +34,7 @@ const NewInfoEmailScreen = () => {
                             <Text style={globalStyles.headerText}>Enter New Email</Text>
                         </View>
                     </DropShadow>
-                    <Text style={{ fontSize: Height(16), fontFamily: font.POPPINS_MEDIUM, color: color.text, marginLeft: Width(20), marginTop: Height(25) }}>Enter New Email :</Text>
+                    <Text style={styles.text}>Enter New Email :</Text>
                     <View style={globalStyles.textView}>
                         <EmailComponent size={Height(35)} />
                         <View style={globalStyles.lineView} />
@@ -52,4 +52,7 @@ const NewInfoEmailScreen = () => {
 export default NewInfoEmailScreen
 
 const styles = StyleSheet.create({
+    text: {
+        fontSize: Height(16), fontFamily: font.POPPINS_MEDIUM, color: color.text, marginLeft: Width(20), marginTop: Height(25)
+    }
 })

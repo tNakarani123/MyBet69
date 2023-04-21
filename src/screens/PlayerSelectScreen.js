@@ -75,37 +75,37 @@ const PlayerSelectScreen = () => {
                         </View>
                     </View>
                 </DropShadow>
-                <View style={{ height: Height(145), backgroundColor: '#AEAEE6', }}>
-                    <Text style={{ fontSize: Height(14), fontFamily: 'Poppins-Regular', textAlign: 'center', marginTop: Height(10) }}>Maximum of 10 players from a one team</Text>
-                    <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginHorizontal: Width(30), marginTop: Height(15) }}>
-                        <View style={{ flexDirection: 'row', width: Width(160), justifyContent: 'space-between' }}>
+                <View style={styles.headerView}>
+                    <Text style={styles.headerText}>Maximum of 10 players from a one team</Text>
+                    <View style={styles.headerMainView}>
+                        <View style={styles.headerSubView}>
                             <View>
-                                <Text style={{ fontSize: Height(10), fontFamily: 'Poppins-Regular', color: '#252525' }}>Players</Text>
-                                <Text style={{ fontSize: Height(14), fontFamily: 'Poppins-SemiBold', color: 'black' }}>0/11</Text>
+                                <Text style={styles.playerLeftText}>Players</Text>
+                                <Text style={styles.headerSemiBold}>0/11</Text>
                             </View>
-                            <View style={{ flexDirection: 'row', width: Width(95), justifyContent: 'space-between' }}>
-                                <Image source={require('../assets/images/gt.png')} style={{ width: Width(45), height: Height(30) }} />
+                            <View style={styles.headerSub1View}>
+                                <Image source={require('../assets/images/gt.png')} style={styles.img} />
                                 <View style={globalStyles.alignCenterView}>
-                                    <Text style={{ fontSize: Height(14), fontFamily: 'Poppins-Medium', color: '#252525' }}>GT</Text>
-                                    <Text style={{ fontSize: Height(14), fontFamily: 'Poppins-Bold', color: 'black' }}>0</Text>
+                                    <Text style={styles.teamText}>GT</Text>
+                                    <Text style={styles.teamSubText}>0</Text>
                                 </View>
                             </View>
                         </View>
-                        <View style={{ flexDirection: 'row', width: Width(160), justifyContent: 'space-between' }}>
-                            <View style={{ flexDirection: 'row', width: Width(95), justifyContent: 'space-between' }}>
+                        <View style={styles.headerSubView}>
+                            <View style={styles.headerSub1View}>
                                 <View style={globalStyles.alignCenterView}>
-                                    <Text style={{ fontSize: Height(14), fontFamily: 'Poppins-Medium', color: '#252525' }}>MI</Text>
-                                    <Text style={{ fontSize: Height(14), fontFamily: 'Poppins-Bold', color: 'black' }}>0</Text>
+                                    <Text style={styles.teamText}>MI</Text>
+                                    <Text style={styles.teamSubText}>0</Text>
                                 </View>
-                                <Image source={require('../assets/images/mi.png')} style={{ width: Width(45), height: Height(30), }} />
+                                <Image source={require('../assets/images/mi.png')} style={styles.img} />
                             </View>
                             <View style={globalStyles.alignCenterView}>
-                                <Text style={{ fontSize: Height(10), fontFamily: 'Poppins-Regular', color: '#252525' }}>Credits Left</Text>
-                                <Text style={{ fontSize: Height(14), fontFamily: 'Poppins-SemiBold', color: 'black' }}>91.0</Text>
+                                <Text style={styles.playerLeftText}>Credits Left</Text>
+                                <Text style={styles.headerSemiBold}>91.0</Text>
                             </View>
                         </View>
                     </View>
-                    <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginTop: Height(20), marginHorizontal: Width(20) }}>
+                    <View style={styles.selectedView}>
 
                         <View style={styles.selectedPlayers}>
                             {selectedPlayers.map((player, i) => (
@@ -140,8 +140,8 @@ const PlayerSelectScreen = () => {
                     })
                     }
                 </View>
-                <View style={{ height: Height(30), backgroundColor: 'black', alignItems: 'center', flexDirection: 'row', justifyContent: 'space-between', paddingHorizontal: Width(30) }}>
-                    <Text style={{ color: 'white', fontSize: Height(10), fontFamily: 'Poppins-Medium' }}>Select 1-8 Wicket-Keepers</Text>
+                <View style={styles.selectView}>
+                    <Text style={styles.selectText}>Select 1-8 Wicket-Keepers</Text>
                     <Ionicons name='md-filter' size={Height(20)} color='white' onPress={() => setSecModalVisible(true)} />
                 </View>
                 <View style={globalStyles.playerSelectHeaderView}>
@@ -211,15 +211,15 @@ const PlayerSelectScreen = () => {
                             }}>
                             <View style={styles.centeredView}>
                                 <View style={styles.modalView}>
-                                    <Text style={{ fontSize: Height(16), fontFamily: font.POPPINS_SEMI_BOLD, marginVertical: Height(20), color: color.text }}>Clear Team?</Text>
+                                    <Text style={styles.clearTeamText}>Clear Team?</Text>
 
                                     <ClearAllComponent size={Height(100)} />
-                                    <Text style={{ fontSize: Height(10), fontFamily: font.POPPINS_REGULAR, color: color.text, opacity: 0.6, marginTop: Height(20) }}>Are You Sure Your Want To Clear Your Player Selections?</Text>
-                                    <TouchableOpacity style={{ height: Height(50), width: Width(350), backgroundColor: '#5556CA', justifyContent: 'center', alignItems: 'center', borderRadius: Width(10), marginTop: Height(20) }} onPress={removeAllPlayers}>
-                                        <Text style={{ fontSize: Height(16), color: color.background, fontFamily: font.POPPINS_MEDIUM }}>Yes, Clear</Text>
+                                    <Text style={styles.sureText}>Are You Sure Your Want To Clear Your Player Selections?</Text>
+                                    <TouchableOpacity style={styles.clear1btn} onPress={removeAllPlayers}>
+                                        <Text style={styles.clear1btnText}>Yes, Clear</Text>
                                     </TouchableOpacity>
-                                    <TouchableOpacity style={{ height: Height(50), width: Width(350), justifyContent: 'center', alignItems: 'center', borderRadius: Width(10), marginTop: Height(10), borderWidth: Height(1), borderColor: '#5556CA' }} onPress={() => setModalVisible(!modalVisible)}>
-                                        <Text style={{ fontSize: Height(16), color: '#5556CA', fontFamily: font.POPPINS_MEDIUM }}>Cancel</Text>
+                                    <TouchableOpacity style={styles.clear2Btn} onPress={() => setModalVisible(!modalVisible)}>
+                                        <Text style={styles.clear2BtnText}>Cancel</Text>
                                     </TouchableOpacity>
                                 </View>
                             </View>
@@ -238,43 +238,30 @@ const PlayerSelectScreen = () => {
                                 Alert.alert('Modal has been closed.');
                                 setSecModalVisible(!secModalVisible);
                             }}>
-                            <View style={{
-                                flex: 1,
-                                justifyContent: 'flex-end',
-                            }}>
-                                <View style={{
-                                    height: Height(280),
-                                    backgroundColor: 'white',
-                                    width: '100%',
-                                    // alignItems: 'center',
-                                    borderTopLeftRadius: Width(20),
-                                    borderTopRightRadius: Width(20)
-                                }}>
-                                    <View style={{
-                                        height: Height(50), backgroundColor: '#6B69D4', width: '100%', borderTopLeftRadius: Width(20),
-                                        borderTopRightRadius: Width(20), flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', paddingHorizontal: Width(25)
-                                    }}>
+                            <View style={styles.filterMainView}>
+                                <View style={styles.filtersubView}>
+                                    <View style={styles.filterView}>
                                         <Ionicons name='close' size={Height(25)} color={color.background} onPress={() => setSecModalVisible(!secModalVisible)} />
-                                        <Text style={{ fontSize: Height(16), color: color.background, fontFamily: font.POPPINS_MEDIUM }}>Filter BY Teams</Text>
+                                        <Text style={styles.filterText}>Filter BY Teams</Text>
                                         <Ionicons name='close' size={Height(25)} color='transparent' />
                                     </View>
-                                    <TouchableOpacity style={{ flexDirection: "row", alignItems: 'center', justifyContent: "space-between", marginTop: Height(15), marginHorizontal: Width(25) }} onPress={() => { setIndex(1), setSecModalVisible(!secModalVisible) }}>
+                                    <TouchableOpacity style={styles.filterSubView} onPress={() => { setIndex(1), setSecModalVisible(!secModalVisible) }}>
                                         <View>
                                             <Text style={globalStyles.playerPrizeText}>GT</Text>
-                                            <Text style={{ fontSize: Height(10), fontFamily: font.POPPINS_MEDIUM, color: color.text, opacity: 0.6 }}>Gujarat Titans</Text>
+                                            <Text style={styles.filterSubText}>Gujarat Titans</Text>
                                         </View>
                                         <Ionicons name={index === 1 ? 'radio-button-on' : 'radio-button-off'} size={Height(25)} color='#6B69D4' />
                                     </TouchableOpacity>
-                                    <View style={{ height: Height(1), backgroundColor: 'grey', marginTop: Height(15) }} />
-                                    <TouchableOpacity style={{ flexDirection: "row", alignItems: 'center', justifyContent: "space-between", marginTop: Height(15), marginHorizontal: Width(25) }} onPress={() => { setIndex(2), setSecModalVisible(!secModalVisible) }}>
+                                    <View style={styles.line} />
+                                    <TouchableOpacity style={styles.filterSubView} onPress={() => { setIndex(2), setSecModalVisible(!secModalVisible) }}>
                                         <View>
                                             <Text style={globalStyles.playerPrizeText}>MI</Text>
-                                            <Text style={{ fontSize: Height(10), fontFamily: font.POPPINS_MEDIUM, color: color.text, opacity: 0.6 }}>Mumbai Indians</Text>
+                                            <Text style={styles.filterSubText}>Mumbai Indians</Text>
                                         </View>
                                         <Ionicons name={index === 2 ? 'radio-button-on' : 'radio-button-off'} size={Height(25)} color='#6B69D4' />
                                     </TouchableOpacity>
-                                    <View style={{ height: Height(1), backgroundColor: 'grey', marginTop: Height(15) }} />
-                                    <TouchableOpacity style={{ flexDirection: "row", alignItems: 'center', justifyContent: "space-between", marginTop: Height(15), marginHorizontal: Width(25) }} onPress={() => { setIndex(3), setSecModalVisible(!secModalVisible) }}>
+                                    <View style={styles.line} />
+                                    <TouchableOpacity style={styles.filterSubView} onPress={() => { setIndex(3), setSecModalVisible(!secModalVisible) }}>
                                         <Text style={globalStyles.playerPrizeText}>Both</Text>
                                         <Ionicons name={index === 3 ? 'radio-button-on' : 'radio-button-off'} size={Height(25)} color='#6B69D4' />
                                     </TouchableOpacity>
@@ -349,4 +336,88 @@ const styles = StyleSheet.create({
         borderTopLeftRadius: Width(20),
         borderTopRightRadius: Width(20)
     },
+    selectView: {
+        height: Height(30), backgroundColor: 'black', alignItems: 'center', flexDirection: 'row', justifyContent: 'space-between', paddingHorizontal: Width(30)
+    },
+    selectText: {
+        color: 'white', fontSize: Height(10), fontFamily: 'Poppins-Medium'
+    },
+    clearTeamText: {
+        fontSize: Height(16), fontFamily: font.POPPINS_SEMI_BOLD, marginVertical: Height(20), color: color.text
+    },
+    sureText: {
+        fontSize: Height(10), fontFamily: font.POPPINS_REGULAR, color: color.text, opacity: 0.6, marginTop: Height(20)
+    },
+    clear1btn: {
+        height: Height(50), width: Width(350), backgroundColor: '#5556CA', justifyContent: 'center', alignItems: 'center', borderRadius: Width(10), marginTop: Height(20)
+    },
+    clear1btnText: {
+        fontSize: Height(16), color: color.background, fontFamily: font.POPPINS_MEDIUM
+    },
+    clear2Btn: {
+        height: Height(50), width: Width(350), justifyContent: 'center', alignItems: 'center', borderRadius: Width(10), marginTop: Height(10), borderWidth: Height(1), borderColor: '#5556CA'
+    },
+    clear2BtnText: {
+        fontSize: Height(16), color: '#5556CA', fontFamily: font.POPPINS_MEDIUM
+    },
+    selectedView: {
+        flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginTop: Height(20), marginHorizontal: Width(20)
+    },
+    headerView: {
+        height: Height(145), backgroundColor: '#AEAEE6',
+    },
+    headerText: {
+        fontSize: Height(14), fontFamily: 'Poppins-Regular', textAlign: 'center', marginTop: Height(10)
+    },
+    headerMainView: {
+        flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginHorizontal: Width(30), marginTop: Height(15)
+    },
+    headerSubView: {
+        flexDirection: 'row', width: Width(160), justifyContent: 'space-between'
+    },
+    headerSemiBold: {
+        fontSize: Height(14), fontFamily: 'Poppins-SemiBold', color: 'black'
+    },
+    headerSub1View: {
+        flexDirection: 'row', width: Width(95), justifyContent: 'space-between'
+    },
+    playerLeftText: {
+        fontSize: Height(10), fontFamily: 'Poppins-Regular', color: '#252525'
+    },
+    img: {
+        width: Width(45), height: Height(30)
+    },
+    teamText: {
+        fontSize: Height(14), fontFamily: 'Poppins-Medium', color: '#252525'
+    },
+    teamSubText: {
+        fontSize: Height(14), fontFamily: 'Poppins-Bold', color: 'black'
+    },
+    filterMainView: {
+        flex: 1,
+        justifyContent: 'flex-end',
+    },
+    filtersubView: {
+        height: Height(280),
+        backgroundColor: 'white',
+        width: '100%',
+        borderTopLeftRadius: Width(20),
+        borderTopRightRadius: Width(20)
+    },
+    filterView: {
+        height: Height(50), backgroundColor: '#6B69D4', width: '100%', borderTopLeftRadius: Width(20),
+        borderTopRightRadius: Width(20), flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', paddingHorizontal: Width(25)
+    },
+    filterText: {
+        fontSize: Height(16), color: color.background, fontFamily: font.POPPINS_MEDIUM
+    },
+    filterSubView: {
+        flexDirection: "row", alignItems: 'center', justifyContent: "space-between", marginTop: Height(15), marginHorizontal: Width(25)
+    },
+    line: {
+        height: Height(1), backgroundColor: 'grey', marginTop: Height(15)
+    },
+    filterSubText: {
+        fontSize: Height(10), fontFamily: font.POPPINS_MEDIUM, color: color.text, opacity: 0.6
+    }
 });

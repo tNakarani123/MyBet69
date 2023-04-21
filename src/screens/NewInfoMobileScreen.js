@@ -34,7 +34,7 @@ const NewInfoMobileScreen = () => {
                             <Text style={globalStyles.headerText}>Enter New Mobile</Text>
                         </View>
                     </DropShadow>
-                    <Text style={{ fontSize: Height(16), fontFamily: font.POPPINS_MEDIUM, color: color.text, marginLeft: Width(20), marginTop: Height(25) }}>Enter New Email :</Text>
+                    <Text style={styles.text}>Enter New Email :</Text>
 
                     <View style={globalStyles.textView}>
                         <PhoneComponent size={Height(35)} />
@@ -53,4 +53,7 @@ const NewInfoMobileScreen = () => {
 export default NewInfoMobileScreen
 
 const styles = StyleSheet.create({
+    text: {
+        fontSize: Height(16), fontFamily: font.POPPINS_MEDIUM, color: color.text, marginLeft: Width(20), marginTop: Height(25)
+    }
 })
