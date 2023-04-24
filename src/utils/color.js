@@ -6,7 +6,8 @@ const color = {
     text: '#000000',
     greenText: '#3EB54A',
     spotsLeftText: '#F96464',
-    contestText: '#565656'
+    contestText: '#565656',
+    redText: '#D17373'
 };
 
 export default color;

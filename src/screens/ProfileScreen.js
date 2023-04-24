@@ -121,18 +121,21 @@ const ProfileScreen = () => {
                                         <TouchableOpacity style={styles.scrollBtn}>
                                             <Text style={styles.matchName}>{item.matchName}</Text>
                                             <View style={styles.lineView} />
-                                            <View>
-                                                <View style={styles.scrollSubView}>
+                                            <View style={[styles.thirdView, { marginTop: Height(5) }]}>
+                                                <View>
                                                     <Text style={styles.teamName}>{item.teamOneName}</Text>
-                                                    <View style={styles.teamView}>
+                                                    <View style={[styles.teamView, { marginTop: Height(3) }]}>
                                                         <Image source={item.teamOneLogo} style={globalStyles.teamImage} />
                                                         <Text style={[{ marginLeft: Width(15) }, styles.teamShortName]}>{item.teamOneShortName}</Text>
                                                     </View>
                                                 </View>
-
+                                                <View style={globalStyles.contestItemRowView}>
+                                                    <Octicons name='dot-fill' size={Height(20)} color='#FF0707' />
+                                                    <Text style={[globalStyles.blackNormalText, { marginLeft: Width(8) }]}>Live</Text>
+                                                </View>
                                                 <View>
                                                     <Text style={[{ marginLeft: Width(25) }, styles.teamName]}>{item.teamTwoName}</Text>
-                                                    <View style={styles.teamView}>
+                                                    <View style={[styles.teamView, { marginTop: Height(3) }]}>
                                                         <Text style={[{ marginRight: Width(15) }, styles.teamShortName]}>{item.teamTwoShortName}</Text>
                                                         <Image source={item.teamTwoLogo} style={globalStyles.teamImage} />
                                                     </View>
@@ -274,5 +277,23 @@ const styles = StyleSheet.create({
     },
     btnText: {
         fontSize: Height(14), fontFamily: font.POPPINS_SEMI_BOLD, color: color.background
-    }
+    },
+    thirdView: {
+        flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginHorizontal: Width(15),
+    },
+    teamName: {
+        fontSize: Height(8), fontFamily: 'Poppins-Medium', color: 'black'
+    },
+    teamView: {
+        flexDirection: 'row', alignItems: 'center',
+    },
+    teamShortName: {
+        fontSize: Height(14), fontFamily: 'Poppins-SemiBold', color: 'black'
+    },
+    scrollBottomView: {
+        height: Height(30), backgroundColor: '#D9D9D9', borderBottomLeftRadius: Width(10), borderBottomRightRadius: Width(10), marginTop: Height(22), flexDirection: 'row', alignItems: 'center'
+    },
+    teamText: {
+        fontSize: Height(11), fontFamily: 'Poppins-Regular', color: 'black', marginLeft: Width(25)
+    },
 })

@@ -38,6 +38,12 @@ import UploadIdProofScreen from '../screens/UploadIdProofScreen'
 import AdharCardNumberScreen from '../screens/AdharCardNumberScreen'
 import DigitalOnBoardingScreen from '../screens/DigitalOnBoardingScreen'
 import CardDetailsScreen from '../screens/CardDetailsScreen'
+import UploadCardImageScreen from '../screens/UploadCardImageScreen'
+import SelectPaymentMethodScreen from '../screens/SelectPaymentMethodScreen'
+import AddCardScreen from '../screens/AddCardScreen'
+import WithDrawScreen from '../screens/WithDrawScreen'
+import WithDrawCashPaymentScreen from '../screens/WithDrawCashPaymentScreen'
+import MyTransactionScreen from '../screens/MyTransactionScreen'
 
 const Stack = createNativeStackNavigator()
 const StackNavigation = () => {
@@ -79,6 +85,12 @@ const StackNavigation = () => {
             <Stack.Screen name='AdharCardNumber' component={AdharCardNumberScreen} />
             <Stack.Screen name='DigitalOnboarding' component={DigitalOnBoardingScreen} />
             <Stack.Screen name='CardDetails' component={CardDetailsScreen} />
+            <Stack.Screen name='UploadCardImage' component={UploadCardImageScreen} />
+            <Stack.Screen name='SelectPaymentMethod' component={SelectPaymentMethodScreen} />
+            <Stack.Screen name='AddCard' component={AddCardScreen} />
+            <Stack.Screen name='WithDraw' component={WithDrawScreen} />
+            <Stack.Screen name='WithDrawCashPayment' component={WithDrawCashPaymentScreen} />
+            <Stack.Screen name='MyTransaction' component={MyTransactionScreen} />
         </Stack.Navigator>
     )
 }

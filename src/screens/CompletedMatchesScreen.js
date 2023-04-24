@@ -69,7 +69,9 @@ const CompletedMatchesScreen = () => {
                             </ScrollView>
                         </View>
                         <View style={styles.lineView} />
-                        <Text>My Teams</Text>
+                        <View>
+
+                        </View>
                     </SafeAreaView>
                 </>
             )

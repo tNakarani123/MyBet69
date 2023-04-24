@@ -51,7 +51,7 @@ const WalletScreen = () => {
                             <Text style={styles.text}>Winnings</Text>
                             <Text style={styles.text}>₹ 100</Text>
                         </View>
-                        <TouchableOpacity style={styles.btn}>
+                        <TouchableOpacity style={styles.btn} onPress={() => navigation.navigate('WithDraw')}>
                             <Text style={styles.btnText}>Withdraw Cash</Text>
                         </TouchableOpacity>
                     </View>
@@ -62,7 +62,7 @@ const WalletScreen = () => {
                 </View>
                 <View style={[{ height: Height(70), }, styles.trView]}>
                     <Text style={styles.text}>My Transaction</Text>
-                    <MaterialIcons name='arrow-right' size={Height(25)} color={color.text} />
+                    <MaterialIcons name='arrow-right' size={Height(25)} color={color.text} onPress={() => navigation.navigate('MyTransaction')} />
                 </View>
                 <View style={[{ height: Height(95), }, styles.trView]}>
                     <View>
